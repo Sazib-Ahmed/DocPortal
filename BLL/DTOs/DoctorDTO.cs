@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL.EF.Models
+namespace BLL.DTOs
 {
-    public class Doctor
+    public class DoctorDTO
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -19,6 +19,5 @@ namespace DAL.EF.Models
         public string Password { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
-
     }
 }
