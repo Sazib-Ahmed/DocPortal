@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DAL.EF;
+using DAL.EF.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,31 +11,39 @@ namespace DAL.Repo
     public class DoctorRepo
 
     {
-        public static List<object> GetAll()
+        public static List<Doctor> GetAll()
         {
-            return new List<object>();
+            var db = new DocPortalContext();
+            return db.Doctors.ToList();
         }
 
-        public static void Create(object obj)
+        public static bool Create(Doctor obj)
         {
-            //return new object();
-        }
-        public static object GetById(int id)
-        {
-            return new object();
-        }
-
-        public static void Add(object obj)
-        {
-            // add to db
+            var db = new DocPortalContext();
+            db.Doctors.Add(obj);
+            return db.SaveChanges() > 0; //returns true if more than 0 rows are affected
+            //db.SaveChanges() returns the number of rows affected
         }
 
-        public static void Update(object obj)
+        public static Doctor GetById(int id)
         {
-
+            var db = new DocPortalContext();
+            return db.Doctors.Find(id);
         }
 
-        public static void Delete(object obj) { }
+        public static void Update(Doctor obj)
+        {
+            var db = new DocPortalContext();
+            db.Entry(obj).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+        }
+
+        public static void Delete(Doctor obj)
+        {
+            var db = new DocPortalContext();
+            db.Entry(obj).State = System.Data.Entity.EntityState.Deleted;
+            db.SaveChanges();
+        }
 
 
 

@@ -11,7 +11,7 @@ namespace BLL.Services
     {
         public static List<object> GetAll() 
         {
-            return DoctorRepo.GetAll();
+            //return DoctorRepo.GetAll();
         }
     }
 }
