@@ -32,25 +32,50 @@ namespace DocPortal.Controllers
         // var data = BLL.Services.DoctorService.GetAll();
         // return Ok(data);
         //}
-
-        public string Get(int id)
+        [HttpGet]
+        [Route("api/doctor/id/{id}")]
+        public HttpResponseMessage GetById(int id)
         {
-            return "value";
+            try
+            {
+                var data = DoctorService.GetById(id);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+        [HttpGet]
+        [Route("api/doctor/name/{name}")]
+        public HttpResponseMessage GetByName(string name)
+        {
+            try
+            {
+                var data = DoctorService.GetByName(name);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
         }
 
-        // POST api/<controller>
-        public void Post([FromBody] string value)
+
+        [HttpGet]
+        [Route("api/prescription/patient/{id}")]
+        public HttpResponseMessage GetByPatientId(int id)
         {
+            try
+            {
+                var data = PrescriptionService.GetByPatientId(id);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
         }
 
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
-        }
     }
 }

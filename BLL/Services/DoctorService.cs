@@ -23,6 +23,20 @@ namespace BLL.Services
             var conv = mapper.Map<List<DoctorDTO>>(data);
             return conv;
         }
+        public static List<DoctorDTO> GetByName(string name)
+        {
+            var data = (from n in DoctorRepo.GetAll()
+                        where n.Name.ToLower().Contains(name.ToLower())
+                        select n).ToList();
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<Doctor, DoctorDTO>();
+            });
+
+            var mapper = new Mapper(config);
+            var conv = mapper.Map<List<DoctorDTO>>(data);
+            return conv;
+        }
 
         public static bool Create(DoctorDTO obj)
         {
@@ -36,10 +50,17 @@ namespace BLL.Services
             return DoctorRepo.Create(conv);
         }
 
-        public static Doctor GetById(int id)
+        public static DoctorDTO GetById(int id)
         {
-            var data = DoctorRepo.GetById(id);
-            return data;
+
+            var data= DoctorRepo.GetById(id);
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<Doctor, DoctorDTO>();
+            });
+            var mapper = new Mapper(config);
+            var conv = mapper.Map<DoctorDTO>(data);
+            return conv;
         }
     }
 }
