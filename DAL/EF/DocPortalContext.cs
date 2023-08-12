@@ -11,6 +11,8 @@ namespace DAL.EF
     internal class DocPortalContext : DbContext
     {
         public DbSet<Doctor> Doctors { get; set; }
+        public DbSet<Prescription> Prescriptions { get; set; }
+        public DbSet<PrescriptionDetail> PrescriptionDetails { get; set; }
 
     }
 }

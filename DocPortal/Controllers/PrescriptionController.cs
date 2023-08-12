@@ -1,5 +1,5 @@
-﻿using BLL.Services;
-using System;
+﻿using System;
+using BLL.Services;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -8,18 +8,15 @@ using System.Web.Http;
 
 namespace DocPortal.Controllers
 {
-    public class DoctorController : ApiController
+    public class PrescriptionController : ApiController
     {
-
-
-
         [HttpGet]
-        [Route("api/doctor/all")]
+        [Route("api/prescription/all")]
         public HttpResponseMessage GetAll()
         {
-            try 
+            try
             {
-                var data = DoctorService.GetAll();
+                var data = PrescriptionService.GetAll();
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }
             catch (Exception ex)
@@ -27,18 +24,13 @@ namespace DocPortal.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
-        //public IHttpActionResult GetAll()
-        //{
-        // var data = BLL.Services.DoctorService.GetAll();
-        // return Ok(data);
-        //}
         [HttpGet]
-        [Route("api/doctor/id/{id}")]
+        [Route("api/prescription/id/{id}")]
         public HttpResponseMessage GetById(int id)
         {
             try
             {
-                var data = DoctorService.GetById(id);
+                var data = PrescriptionService.GetById(id);
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }
             catch (Exception ex)
@@ -46,13 +38,15 @@ namespace DocPortal.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
+
+
         [HttpGet]
-        [Route("api/doctor/name/{name}")]
-        public HttpResponseMessage GetByName(string name)
+        [Route("api/prescription/{id}/detail")]
+        public HttpResponseMessage GetWithDetail(int id)
         {
             try
             {
-                var data = DoctorService.GetByName(name);
+                var data = PrescriptionService.GetWithDetail(id);
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }
             catch (Exception ex)
@@ -61,7 +55,20 @@ namespace DocPortal.Controllers
             }
         }
 
-
+        [HttpGet]
+        [Route("api/prescription/date/{date}")]
+        public HttpResponseMessage GetByDate(DateTime date)
+        {
+            try
+            {
+                var data = PrescriptionService.GetByDate(date);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
         [HttpGet]
         [Route("api/prescription/patient/{id}")]
         public HttpResponseMessage GetByPatientId(int id)
@@ -76,6 +83,21 @@ namespace DocPortal.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
+        [HttpGet]
+        [Route("api/prescription/doctor/{id}")]
+        public HttpResponseMessage GetByDoctorId(int id)
+        {
+            try
+            {
+                var data = PrescriptionService.GetByDoctorId(id);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
 
     }
 }

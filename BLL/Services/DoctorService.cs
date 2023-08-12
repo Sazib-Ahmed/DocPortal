@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using BLL.DTOs;
+using DAL;
 using DAL.EF.Models;
-using DAL.Repo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +14,23 @@ namespace BLL.Services
     {
         public static List<DoctorDTO> GetAll()
         {
-            var data= DoctorRepo.GetAll();
+            var data= DataAccessFactory.DoctorData().Get();
             var config = new MapperConfiguration(cfg => {
                 cfg.CreateMap<Doctor, DoctorDTO>(); 
+            });
+
+            var mapper = new Mapper(config);
+            var conv = mapper.Map<List<DoctorDTO>>(data);
+            return conv;
+        }
+        public static List<DoctorDTO> GetByName(string name)
+        {
+            var data = (from n in DataAccessFactory.DoctorData().Get()
+                        where n.Name.ToLower().Contains(name.ToLower())
+                        select n).ToList();
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<Doctor, DoctorDTO>();
             });
 
             var mapper = new Mapper(config);
@@ -33,13 +47,20 @@ namespace BLL.Services
 
             var mapper = new Mapper(config);
             var conv = mapper.Map<Doctor>(obj);
-            return DoctorRepo.Create(conv);
+            return DataAccessFactory.DoctorData().Create(conv);
         }
 
-        public static Doctor GetById(int id)
+        public static DoctorDTO GetById(int id)
         {
-            var data = DoctorRepo.GetById(id);
-            return data;
+
+            var data= DataAccessFactory.DoctorData().Get(id);
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<Doctor, DoctorDTO>();
+            });
+            var mapper = new Mapper(config);
+            var conv = mapper.Map<DoctorDTO>(data);
+            return conv;
         }
     }
 }

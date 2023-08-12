@@ -51,16 +51,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="DataAccessFactory.cs" />
     <Compile Include="EF\DocPortalContext.cs" />
     <Compile Include="EF\Models\Doctor.cs" />
+    <Compile Include="EF\Models\Prescription.cs" />
+    <Compile Include="EF\Models\PrescriptionDetail.cs" />
+    <Compile Include="Interfaces\IRepo.cs" />
     <Compile Include="Migrations\202308111622200_InitDB_and_doctor.cs" />
     <Compile Include="Migrations\202308111622200_InitDB_and_doctor.designer.cs">
       <DependentUpon>202308111622200_InitDB_and_doctor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202308112051153_DoctorUpdate.cs" />
+    <Compile Include="Migrations\202308112051153_DoctorUpdate.designer.cs">
+      <DependentUpon>202308112051153_DoctorUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202308112129518_AddingDummyDoctor.cs" />
+    <Compile Include="Migrations\202308112129518_AddingDummyDoctor.designer.cs">
+      <DependentUpon>202308112129518_AddingDummyDoctor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202308112308366_Updating_doctor_Adding_Prescription_And_PrescriptionDetail_with_dummy_data.cs" />
+    <Compile Include="Migrations\202308112308366_Updating_doctor_Adding_Prescription_And_PrescriptionDetail_with_dummy_data.designer.cs">
+      <DependentUpon>202308112308366_Updating_doctor_Adding_Prescription_And_PrescriptionDetail_with_dummy_data.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repo\DoctorRepo.cs" />
+    <Compile Include="Repo\PrescriptionDetailRepo.cs" />
+    <Compile Include="Repo\PrescriptionRepo.cs" />
+    <Compile Include="Repo\Repo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -69,6 +87,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202308111622200_InitDB_and_doctor.resx">
       <DependentUpon>202308111622200_InitDB_and_doctor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308112051153_DoctorUpdate.resx">
+      <DependentUpon>202308112051153_DoctorUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308112129518_AddingDummyDoctor.resx">
+      <DependentUpon>202308112129518_AddingDummyDoctor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308112308366_Updating_doctor_Adding_Prescription_And_PrescriptionDetail_with_dummy_data.resx">
+      <DependentUpon>202308112308366_Updating_doctor_Adding_Prescription_And_PrescriptionDetail_with_dummy_data.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
