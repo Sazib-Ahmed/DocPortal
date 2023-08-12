@@ -39,6 +39,22 @@ namespace DocPortal.Controllers
             }
         }
 
+
+        [HttpGet]
+        [Route("api/prescription/{id}/detail")]
+        public HttpResponseMessage GetWithDetail(int id)
+        {
+            try
+            {
+                var data = PrescriptionService.GetWithDetail(id);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
         [HttpGet]
         [Route("api/prescription/date/{date}")]
         public HttpResponseMessage GetByDate(DateTime date)

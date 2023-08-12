@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BLL.DTOs;
+using DAL;
 using DAL.EF.Models;
 using DAL.Repo;
 using System;
@@ -14,7 +15,7 @@ namespace BLL.Services
     {
         public static List<PrescriptionDTO> GetAll()
         {
-            var data = PrescriptionRepo.GetAll();
+            var data = DataAccessFactory.PrescriptionData().GetAll();
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Prescription, PrescriptionDTO>(); 
@@ -34,12 +35,12 @@ namespace BLL.Services
 
             var mapper = new Mapper(config);
             var conv = mapper.Map<Prescription>(obj);
-            return PrescriptionRepo.Create(conv);
+            return DataAccessFactory.PrescriptionData().Create(conv);
         }
 
         public static PrescriptionDTO GetById(int id)
         {
-            var data= PrescriptionRepo.GetById(id);
+            var data= DataAccessFactory.PrescriptionData().GetById(id);
             var config = new MapperConfiguration(cfg =>
             {
                     cfg.CreateMap<Prescription, PrescriptionDTO>();
@@ -50,11 +51,24 @@ namespace BLL.Services
             return conv;
         }
 
+        public static PrescriptionPrescriptionDetailDTO GetWithDetail(int id)
+        {
+            var data = DataAccessFactory.PrescriptionData().GetById(id);
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<Prescription, PrescriptionPrescriptionDetailDTO>();
+                cfg.CreateMap<PrescriptionDetail, PrescriptionDetailDTO>();
+            });
 
-       
+            var mapper = new Mapper(config);
+            var conv = mapper.Map<PrescriptionPrescriptionDetailDTO>(data);
+            return conv;
+        }
+
+
         public static List<PrescriptionDTO> GetByDate(DateTime date)
         {
-            var data = (from n in PrescriptionRepo.GetAll()
+            var data = (from n in DataAccessFactory.PrescriptionData().GetAll()
                         where n.Date.Date == date
                         select n).ToList();
 
@@ -69,7 +83,7 @@ namespace BLL.Services
         }
         public static List<PrescriptionDTO> GetByPatientId(int id)
         {
-            var data = (from n in PrescriptionRepo.GetAll()
+            var data = (from n in DataAccessFactory.PrescriptionData().GetAll()
                         where n.PatientId == id
                         select n).ToList();
 
@@ -84,7 +98,7 @@ namespace BLL.Services
         }
         public static List<PrescriptionDTO> GetByDoctorId(int id)
         {
-            var data = (from n in PrescriptionRepo.GetAll()
+            var data = (from n in DataAccessFactory.PrescriptionData().GetAll()
             where n.DoctorId == id
             select n).ToList();
 

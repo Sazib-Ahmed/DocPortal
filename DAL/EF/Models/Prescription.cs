@@ -26,8 +26,13 @@ namespace DAL.EF.Models
         public virtual Doctor Doctor { get; set; }
         //public virtual Patient Patient { get; set; }
 
-        // Navigation property
-        public virtual ICollection<PrescriptionDetail> PrescriptionDetails { get; set; }
+        // Navigation property 
+        public virtual ICollection<PrescriptionDetail> PrescriptionDetail { get; set; }
+
+        public Prescription()
+        {
+            PrescriptionDetail = new List<PrescriptionDetail>();
+        }
 
     }
 }

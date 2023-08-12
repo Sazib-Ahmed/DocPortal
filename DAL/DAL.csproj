@@ -51,11 +51,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="DataAccessFactory.cs" />
     <Compile Include="EF\DocPortalContext.cs" />
     <Compile Include="EF\Models\Doctor.cs" />
     <Compile Include="EF\Models\Prescription.cs" />
     <Compile Include="EF\Models\PrescriptionDetail.cs" />
+    <Compile Include="Interfaces\IRepo.cs" />
     <Compile Include="Migrations\202308111622200_InitDB_and_doctor.cs" />
     <Compile Include="Migrations\202308111622200_InitDB_and_doctor.designer.cs">
       <DependentUpon>202308111622200_InitDB_and_doctor.cs</DependentUpon>
@@ -77,6 +78,7 @@
     <Compile Include="Repo\DoctorRepo.cs" />
     <Compile Include="Repo\PrescriptionDetailRepo.cs" />
     <Compile Include="Repo\PrescriptionRepo.cs" />
+    <Compile Include="Repo\Repo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

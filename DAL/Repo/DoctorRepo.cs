@@ -1,5 +1,6 @@
 ﻿using DAL.EF;
 using DAL.EF.Models;
+using DAL.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,44 +9,45 @@ using System.Threading.Tasks;
 
 namespace DAL.Repo
 {
-    public class DoctorRepo
+    internal class DoctorRepo : Repo, IRepo<Doctor, int, bool>
 
     {
-        public static List<Doctor> GetAll()
+        public List<Doctor> GetAll()
         {
-            var db = new DocPortalContext();
+
             return db.Doctors.ToList();
         }
 
-        public static bool Create(Doctor obj)
+        public bool Create(Doctor obj)
         {
-            var db = new DocPortalContext();
+
             db.Doctors.Add(obj);
             return db.SaveChanges() > 0; //returns true if more than 0 rows are affected
             //db.SaveChanges() returns the number of rows affected
         }
 
-        public static Doctor GetById(int id)
+        public Doctor GetById(int id)
         {
-            var db = new DocPortalContext();
             return db.Doctors.Find(id);
         }
 
-        public static void Update(Doctor obj)
+        public bool Update(Doctor updatedObj) 
         {
-            var db = new DocPortalContext();
-            db.Entry(obj).State = System.Data.Entity.EntityState.Modified;
-            db.SaveChanges();
+            var exobj = GetById(updatedObj.Id);
+            if (exobj != null)
+            {
+                db.Entry(exobj).CurrentValues.SetValues(updatedObj);
+                return db.SaveChanges() > 0;
+            }
+            return false;
         }
 
-        public static void Delete(Doctor obj)
+        public bool Delete(int id)
         {
-            var db = new DocPortalContext();
-            db.Entry(obj).State = System.Data.Entity.EntityState.Deleted;
-            db.SaveChanges();
+            var exobj = GetById(id);
+            db.Doctors.Remove(exobj);
+            return db.SaveChanges()>0;
         }
-
-
 
     }
 }

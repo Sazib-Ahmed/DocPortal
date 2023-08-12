@@ -1,5 +1,6 @@
 ﻿using DAL.EF;
 using DAL.EF.Models;
+using DAL.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,50 +9,44 @@ using System.Threading.Tasks;
 
 namespace DAL.Repo
 {
-    public class PrescriptionDetailRepo
+    internal class PrescriptionDetailRepo : Repo, IRepo<PrescriptionDetail, int, bool>
     {
-        public static List<PrescriptionDetail> GetAll()
-        {
-            using (var db = new DocPortalContext())
-            {
-                return db.PrescriptionDetails.ToList();
-            }
+        public List<PrescriptionDetail> GetAll()
+        {   
+            return db.PrescriptionDetails.ToList();  
         }
 
-        public static bool Create(PrescriptionDetail obj)
+        public PrescriptionDetail GetById(int id)
         {
-            using (var db = new DocPortalContext())
+            return db.PrescriptionDetails.Find(id);
+        }
+
+        public bool Create(PrescriptionDetail obj)
+        {
+            db.PrescriptionDetails.Add(obj);
+            return db.SaveChanges() > 0;
+        }
+
+        public bool Update(PrescriptionDetail updatedObj)
+        {
+            var exobj = GetById(updatedObj.PrescriptionDetailId);
+            if (exobj != null)
             {
-                db.PrescriptionDetails.Add(obj);
+                db.Entry(exobj).CurrentValues.SetValues(updatedObj);
                 return db.SaveChanges() > 0;
             }
+            return false;
         }
 
-        public static PrescriptionDetail GetById(int id)
+        public bool Delete(int id)
         {
-            using (var db = new DocPortalContext())
+            var obj = GetById(id);
+            if (obj != null)
             {
-                return db.PrescriptionDetails.Find(id);
-            }
-        }
-
-        public static bool Update(PrescriptionDetail obj)
-        {
-            using (var db = new DocPortalContext())
-            {
-                db.Entry(obj).State = System.Data.Entity.EntityState.Modified;
-                return db.SaveChanges() > 0;
-            }
-        }
-
-        public static bool Delete(int id)
-        {
-            using (var db = new DocPortalContext())
-            {
-                var obj = db.PrescriptionDetails.Find(id);
                 db.PrescriptionDetails.Remove(obj);
                 return db.SaveChanges() > 0;
             }
+            return false;
         }
     }
 }

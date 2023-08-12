@@ -31,7 +31,7 @@
                         Email = "doctor" + i + "@example.com",
                         Address = "123 Street, City",
                         DateOfBirth = DateTime.Now.AddYears(-30).AddDays(random.Next(-365, 365)),
-                        Sex = (sex)random.Next(0, Enum.GetValues(typeof(sex)).Length),
+                        Sex = (Gender)random.Next(0, Enum.GetValues(typeof(Gender)).Length),
                         Education = "Education for Doctor " + i,
                         ExperienceYears = random.Next(1, 31).ToString(),
                         RegistrationNumber = "Reg" + i,
@@ -57,7 +57,7 @@
                         NextAppointment = DateTime.Now.AddDays(random.Next(0, 8) * -1),
 
                         // Add PrescriptionDetails
-                        PrescriptionDetails = new List<EF.Models.PrescriptionDetail>
+                        PrescriptionDetail = new List<EF.Models.PrescriptionDetail>
                         {
                             new EF.Models.PrescriptionDetail
                             {
