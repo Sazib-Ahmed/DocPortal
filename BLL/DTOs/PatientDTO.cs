@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static DAL.EF.Models.Doctor;
+using static DAL.EF.Models.Patient;
 
 namespace BLL.DTOs
 {
@@ -18,7 +18,7 @@ namespace BLL.DTOs
         public string Email { get; set; }
         public string Address { get; set; }
         public DateTime DateOfBirth { get; set; }
-        public Gender Sex { get; set; }
+        public PGender Sex { get; set; }
        
 
         public string Description { get; set; }

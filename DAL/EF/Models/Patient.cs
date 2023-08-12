@@ -18,7 +18,7 @@ namespace DAL.EF.Models
         public string Email { get; set; }
         public string Address { get; set; }
         public DateTime DateOfBirth { get; set; }
-        public Gender Sex { get; set; }
+        public PGender Sex { get; set; }
 
 
 
@@ -27,7 +27,7 @@ namespace DAL.EF.Models
         // Navigation property
         public virtual ICollection<Prescription> Prescription { get; set; }
 
-        public enum Gender
+        public enum PGender
         {
             Male,
             Female,

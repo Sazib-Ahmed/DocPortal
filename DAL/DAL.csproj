@@ -74,6 +74,10 @@
     <Compile Include="Migrations\202308112308366_Updating_doctor_Adding_Prescription_And_PrescriptionDetail_with_dummy_data.designer.cs">
       <DependentUpon>202308112308366_Updating_doctor_Adding_Prescription_And_PrescriptionDetail_with_dummy_data.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202308121921314_initpatient.cs" />
+    <Compile Include="Migrations\202308121921314_initpatient.designer.cs">
+      <DependentUpon>202308121921314_initpatient.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repo\DoctorRepo.cs" />
@@ -98,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202308112308366_Updating_doctor_Adding_Prescription_And_PrescriptionDetail_with_dummy_data.resx">
       <DependentUpon>202308112308366_Updating_doctor_Adding_Prescription_And_PrescriptionDetail_with_dummy_data.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308121921314_initpatient.resx">
+      <DependentUpon>202308121921314_initpatient.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
