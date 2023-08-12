@@ -14,7 +14,7 @@ namespace BLL.Services
     {
         public static List<DoctorDTO> GetAll()
         {
-            var data= DataAccessFactory.DoctorData().GetAll();
+            var data= DataAccessFactory.DoctorData().Get();
             var config = new MapperConfiguration(cfg => {
                 cfg.CreateMap<Doctor, DoctorDTO>(); 
             });
@@ -25,7 +25,7 @@ namespace BLL.Services
         }
         public static List<DoctorDTO> GetByName(string name)
         {
-            var data = (from n in DataAccessFactory.DoctorData().GetAll()
+            var data = (from n in DataAccessFactory.DoctorData().Get()
                         where n.Name.ToLower().Contains(name.ToLower())
                         select n).ToList();
             var config = new MapperConfiguration(cfg =>
@@ -53,7 +53,7 @@ namespace BLL.Services
         public static DoctorDTO GetById(int id)
         {
 
-            var data= DataAccessFactory.DoctorData().GetById(id);
+            var data= DataAccessFactory.DoctorData().Get(id);
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Doctor, DoctorDTO>();

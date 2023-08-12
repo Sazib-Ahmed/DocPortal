@@ -15,7 +15,7 @@ namespace BLL.Services
     {
         public static List<PrescriptionDTO> GetAll()
         {
-            var data = DataAccessFactory.PrescriptionData().GetAll();
+            var data = DataAccessFactory.PrescriptionData().Get();
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Prescription, PrescriptionDTO>(); 
@@ -40,7 +40,7 @@ namespace BLL.Services
 
         public static PrescriptionDTO GetById(int id)
         {
-            var data= DataAccessFactory.PrescriptionData().GetById(id);
+            var data= DataAccessFactory.PrescriptionData().Get(id);
             var config = new MapperConfiguration(cfg =>
             {
                     cfg.CreateMap<Prescription, PrescriptionDTO>();
@@ -53,7 +53,7 @@ namespace BLL.Services
 
         public static PrescriptionPrescriptionDetailDTO GetWithDetail(int id)
         {
-            var data = DataAccessFactory.PrescriptionData().GetById(id);
+            var data = DataAccessFactory.PrescriptionData().Get(id);
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Prescription, PrescriptionPrescriptionDetailDTO>();
@@ -68,7 +68,7 @@ namespace BLL.Services
 
         public static List<PrescriptionDTO> GetByDate(DateTime date)
         {
-            var data = (from n in DataAccessFactory.PrescriptionData().GetAll()
+            var data = (from n in DataAccessFactory.PrescriptionData().Get()
                         where n.Date.Date == date
                         select n).ToList();
 
@@ -83,7 +83,7 @@ namespace BLL.Services
         }
         public static List<PrescriptionDTO> GetByPatientId(int id)
         {
-            var data = (from n in DataAccessFactory.PrescriptionData().GetAll()
+            var data = (from n in DataAccessFactory.PrescriptionData().Get()
                         where n.PatientId == id
                         select n).ToList();
 
@@ -98,7 +98,7 @@ namespace BLL.Services
         }
         public static List<PrescriptionDTO> GetByDoctorId(int id)
         {
-            var data = (from n in DataAccessFactory.PrescriptionData().GetAll()
+            var data = (from n in DataAccessFactory.PrescriptionData().Get()
             where n.DoctorId == id
             select n).ToList();
 

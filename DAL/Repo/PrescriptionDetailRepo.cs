@@ -11,12 +11,12 @@ namespace DAL.Repo
 {
     internal class PrescriptionDetailRepo : Repo, IRepo<PrescriptionDetail, int, bool>
     {
-        public List<PrescriptionDetail> GetAll()
+        public List<PrescriptionDetail> Get()
         {   
             return db.PrescriptionDetails.ToList();  
         }
 
-        public PrescriptionDetail GetById(int id)
+        public PrescriptionDetail Get(int id)
         {
             return db.PrescriptionDetails.Find(id);
         }
@@ -29,7 +29,7 @@ namespace DAL.Repo
 
         public bool Update(PrescriptionDetail updatedObj)
         {
-            var exobj = GetById(updatedObj.PrescriptionDetailId);
+            var exobj = Get(updatedObj.PrescriptionDetailId);
             if (exobj != null)
             {
                 db.Entry(exobj).CurrentValues.SetValues(updatedObj);
@@ -40,7 +40,7 @@ namespace DAL.Repo
 
         public bool Delete(int id)
         {
-            var obj = GetById(id);
+            var obj = Get(id);
             if (obj != null)
             {
                 db.PrescriptionDetails.Remove(obj);

@@ -12,7 +12,7 @@ namespace DAL.Repo
     internal class DoctorRepo : Repo, IRepo<Doctor, int, bool>
 
     {
-        public List<Doctor> GetAll()
+        public List<Doctor> Get()
         {
 
             return db.Doctors.ToList();
@@ -26,16 +26,17 @@ namespace DAL.Repo
             //db.SaveChanges() returns the number of rows affected
         }
 
-        public Doctor GetById(int id)
+        public Doctor Get(int id)
         {
             return db.Doctors.Find(id);
         }
 
         public bool Update(Doctor updatedObj) 
         {
-            var exobj = GetById(updatedObj.Id);
+            var exobj = Get(updatedObj.Id);
             if (exobj != null)
             {
+
                 db.Entry(exobj).CurrentValues.SetValues(updatedObj);
                 return db.SaveChanges() > 0;
             }
@@ -44,7 +45,7 @@ namespace DAL.Repo
 
         public bool Delete(int id)
         {
-            var exobj = GetById(id);
+            var exobj = Get(id);
             db.Doctors.Remove(exobj);
             return db.SaveChanges()>0;
         }
