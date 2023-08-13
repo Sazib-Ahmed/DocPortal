@@ -23,5 +23,9 @@ namespace DAL
         {
             return new PrescriptionDetailRepo();
         }
+        public static IRepo<Assistant, int, Assistant> AssistantData()
+        {
+            return new AssistantRepo();
+        }
     }
 }

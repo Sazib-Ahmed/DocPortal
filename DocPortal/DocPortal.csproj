@@ -92,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AssistantController.cs" />
     <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\PrescriptionController.cs" />
     <Compile Include="Global.asax.cs">
