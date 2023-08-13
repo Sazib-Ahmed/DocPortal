@@ -1,23 +1,33 @@
-﻿using System;
+﻿using BLL.DTOs;
+using DAL.EF.Models;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static DAL.EF.Models.Doctor;
 
-namespace BLL.DTOs
+namespace DAL.EF.DTOs
 {
     public class AppointmentDTO
     {
+        public int AppointmentId { get; set; }
 
-        public int PId { get; set; }
-        public string Name { get; set; }
-        public string Deseas { get; set; }
-          
-        public DateTime ApoientmentDate { get; set; }
-        
+
+        public int PatientId { get; set; }
+
+        public int DoctorId { get; set; }
+
+        public DateTime AppointmentDate { get; set; }
+
+        public string AppointmentTime { get; set; }
+
         public string Department { get; set; }
+
         public string Description { get; set; }
 
+        public AppointmentStatus Status { get; set; }
+
+        public string CancellationReason { get; set; }
+
+        public bool IsPaymentConfirmed { get; set; }
+
+        public DateTime PaymentConfirmationDate { get; set; }
     }
 }

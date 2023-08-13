@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace DAL.EF.Models
 {
     public class Doctor
     {
-        public int Id { get; set; }
+        [Key] // Specify the primary key
+        public int DoctorId { get; set; }
         public string Name { get; set; }
         public string Speciality { get; set; }
         public string Image { get; set; }
@@ -17,7 +20,7 @@ namespace DAL.EF.Models
         public string Email { get; set; }
         public string Address { get; set; }
         public DateTime DateOfBirth { get; set; }
-        public Gender Sex { get; set; }
+        public DGender Sex { get; set; }
         public string Education { get; set; }
         public string ExperienceYears { get; set; }
         public string RegistrationNumber { get; set; }
@@ -25,9 +28,14 @@ namespace DAL.EF.Models
         public string Description { get; set; }
 
         // Navigation property
-        public virtual ICollection<Prescription> Prescription { get; set; }
+        public virtual ICollection<Prescription> Prescriptions { get; set; }
 
-        public enum Gender
+        public Doctor()
+        {
+            Prescriptions = new List<Prescription>();
+        }
+
+        public enum DGender
         {
             Male,
             Female,

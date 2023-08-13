@@ -33,7 +33,7 @@ namespace DAL.Repo
 
         public bool Update(Doctor updatedObj) 
         {
-            var exobj = Get(updatedObj.Id);
+            var exobj = Get(updatedObj.DoctorId);
             if (exobj != null)
             {
 
