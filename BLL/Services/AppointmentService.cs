@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BLL.DTOs;
 using DAL;
+using DAL.EF.DTOs;
 using DAL.EF.Models;
 using System;
 using System.Collections.Generic;

@@ -31,7 +31,7 @@ namespace DAL.Repo
 
             public bool Update(Appointment updatedObj)
             {
-                var exobj = Get(updatedObj.PId);
+                var exobj = Get(updatedObj.AppointmentId);
                 if (exobj != null)
                 {
                     db.Entry(exobj).CurrentValues.SetValues(updatedObj);

@@ -10,7 +10,7 @@ namespace BLL.DTOs
 {
     public class DoctorDTO
     {
-        public int Id { get; set; }
+        public int DoctorId { get; set; }
         public string Name { get; set; }
         public string Speciality { get; set; }
         public string Image { get; set; }
@@ -19,12 +19,11 @@ namespace BLL.DTOs
         public string Email { get; set; }
         public string Address { get; set; }
         public DateTime DateOfBirth { get; set; }
-        public Gender Sex { get; set; }
+        public DGender Sex { get; set; }
         public string Education { get; set; }
         public string ExperienceYears { get; set; }
         public string RegistrationNumber { get; set; }
         public string Certifications { get; set; }
         public string Description { get; set; }
-
     }
 }

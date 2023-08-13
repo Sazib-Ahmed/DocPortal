@@ -31,7 +31,7 @@ namespace DAL.Repo
 
             public bool Update(Patient updatedObj)
             {
-                var exobj = Get(updatedObj.Id);
+                var exobj = Get(updatedObj.PatientId);
                 if (exobj != null)
                 {
                     db.Entry(exobj).CurrentValues.SetValues(updatedObj);

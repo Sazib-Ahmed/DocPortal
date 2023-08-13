@@ -12,8 +12,8 @@ namespace DAL.EF.Models
     {
         [Key] // Specify the primary key
         public int PrescriptionId { get; set; }
-        public DateTime Date { get; set; }
-         [ForeignKey("Patient")] // Specify the foreign key
+        public DateTime PrescriptionDate { get; set; }
+        [ForeignKey("Patient")] // Specify the foreign key
         public int PatientId { get; set; }
         [ForeignKey("Doctor")] // Specify the foreign key
         public int DoctorId { get; set; }
@@ -27,11 +27,11 @@ namespace DAL.EF.Models
         public virtual Patient Patient { get; set; }
 
         // Navigation property 
-        public virtual ICollection<PrescriptionDetail> PrescriptionDetail { get; set; }
+        public virtual ICollection<PrescriptionDetail> PrescriptionDetails { get; set; }
 
         public Prescription()
         {
-            PrescriptionDetail = new List<PrescriptionDetail>();
+            PrescriptionDetails = new List<PrescriptionDetail>();
         }
 
     }

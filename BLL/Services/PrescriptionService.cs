@@ -69,7 +69,7 @@ namespace BLL.Services
         public static List<PrescriptionDTO> GetByDate(DateTime date)
         {
             var data = (from n in DataAccessFactory.PrescriptionData().Get()
-                        where n.Date.Date == date
+                        where n.PrescriptionDate.Date == date
                         select n).ToList();
 
             var config = new MapperConfiguration(cfg =>

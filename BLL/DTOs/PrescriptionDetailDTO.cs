@@ -9,9 +9,13 @@ namespace BLL.DTOs
     public class PrescriptionDetailDTO
     {
         public int PrescriptionDetailId { get; set; }
+
         public int PrescriptionId { get; set; }
+
         public string Medication { get; set; }
+
         public string Dosage { get; set; }
+
         public string Instructions { get; set; }
     }
 }

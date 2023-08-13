@@ -28,7 +28,7 @@ namespace DocPortal.Controllers
             }
         }
         [HttpGet]
-        [Route("api/doctor/id/{id}")]
+        [Route("api/patient/id/{id}")]
         public HttpResponseMessage GetById(int id)
         {
             try
@@ -42,7 +42,7 @@ namespace DocPortal.Controllers
             }
         }
         [HttpGet]
-        [Route("api/doctor/name/{name}")]
+        [Route("api/patient/name/{name}")]
         public HttpResponseMessage GetByName(string name)
         {
             try
