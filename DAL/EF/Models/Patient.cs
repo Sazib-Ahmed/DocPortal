@@ -24,7 +24,7 @@ namespace DAL.EF.Models
 
         public string Description { get; set; }
 
-        // Navigation property
+        //Navigation property
         public virtual ICollection<Prescription> Prescription { get; set; }
 
         public enum PGender

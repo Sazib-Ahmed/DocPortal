@@ -28,5 +28,12 @@ namespace DAL
         {
             return new PatientRepo();
         }
+
+        public static IRepo<Appointment, int, bool> AppointmentData()
+        {
+            return new AppointmentRepo();
+        }
     }
 }
+
+

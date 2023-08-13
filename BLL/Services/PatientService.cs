@@ -13,7 +13,7 @@ namespace BLL.Services
     {
 
 
-            public static List<PatientDTO> Getall()
+            public static List<PatientDTO>GetAll()
         {
             var data = DataAccessFactory.PatientData().Get();
             var config = new MapperConfiguration(cfg => {
@@ -64,6 +64,7 @@ namespace BLL.Services
             var conv = mapper.Map<PatientDTO>(data);
             return conv;
         }
+
 
 
     }

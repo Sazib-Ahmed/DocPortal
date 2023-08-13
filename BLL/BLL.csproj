@@ -45,12 +45,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="DTOs\AppointmentDTO.cs" />
     <Compile Include="DTOs\DoctorDTO.cs" />
     <Compile Include="DTOs\PatientDTO.cs" />
     <Compile Include="DTOs\PrescriptionDetailDTO.cs" />
     <Compile Include="DTOs\PrescriptionDTO.cs" />
     <Compile Include="DTOs\PrescriptionPrescriptionDetailDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AppointmentService.cs" />
     <Compile Include="Services\DoctorService.cs" />
     <Compile Include="Services\PatientService.cs" />
     <Compile Include="Services\PrescriptionService.cs" />

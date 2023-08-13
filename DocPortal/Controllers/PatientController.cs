@@ -19,7 +19,7 @@ namespace DocPortal.Controllers
         {
             try
             {
-                var data = DoctorService.GetAll();
+                var data = PatientService.GetAll();
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }
             catch (Exception ex)
@@ -33,7 +33,7 @@ namespace DocPortal.Controllers
         {
             try
             {
-                var data = DoctorService.GetById(id);
+                var data = PatientService.GetById(id);
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }
             catch (Exception ex)
@@ -47,7 +47,7 @@ namespace DocPortal.Controllers
         {
             try
             {
-                var data = DoctorService.GetByName(name);
+                var data = PatientService.GetByName(name);
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }
             catch (Exception ex)
