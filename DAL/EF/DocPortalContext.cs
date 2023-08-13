@@ -9,10 +9,16 @@ using System.Threading.Tasks;
 namespace DAL.EF
 {
     internal class DocPortalContext : DbContext
+
     {
+
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<Prescription> Prescriptions { get; set; }
         public DbSet<PrescriptionDetail> PrescriptionDetails { get; set; }
+        public DbSet<Patient> Patients { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
+
+
 
     }
 }
