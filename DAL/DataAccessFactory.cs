@@ -27,6 +27,7 @@ namespace DAL
         public static IRepo<Assistant, int, Assistant> AssistantData()
         {
             return new AssistantRepo();
+        }
 
 
         public static IRepo<Patient, int, bool> PatientData()
