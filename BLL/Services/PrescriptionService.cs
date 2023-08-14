@@ -13,44 +13,45 @@ namespace BLL.Services
 {
     public class PrescriptionService
     {
+
+
+        // More modular and organized approach by separating the mapping concerns into a separate service class.
         public static List<PrescriptionDTO> GetAll()
         {
             var data = DataAccessFactory.PrescriptionData().Get();
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<Prescription, PrescriptionDTO>(); 
-            });
-
-            var mapper = new Mapper(config);
-            var conv = mapper.Map<List<PrescriptionDTO>>(data);
-            return conv;
+            var mapper = MapperService<Prescription, PrescriptionDTO>.GetMapper();
+            return mapper.Map<List<PrescriptionDTO>>(data);
         }
 
         public static bool Create(PrescriptionDTO obj)
         {
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<PrescriptionDTO, Prescription>();
-            });
-
-            var mapper = new Mapper(config);
-            var conv = mapper.Map<Prescription>(obj);
-            return DataAccessFactory.PrescriptionData().Create(conv);
+            var mapper = MapperService<Prescription, PrescriptionDTO>.GetMapper();
+            var data = mapper.Map<Prescription>(obj);
+            return DataAccessFactory.PrescriptionData().Create(data);
         }
 
         public static PrescriptionDTO GetById(int id)
         {
-            var data= DataAccessFactory.PrescriptionData().Get(id);
-            var config = new MapperConfiguration(cfg =>
-            {
-                    cfg.CreateMap<Prescription, PrescriptionDTO>();
-            });
-    
-            var mapper = new Mapper(config);
-            var conv = mapper.Map<PrescriptionDTO>(data);
-            return conv;
+            var data = DataAccessFactory.PrescriptionData().Get(id);
+            var mapper = MapperService<Prescription, PrescriptionDTO>.GetMapper();
+            return mapper.Map<PrescriptionDTO>(data);
         }
 
+        public static bool Update(PrescriptionDTO obj)
+        {
+            var mapper = MapperService<PrescriptionDTO, Prescription>.GetMapper();
+            var mapped = mapper.Map<Prescription>(obj);
+            return DataAccessFactory.PrescriptionData().Update(mapped);
+
+        }
+        public static bool Delete(int id)
+        {
+            return DataAccessFactory.PrescriptionData().Delete(id);
+        }
+
+
+
+        // ## Less modular and less organized approach by not separating the mapping concerns into a separate service class.
         public static PrescriptionPrescriptionDetailDTO GetWithDetail(int id)
         {
             var data = DataAccessFactory.PrescriptionData().Get(id);
@@ -99,8 +100,8 @@ namespace BLL.Services
         public static List<PrescriptionDTO> GetByDoctorId(int id)
         {
             var data = (from n in DataAccessFactory.PrescriptionData().Get()
-            where n.DoctorId == id
-            select n).ToList();
+                        where n.DoctorId == id
+                        select n).ToList();
 
             var config = new MapperConfiguration(cfg =>
             {
@@ -110,7 +111,45 @@ namespace BLL.Services
             var mapper = new Mapper(config);
             var conv = mapper.Map<List<PrescriptionDTO>>(data);
             return conv;
-        }   
+        }
 
+
+        //public static List<PrescriptionDTO> GetAll()
+        //{
+        //    var data = DataAccessFactory.PrescriptionData().Get();
+        //    var config = new MapperConfiguration(cfg =>
+        //    {
+        //        cfg.CreateMap<Prescription, PrescriptionDTO>(); 
+        //    });
+
+        //    var mapper = new Mapper(config);
+        //    var conv = mapper.Map<List<PrescriptionDTO>>(data);
+        //    return conv;
+        //}
+
+        //public static bool Create(PrescriptionDTO obj)
+        //{
+        //    var config = new MapperConfiguration(cfg =>
+        //    {
+        //        cfg.CreateMap<PrescriptionDTO, Prescription>();
+        //    });
+
+        //    var mapper = new Mapper(config);
+        //    var conv = mapper.Map<Prescription>(obj);
+        //    return DataAccessFactory.PrescriptionData().Create(conv);
+        //}
+
+        //public static PrescriptionDTO GetById(int id)
+        //{
+        //    var data= DataAccessFactory.PrescriptionData().Get(id);
+        //    var config = new MapperConfiguration(cfg =>
+        //    {
+        //            cfg.CreateMap<Prescription, PrescriptionDTO>();
+        //    });
+
+        //    var mapper = new Mapper(config);
+        //    var conv = mapper.Map<PrescriptionDTO>(data);
+        //    return conv;
+        //}
     }
 }

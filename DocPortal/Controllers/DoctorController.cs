@@ -1,4 +1,5 @@
-﻿using BLL.Services;
+﻿using BLL.DTOs;
+using BLL.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +9,12 @@ using System.Web.Http;
 
 namespace DocPortal.Controllers
 {
+    [RoutePrefix("api/doctor")]
     public class DoctorController : ApiController
     {
-
-
-
+        
         [HttpGet]
-        [Route("api/doctor/all")]
+        [Route("all")]
         public HttpResponseMessage GetAll()
         {
             try 
@@ -32,8 +32,9 @@ namespace DocPortal.Controllers
         // var data = BLL.Services.DoctorService.GetAll();
         // return Ok(data);
         //}
+
         [HttpGet]
-        [Route("api/doctor/id/{id}")]
+        [Route("id/{id}")]
         public HttpResponseMessage GetById(int id)
         {
             try
@@ -46,8 +47,53 @@ namespace DocPortal.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
+
+        [HttpPost]
+        [Route("create")]
+        public HttpResponseMessage Create(DoctorDTO obj)
+        {
+            try
+            {
+                var data = DoctorService.Create(obj);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Msg = ex.Message });
+            }
+        }
+        [HttpPut]
+        [Route("update")]
+        public HttpResponseMessage Update(DoctorDTO obj)
+        {
+            try
+            {
+                var data = DoctorService.Update(obj);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Msg = ex.Message });
+            }
+        }
+        [HttpDelete]
+        [Route("delete/{id}")]
+        public HttpResponseMessage Delete(int id)
+        {
+            try
+            {
+                var data = DoctorService.Delete(id);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Msg = ex.Message });
+            }
+        }
+
+
         [HttpGet]
-        [Route("api/doctor/name/{name}")]
+        [Route("name/{name}")]
         public HttpResponseMessage GetByName(string name)
         {
             try
@@ -62,20 +108,21 @@ namespace DocPortal.Controllers
         }
 
 
-        [HttpGet]
-        [Route("api/prescription/patient/{id}")]
-        public HttpResponseMessage GetByPatientId(int id)
-        {
-            try
-            {
-                var data = PrescriptionService.GetByPatientId(id);
-                return Request.CreateResponse(HttpStatusCode.OK, data);
-            }
-            catch (Exception ex)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
-            }
-        }
+
+        //[HttpGet]
+        //[Route("prescription/patient/{id}")]
+        //public HttpResponseMessage GetByPatientId(int id)
+        //{
+        //    try
+        //    {
+        //        var data = PrescriptionService.GetByPatientId(id);
+        //        return Request.CreateResponse(HttpStatusCode.OK, data);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+        //    }
+        //}
 
     }
 }
