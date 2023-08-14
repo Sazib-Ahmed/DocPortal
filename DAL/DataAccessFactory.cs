@@ -24,6 +24,11 @@ namespace DAL
             return new PrescriptionDetailRepo();
         }
 
+        public static IRepo<Assistant, int, Assistant> AssistantData()
+        {
+            return new AssistantRepo();
+
+
         public static IRepo<Patient, int, bool> PatientData()
         {
             return new PatientRepo();
@@ -32,6 +37,7 @@ namespace DAL
         public static IRepo<Appointment, int, bool> AppointmentData()
         {
             return new AppointmentRepo();
+
         }
     }
 }

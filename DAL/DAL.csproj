@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="DataAccessFactory.cs" />
     <Compile Include="EF\DocPortalContext.cs" />
+    <Compile Include="EF\Models\Assistant.cs" />
     <Compile Include="EF\Models\Appointment.cs" />
     <Compile Include="EF\Models\Doctor.cs" />
     <Compile Include="EF\Models\Patient.cs" />
@@ -63,8 +64,13 @@
     <Compile Include="Migrations\202308132231289_Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail__with_dummy_data.designer.cs">
       <DependentUpon>202308132231289_Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail__with_dummy_data.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202308131619113_ADD_Assistant_table.cs" />
+    <Compile Include="Migrations\202308131619113_ADD_Assistant_table.designer.cs">
+      <DependentUpon>202308131619113_ADD_Assistant_table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repo\AssistantRepo.cs" />
     <Compile Include="Repo\AppointmentRepo.cs" />
     <Compile Include="Repo\DoctorRepo.cs" />
     <Compile Include="Repo\PatientRepo.cs" />
@@ -79,6 +85,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202308132231289_Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail__with_dummy_data.resx">
       <DependentUpon>202308132231289_Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail__with_dummy_data.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308131619113_ADD_Assistant_table.resx">
+      <DependentUpon>202308131619113_ADD_Assistant_table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
