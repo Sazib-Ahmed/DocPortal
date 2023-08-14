@@ -25,21 +25,6 @@ namespace BLL.Services
             return conv;
         }
 
-        public static List<AppointmentDTO> GetByDoctor(int doctorId)
-        {
-            var data = (from a in DataAccessFactory.AppointmentData().Get()
-                        where a.DoctorId == doctorId
-                        select a).ToList();
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<Appointment, AppointmentDTO>();
-            });
-
-            var mapper = new Mapper(config);
-            var conv = mapper.Map<List<AppointmentDTO>>(data);
-            return conv;
-        }
-
         public static bool Create(AppointmentDTO obj)
         {
             var config = new MapperConfiguration(cfg =>
@@ -62,6 +47,33 @@ namespace BLL.Services
 
             var mapper = new Mapper(config);
             var conv = mapper.Map<AppointmentDTO>(data);
+            return conv;
+        }
+
+        public static bool Update(AppointmentDTO obj)
+        {
+            var mapper = MapperService<AppointmentDTO, Appointment>.GetMapper();
+            var mapped = mapper.Map<Appointment>(obj);
+            return DataAccessFactory.AppointmentData().Update(mapped);
+
+        }
+        public static bool Delete(int id)
+        {
+            return DataAccessFactory.AppointmentData().Delete(id);
+        }
+
+        public static List<AppointmentDTO> GetByDoctor(int doctorId)
+        {
+            var data = (from a in DataAccessFactory.AppointmentData().Get()
+                        where a.DoctorId == doctorId
+                        select a).ToList();
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<Appointment, AppointmentDTO>();
+            });
+
+            var mapper = new Mapper(config);
+            var conv = mapper.Map<List<AppointmentDTO>>(data);
             return conv;
         }
     }

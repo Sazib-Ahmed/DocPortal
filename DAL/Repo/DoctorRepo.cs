@@ -3,6 +3,7 @@ using DAL.EF.Models;
 using DAL.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,6 @@ namespace DAL.Repo
     {
         public List<Doctor> Get()
         {
-
             return db.Doctors.ToList();
         }
 
@@ -22,8 +22,7 @@ namespace DAL.Repo
         {
 
             db.Doctors.Add(obj);
-            return db.SaveChanges() > 0; //returns true if more than 0 rows are affected
-            //db.SaveChanges() returns the number of rows affected
+            return db.SaveChanges() > 0; 
         }
 
         public Doctor Get(int id)
@@ -36,7 +35,6 @@ namespace DAL.Repo
             var exobj = Get(updatedObj.DoctorId);
             if (exobj != null)
             {
-
                 db.Entry(exobj).CurrentValues.SetValues(updatedObj);
                 return db.SaveChanges() > 0;
             }
@@ -45,9 +43,13 @@ namespace DAL.Repo
 
         public bool Delete(int id)
         {
-            var exobj = Get(id);
-            db.Doctors.Remove(exobj);
-            return db.SaveChanges()>0;
+            var existingObj = Get(id);
+            if (existingObj != null)
+            {
+                db.Doctors.Remove(existingObj);
+                return db.SaveChanges() > 0;
+            }
+            return false;
         }
 
     }
