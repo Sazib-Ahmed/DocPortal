@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ namespace DAL.EF.Models
 {
     public class PrescriptionDetail
     {
+        [Key] // Specify the primary key
         public int PrescriptionDetailId { get; set; }
         [ForeignKey("Prescription")]
         public int PrescriptionId { get; set; }
