@@ -28,7 +28,7 @@ namespace DAL
         {
             return new AssistantRepo();
 
-
+        }
         public static IRepo<Patient, int, bool> PatientData()
         {
             return new PatientRepo();
