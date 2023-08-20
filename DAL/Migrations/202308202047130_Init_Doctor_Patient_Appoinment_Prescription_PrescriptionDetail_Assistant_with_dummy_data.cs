@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail__with_dummy_data : DbMigration
+    public partial class Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail_Assistant_with_dummy_data : DbMigration
     {
         public override void Up()
         {

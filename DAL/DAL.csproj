@@ -59,9 +59,9 @@
     <Compile Include="EF\Models\Prescription.cs" />
     <Compile Include="EF\Models\PrescriptionDetail.cs" />
     <Compile Include="Interfaces\IRepo.cs" />
-    <Compile Include="Migrations\202308132231289_Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail__with_dummy_data.cs" />
-    <Compile Include="Migrations\202308132231289_Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail__with_dummy_data.designer.cs">
-      <DependentUpon>202308132231289_Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail__with_dummy_data.cs</DependentUpon>
+    <Compile Include="Migrations\202308202047130_Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail_Assistant_with_dummy_data.cs" />
+    <Compile Include="Migrations\202308202047130_Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail_Assistant_with_dummy_data.designer.cs">
+      <DependentUpon>202308202047130_Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail_Assistant_with_dummy_data.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -77,8 +77,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202308132231289_Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail__with_dummy_data.resx">
-      <DependentUpon>202308132231289_Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail__with_dummy_data.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202308202047130_Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail_Assistant_with_dummy_data.resx">
+      <DependentUpon>202308202047130_Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail_Assistant_with_dummy_data.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
