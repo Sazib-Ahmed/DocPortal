@@ -17,10 +17,7 @@ namespace DAL.EF
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<Prescription> Prescriptions { get; set; }
         public DbSet<PrescriptionDetail> PrescriptionDetails { get; set; }
-        
-        
-
-
+        public DbSet<Assistant> Assistants { get; set; }
 
     }
 }

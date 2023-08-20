@@ -37,3 +37,9 @@ namespace DAL
 }
 
 
+        public static IRepo<Assistant, int, Assistant> AssistantData()
+        {
+            return new AssistantRepo();
+        }
+    }
+}
