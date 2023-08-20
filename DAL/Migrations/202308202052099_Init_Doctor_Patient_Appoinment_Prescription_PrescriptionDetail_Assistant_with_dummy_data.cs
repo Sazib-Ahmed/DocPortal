@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail__with_dummy_data : DbMigration
+    public partial class Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail_Assistant_with_dummy_data : DbMigration
     {
         public override void Up()
         {
@@ -102,6 +102,19 @@
                 .ForeignKey("dbo.Prescriptions", t => t.PrescriptionId, cascadeDelete: true)
                 .Index(t => t.PrescriptionId);
             
+            CreateTable(
+                "dbo.Assistants",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        Phone = c.String(),
+                        Password = c.String(),
+                        Email = c.String(),
+                        Nid = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
         }
         
         public override void Down()
@@ -116,6 +129,7 @@
             DropIndex("dbo.Prescriptions", new[] { "PatientId" });
             DropIndex("dbo.Appointments", new[] { "DoctorId" });
             DropIndex("dbo.Appointments", new[] { "PatientId" });
+            DropTable("dbo.Assistants");
             DropTable("dbo.PrescriptionDetails");
             DropTable("dbo.Patients");
             DropTable("dbo.Prescriptions");

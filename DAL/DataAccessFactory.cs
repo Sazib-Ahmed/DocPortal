@@ -33,13 +33,11 @@ namespace DAL
         {
             return new AppointmentRepo();
         }
-    }
-}
-
 
         public static IRepo<Assistant, int, Assistant> AssistantData()
         {
             return new AssistantRepo();
         }
     }
+
 }
