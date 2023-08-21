@@ -56,19 +56,26 @@
     <Compile Include="EF\Models\Appointment.cs" />
     <Compile Include="EF\Models\Assistant.cs" />
     <Compile Include="EF\Models\Doctor.cs" />
+    <Compile Include="EF\Models\DoctorToken.cs" />
     <Compile Include="EF\Models\Patient.cs" />
     <Compile Include="EF\Models\Prescription.cs" />
     <Compile Include="EF\Models\PrescriptionDetail.cs" />
+    <Compile Include="Interfaces\IAuth.cs" />
     <Compile Include="Interfaces\IRepo.cs" />
     <Compile Include="Migrations\202308202052099_Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail_Assistant_with_dummy_data.cs" />
     <Compile Include="Migrations\202308202052099_Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail_Assistant_with_dummy_data.designer.cs">
       <DependentUpon>202308202052099_Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail_Assistant_with_dummy_data.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202308210102371_Init_DoctorToken.cs" />
+    <Compile Include="Migrations\202308210102371_Init_DoctorToken.designer.cs">
+      <DependentUpon>202308210102371_Init_DoctorToken.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repo\AssistantRepo.cs" />
     <Compile Include="Repo\AppointmentRepo.cs" />
     <Compile Include="Repo\DoctorRepo.cs" />
+    <Compile Include="Repo\DoctorTokenRepo.cs" />
     <Compile Include="Repo\PatientRepo.cs" />
     <Compile Include="Repo\PrescriptionDetailRepo.cs" />
     <Compile Include="Repo\PrescriptionRepo.cs" />
@@ -81,6 +88,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202308202052099_Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail_Assistant_with_dummy_data.resx">
       <DependentUpon>202308202052099_Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail_Assistant_with_dummy_data.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308210102371_Init_DoctorToken.resx">
+      <DependentUpon>202308210102371_Init_DoctorToken.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
