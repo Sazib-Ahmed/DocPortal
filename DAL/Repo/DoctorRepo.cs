@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repo
 {
-    internal class DoctorRepo : Repo, IRepo<Doctor, int, bool>
+    internal class DoctorRepo : Repo, IRepo<Doctor, int, bool>, IAuth<Doctor>
 
     {
         public List<Doctor> Get()
@@ -50,6 +50,15 @@ namespace DAL.Repo
                 return db.SaveChanges() > 0;
             }
             return false;
+        }
+
+        public Doctor Authenticate(string email, string password)
+        {
+            var doctor = from d in db.Doctors
+                         where d.Email == email && d.Password == password
+                         select d;
+            if(doctor != null) return doctor.FirstOrDefault();//return doctor.SingleOrDefault();
+            return null;
         }
 
     }

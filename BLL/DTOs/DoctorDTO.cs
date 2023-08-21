@@ -18,12 +18,14 @@ namespace BLL.DTOs
         public string Password { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
-        public DateTime DateOfBirth { get; set; }
-        public DGender Sex { get; set; }
+        public DateTime? DateOfBirth { get; set; }
+        public DGender? Sex { get; set; } 
         public string Education { get; set; }
         public string ExperienceYears { get; set; }
         public string RegistrationNumber { get; set; }
         public string Certifications { get; set; }
         public string Description { get; set; }
+        public int? FailedLoginAttempts { get; set; }
+        public DateTime? LockoutEnd { get; set; }
     }
 }

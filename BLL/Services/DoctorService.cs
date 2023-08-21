@@ -12,9 +12,6 @@ namespace BLL.Services
 {
     public class DoctorService
     {
-        
-
-
         // More modular and organized approach by separating the mapping concerns into a separate service class.
         public static List<DoctorDTO> GetAll()
         {
@@ -26,9 +23,9 @@ namespace BLL.Services
 
         public static bool Create(DoctorDTO obj)
         {
-            var mapper = MapperService<Doctor, DoctorDTO>.GetMapper();
-            var data = mapper.Map<Doctor>(obj);
-            return DataAccessFactory.DoctorData().Create(data);
+            var mapper = MapperService<DoctorDTO, Doctor>.GetMapper();
+            var mapped = mapper.Map<Doctor>(obj);
+            return DataAccessFactory.DoctorData().Create(mapped);
         }
 
         public static DoctorDTO GetById(int id)

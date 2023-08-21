@@ -15,6 +15,15 @@ namespace DAL
         {
             return new DoctorRepo();
         }
+
+        public static IAuth<Doctor> DoctorAuthData()
+        {
+            return new DoctorRepo();
+        }
+        public static IRepo<DoctorToken, int, DoctorToken> DoctorTokenData()
+        {
+            return new DoctorTokenRepo();
+        }
         public static IRepo<Prescription, int, bool> PrescriptionData()
         {
             return new PrescriptionRepo();
@@ -33,7 +42,11 @@ namespace DAL
         {
             return new AppointmentRepo();
         }
+
+        public static IRepo<Assistant, int, Assistant> AssistantData()
+        {
+            return new AssistantRepo();
+        }
     }
+
 }
-
-
