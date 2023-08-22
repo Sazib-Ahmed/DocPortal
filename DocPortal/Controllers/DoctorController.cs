@@ -2,6 +2,7 @@
 using BLL.Services;
 using DocPortal.AuthFilters;
 using DocPortal.Models;
+using DocPortal.Others;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,9 @@ using System.Web.Http.Cors;
 namespace DocPortal.Controllers
 {
     [RoutePrefix("api/doctor")]
-
-
     public class DoctorController : ApiController
     {
+
         [EnableCors("*", "*", "post")]
         [HttpPost]
         [Route("login")]
@@ -24,7 +24,10 @@ namespace DocPortal.Controllers
         {
             try
             {
-                var token = DoctorAuthService.DoctorLogin(data.Email, data.Password);
+                // Get client IP address
+                string clientIp = IpAddressHelper.GetClientIpAddress(Request);
+
+                var token = DoctorAuthService.DoctorLogin(data.Email, data.Password, clientIp);
                 if (token != null)
                 {
                     return Request.CreateResponse(HttpStatusCode.OK, token);
@@ -36,11 +39,12 @@ namespace DocPortal.Controllers
             }
             catch (Exception ex)
             {
-                
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
 
+
+        [EnableCors("*", "*", "get")]
         [HttpGet]
         [Route("logout/{id}")]
         [DoctorLogged]
@@ -58,12 +62,13 @@ namespace DocPortal.Controllers
             }
         }
 
+        [EnableCors("*", "*", "get")]
         [HttpGet]
         [Route("all")]
-        [DoctorLogged]
+        //[DoctorLogged]
         public HttpResponseMessage GetAll()
         {
-            try 
+            try
             {
                 var data = DoctorService.GetAll();
                 return Request.CreateResponse(HttpStatusCode.OK, data);
@@ -79,6 +84,7 @@ namespace DocPortal.Controllers
         // return Ok(data);
         //}
 
+        [EnableCors("*", "*", "get")]
         [HttpGet]
         [Route("{id}")]
         public HttpResponseMessage GetById(int id)
