@@ -70,6 +70,10 @@
     <Compile Include="Migrations\202308210102371_Init_DoctorToken.designer.cs">
       <DependentUpon>202308210102371_Init_DoctorToken.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202308220027137_updated_DoctorToken_property.cs" />
+    <Compile Include="Migrations\202308220027137_updated_DoctorToken_property.designer.cs">
+      <DependentUpon>202308220027137_updated_DoctorToken_property.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repo\AssistantRepo.cs" />
@@ -91,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202308210102371_Init_DoctorToken.resx">
       <DependentUpon>202308210102371_Init_DoctorToken.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308220027137_updated_DoctorToken_property.resx">
+      <DependentUpon>202308220027137_updated_DoctorToken_property.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

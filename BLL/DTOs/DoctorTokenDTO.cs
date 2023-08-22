@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL.EF.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ namespace BLL.DTOs
         public int DoctorTokenId { get; set; }
         public int DoctorId { get; set; }
         public string TokenKey { get; set; }
+        public int? RetrievalCount { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? ExpiredAt { get; set; }
         public DateTime? LastUsedAt { get; set; }

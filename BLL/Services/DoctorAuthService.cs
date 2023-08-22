@@ -20,8 +20,10 @@ namespace BLL.Services
                 {
                     DoctorId = doctor.DoctorId,
                     TokenKey = Guid.NewGuid().ToString(),
+                    RetrievalCount = 0,
                     CreatedAt = DateTime.Now,
-                    ExpiredAt = null, //DateTime.Now.AddDays(30),
+                    ExpiredAt = DateTime.Now.AddMinutes(30),  // Set to 30 minutes from now
+                                                              //DateTime.Now.AddDays(30),
                     LastUsedAt = DateTime.Now,
                     IpAddress = null,
                     IsActive = true,
@@ -34,5 +36,26 @@ namespace BLL.Services
             }
             return null;
         }
+
+        public static bool IsTokenValid(string token)
+        {
+            var currentTime = DateTime.Now;
+            var tk = (from t in DataAccessFactory.DoctorTokenData().Get()
+                      where t.TokenKey.Equals(token)
+                      && (t.ExpiredAt == null || t.ExpiredAt > currentTime)
+                      select t).SingleOrDefault();
+            if (tk != null)
+            {
+                // Update RetrievalCount and LastUsedAt
+                tk.RetrievalCount++;
+                tk.LastUsedAt = currentTime;
+                tk.ExpiredAt = currentTime.AddMinutes(30);
+                DataAccessFactory.DoctorTokenData().Update(tk);
+
+                return true;
+            }
+            return false;
+        }
+
     }
 }

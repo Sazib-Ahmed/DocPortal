@@ -1,5 +1,6 @@
 ﻿using BLL.DTOs;
 using BLL.Services;
+using DocPortal.AuthFilters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace DocPortal.Controllers
         
         [HttpGet]
         [Route("all")]
+        [DoctorLogged]
         public HttpResponseMessage GetAll()
         {
             try 
