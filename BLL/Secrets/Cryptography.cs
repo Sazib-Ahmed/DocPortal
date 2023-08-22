@@ -22,5 +22,19 @@ namespace BLL.Secrets
                 return builder.ToString();
             }
         }
+
+        public static string EncryptToken(string data)
+        {
+            using (var hmac = new HMACSHA256())
+            {
+                var key = Encoding.UTF8.GetBytes("(It's a Wonderful Life 1946) and (North by Northwest 1959)");
+                hmac.Key = key;
+
+                byte[] dataBytes = Encoding.UTF8.GetBytes(data);
+                byte[] hashBytes = hmac.ComputeHash(dataBytes);
+
+                return Convert.ToBase64String(hashBytes);
+            }
+        }
     }
 }

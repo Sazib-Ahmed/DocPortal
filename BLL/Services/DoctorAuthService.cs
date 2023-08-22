@@ -19,11 +19,12 @@ namespace BLL.Services
             var doctor = DataAccessFactory.DoctorAuthData().Authenticate(email, encryptedPassword);
             if (doctor != null)
             {
-                
-                var token = new DoctorToken()
+                String originalTokenKey = Guid.NewGuid().ToString();
+                String encryptedTokenKey = Cryptography.EncryptToken(originalTokenKey);
+                var token = new DoctorTokenDTO()
                 {
                     DoctorId = doctor.DoctorId,
-                    TokenKey = Guid.NewGuid().ToString(),
+                    TokenKey = encryptedTokenKey,
                     RetrievalCount = 0,
                     CreatedAt = DateTime.Now,
                     ExpiredAt = DateTime.Now.AddMinutes(30),  // Set to 30 minutes from now
@@ -33,19 +34,21 @@ namespace BLL.Services
                     IsActive = true,
                     Purpose = "To Access Doctor Services"
                 };
-                var tk = DataAccessFactory.DoctorTokenData().Create(token);
-                var mapper = MapperService<DoctorToken, DoctorTokenDTO>.GetMapper();
-                var mapped = mapper.Map<DoctorTokenDTO>(tk);
-                return mapped;
+                var mapper = MapperService<DoctorTokenDTO, DoctorToken>.GetMapper();
+                var mapped = mapper.Map<DoctorToken>(token);
+                DataAccessFactory.DoctorTokenData().Create(mapped);
+                token.TokenKey = originalTokenKey;
+                return token;
             }
             return null;
         }
 
         public static bool IsTokenValid(string token)
         {
+            String encryptedTokenKey = Cryptography.EncryptToken(token);
             var currentTime = DateTime.Now;
             var tk = (from t in DataAccessFactory.DoctorTokenData().Get()
-                      where t.TokenKey.Equals(token) 
+                      where t.TokenKey.Equals(encryptedTokenKey) 
                       && t.IsActive == true
                       && (t.ExpiredAt == null || t.ExpiredAt > currentTime)
                       select t).SingleOrDefault();
