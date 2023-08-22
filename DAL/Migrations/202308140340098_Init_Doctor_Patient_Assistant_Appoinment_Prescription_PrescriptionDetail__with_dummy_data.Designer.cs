@@ -7,13 +7,13 @@ namespace DAL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail__with_dummy_data : IMigrationMetadata
+    public sealed partial class Init_Doctor_Patient_Assistant_Appoinment_Prescription_PrescriptionDetail__with_dummy_data : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail__with_dummy_data));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Init_Doctor_Patient_Assistant_Appoinment_Prescription_PrescriptionDetail__with_dummy_data));
         
         string IMigrationMetadata.Id
         {
-            get { return "202308132231289_Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail__with_dummy_data"; }
+            get { return "202308140340098_Init_Doctor_Patient_Assistant_Appoinment_Prescription_PrescriptionDetail__with_dummy_data"; }
         }
         
         string IMigrationMetadata.Source
