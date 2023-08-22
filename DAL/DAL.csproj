@@ -58,6 +58,25 @@
     <Compile Include="EF\Models\Doctor.cs" />
     <Compile Include="EF\Models\DoctorToken.cs" />
     <Compile Include="EF\Models\Patient.cs" />
+    <Compile Include="EF\Models\PatientHealth.cs" />
+    <Compile Include="EF\Models\PatientHealthDetail\BloodPressureDetail.cs" />
+    <Compile Include="EF\Models\PatientHealthDetail\CancerMarkersDetail.cs" />
+    <Compile Include="EF\Models\PatientHealthDetail\CholesterolLevelDetail.cs" />
+    <Compile Include="EF\Models\PatientHealthDetail\CompleteBloodCountDetail.cs" />
+    <Compile Include="EF\Models\PatientHealthDetail\CTScanDetail.cs" />
+    <Compile Include="EF\Models\PatientHealthDetail\ECGDetail.cs" />
+    <Compile Include="EF\Models\PatientHealthDetail\GlucoseLevelDetail.cs" />
+    <Compile Include="EF\Models\PatientHealthDetail\HemoglobinDetail.cs" />
+    <Compile Include="EF\Models\PatientHealthDetail\ImmunizationHistoryDetail.cs" />
+    <Compile Include="EF\Models\PatientHealthDetail\KidneyFunctionDetail.cs" />
+    <Compile Include="EF\Models\PatientHealthDetail\LiverFunctionDetail.cs" />
+    <Compile Include="EF\Models\PatientHealthDetail\MRIDetail.cs" />
+    <Compile Include="EF\Models\PatientHealthDetail\OtherTestDetail.cs" />
+    <Compile Include="EF\Models\PatientHealthDetail\PulmonaryFunctionDetail.cs" />
+    <Compile Include="EF\Models\PatientHealthDetail\ThyroidDetail.cs" />
+    <Compile Include="EF\Models\PatientHealthDetail\UrineAnalysisDetail.cs" />
+    <Compile Include="EF\Models\PatientHealthDetail\VitaminLevelsDetail.cs" />
+    <Compile Include="EF\Models\PatientHealthDetail\XrayDetail.cs" />
     <Compile Include="EF\Models\Prescription.cs" />
     <Compile Include="EF\Models\PrescriptionDetail.cs" />
     <Compile Include="Interfaces\IAuth.cs" />
@@ -107,6 +126,7 @@
       <DependentUpon>202308220220030_Added_encrypted_password_to_doctor.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
