@@ -13,6 +13,8 @@ namespace DAL.EF.Models
         public int DoctorId { get; set; }
 
         public string TokenKey { get; set; }
+
+        public int? RetrievalCount { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? ExpiredAt { get; set; }
         public DateTime? LastUsedAt { get; set; }

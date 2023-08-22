@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Http;
 using BLL.DTOs;
+using System.Net.Http.Headers;
+using System.Web.Http.Cors;
 
 namespace DocPortal.Controllers
 {
@@ -28,6 +30,7 @@ namespace DocPortal.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
+        [EnableCors("*", "*", "get")] // Enable CORS for all origins, all headers, get methods
         [HttpGet]
         [Route("api/patient/id/{id}")]
         public HttpResponseMessage GetById(int id)

@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script>
+		var app = angular.module("my-app", []);
+
+		app.controller("patient-ctrl", function ($scope, $http) {
+			$scope.patient = {}; // Initialize an empty object to hold patient data
+
+			// Replace the patientId with the actual ID you want to retrieve
+			var patientId = 2;
+
+            $http.get("https://localhost:44366/api/patient/id/" + patientId).then(function (resp) {
+				$scope.patient = resp.data;
+			}, function (err) {
+
+			});
+		});
+    </script>
+</head>
+<body ng-app="my-app">
+    <div ng-controller="patient-ctrl">
+        <h1>Patient Information</h1>
+        <p><strong>Patient ID:</strong> {{patient.PatientId}}</p>
+        <p><strong>Name:</strong> {{patient.Name}}</p>
+        <p><strong>Image:</strong> <img ng-src="{{patient.Image}}" alt="Patient Image"></p>
+        <p><strong>Phone:</strong> {{patient.Phone}}</p>
+        <p><strong>Email:</strong> {{patient.Email}}</p>
+        <p><strong>Address:</strong> {{patient.Address}}</p>
+        <p><strong>Date of Birth:</strong> {{patient.DateOfBirth | date: 'yyyy-MM-dd'}}</p>
+        <p><strong>Sex:</strong> {{patient.Sex}}</p>
+        <p><strong>Description:</strong> {{patient.Description}}</p>
+    </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script>
+		var app = angular.module("my-app", []);
+
+		app.controller("patient-ctrl", function ($scope, $http) {
+			$scope.patient = {}; // Initialize an empty object to hold patient data
+
+			$scope.getPatientInfo = function () {
+				if ($scope.patientId) {
+					$http.get("https://localhost:44302/api/patient/id" + $scope.patientId).then(function (resp) {
+						$scope.patient = resp.data;
+					}, function (err) {
+
+					});
+				}
+			};
+		});
+	</script>
+</head>
+<body ng-app="my-app">
+	<div ng-controller="patient-ctrl">
+		<h1>Patient Information</h1>
+		<p>Enter Patient ID: <input type="text" ng-model="patientId"></p>
+		<button ng-click="getPatientInfo()">Get Patient Info</button>
+		<p><strong>Patient ID:</strong> {{patient.PatientId}}</p>
+		<p><strong>Name:</strong> {{patient.Name}}</p>
+		<p><strong>Image:</strong> <img ng-src="{{patient.Image}}" alt="Patient Image"></p>
+		<p><strong>Phone:</strong> {{patient.Phone}}</p>
+		<p><strong>Email:</strong> {{patient.Email}}</p>
+		<p><strong>Address:</strong> {{patient.Address}}</p>
+		<p><strong>Date of Birth:</strong> {{patient.DateOfBirth | date: 'yyyy-MM-dd'}}</p>
+		<p><strong>Sex:</strong> {{patient.Sex}}</p>
+		<p><strong>Description:</strong> {{patient.Description}}</p>
+	</div>
+</body>
+</html>
