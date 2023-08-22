@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
 using BLL.DTOs;
+using BLL.Secrets;
 using DAL;
 using DAL.EF.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,10 +25,14 @@ namespace BLL.Services
 
         public static bool Create(DoctorDTO obj)
         {
+            string password = Cryptography.EncryptPassword(obj.Password);
+            obj.Password= password;
             var mapper = MapperService<DoctorDTO, Doctor>.GetMapper();
             var mapped = mapper.Map<Doctor>(obj);
             return DataAccessFactory.DoctorData().Create(mapped);
         }
+
+        
 
         public static DoctorDTO GetById(int id)
         {

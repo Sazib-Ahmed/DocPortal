@@ -25,9 +25,13 @@ namespace DocPortal.AuthFilters
                 {
                     actionContext.Response = actionContext.Request.CreateResponse(System.Net.HttpStatusCode.Unauthorized, new { Msg = "Supplied token is invalid or expired" });
                 }
-
             }
             base.OnAuthorization(actionContext);
+        }
+
+        public static void InvalidateToken(int id)
+        {
+            DoctorAuthService.InvalidateToken(id);
         }
     }
 }

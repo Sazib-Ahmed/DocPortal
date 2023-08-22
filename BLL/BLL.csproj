@@ -54,6 +54,7 @@
     <Compile Include="DTOs\PrescriptionDTO.cs" />
     <Compile Include="DTOs\PrescriptionPrescriptionDetailDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Secrets\Cryptography.cs" />
     <Compile Include="Services\AppointmentService.cs" />
     <Compile Include="Services\AssistantService.cs" />
     <Compile Include="Services\DoctorAuthService.cs" />

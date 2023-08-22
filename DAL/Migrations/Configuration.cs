@@ -6,12 +6,28 @@
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using System.Security.Cryptography;
+    using System.Text;
 
     internal sealed class Configuration : DbMigrationsConfiguration<DAL.EF.DocPortalContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+        }
+
+        public static string EncryptPassword(string password)
+        {
+            using (var sha256 = SHA256.Create())
+            {
+                byte[] hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password.Trim()));
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < hashedBytes.Length; i++)
+                {
+                    builder.Append(hashedBytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
         }
 
         protected override void Seed(DAL.EF.DocPortalContext context)
@@ -28,7 +44,7 @@
                     Speciality = "Speciality " + random.Next(1, 11),
                     Image = "doctor" + i + ".jpg",
                     Phone = "123-456-7890",
-                    Password = "password" + i,
+                    Password = EncryptPassword("password" + i),
                     Email = "doctor" + i + "@example.com",
                     Address = "123 Street, City",
                     DateOfBirth = DateTime.Now.AddYears(-30).AddDays(random.Next(-365, 365)),
@@ -64,8 +80,6 @@
             }
             context.Patients.AddRange(patients);
             context.SaveChanges();
-
-
 
             // Seed Appointments
             List<Appointment> appointments = new List<Appointment>();

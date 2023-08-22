@@ -74,6 +74,10 @@
     <Compile Include="Migrations\202308220027137_updated_DoctorToken_property.designer.cs">
       <DependentUpon>202308220027137_updated_DoctorToken_property.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202308220220030_Added_encrypted_password_to_doctor.cs" />
+    <Compile Include="Migrations\202308220220030_Added_encrypted_password_to_doctor.designer.cs">
+      <DependentUpon>202308220220030_Added_encrypted_password_to_doctor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repo\AssistantRepo.cs" />
@@ -98,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202308220027137_updated_DoctorToken_property.resx">
       <DependentUpon>202308220027137_updated_DoctorToken_property.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308220220030_Added_encrypted_password_to_doctor.resx">
+      <DependentUpon>202308220220030_Added_encrypted_password_to_doctor.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
