@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace DocPortal.Controllers
 {
@@ -16,6 +17,7 @@ namespace DocPortal.Controllers
 
     public class DoctorController : ApiController
     {
+        [EnableCors("*", "*", "post")]
         [HttpPost]
         [Route("login")]
         public HttpResponseMessage Login(LoginModel data)
