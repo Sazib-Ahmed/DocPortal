@@ -14,17 +14,17 @@ namespace DAL.EF.Models
         [ForeignKey("Patient")]
         public int PatientId { get; set; }
 
-        public BloodGroup BloodType { get; set; }
+        public BloodGroup? BloodType { get; set; }
 
-        public string Height { get; set; } 
+        public double? Height { get; set; } 
 
-        public bool IsSmoker { get; set; }
+        public bool? IsSmoker { get; set; }
 
-        public bool HasChronicCondition { get; set; }
+        public bool? HasChronicCondition { get; set; }
 
         public string Allergies { get; set; }
 
-        public string OnMedications { get; set; }
+        public string Medications { get; set; }
 
 
         public virtual Patient Patient { get; set; }

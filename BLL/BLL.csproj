@@ -50,6 +50,11 @@
     <Compile Include="DTOs\DoctorDTO.cs" />
     <Compile Include="DTOs\DoctorTokenDTO.cs" />
     <Compile Include="DTOs\PatientDTO.cs" />
+    <Compile Include="DTOs\PatientHealthDetailDTO\BloodPressureDetailDTO.cs" />
+    <Compile Include="DTOs\PatientHealthDetailDTO\CancerMarkersDetailDTO.cs" />
+    <Compile Include="DTOs\PatientHealthDetailDTO\CholesterolLevelDetailDTO.cs" />
+    <Compile Include="DTOs\PatientHealthDetailDTO\CompleteBloodCountDetailDTO.cs" />
+    <Compile Include="DTOs\PatientHealthDTO.cs" />
     <Compile Include="DTOs\PrescriptionDetailDTO.cs" />
     <Compile Include="DTOs\PrescriptionDTO.cs" />
     <Compile Include="DTOs\PrescriptionPrescriptionDetailDTO.cs" />
@@ -72,5 +77,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
