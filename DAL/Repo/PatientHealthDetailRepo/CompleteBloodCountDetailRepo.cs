@@ -48,6 +48,4 @@ namespace DAL.Repo.PatientHealthDetailRepo
             return false;
         }
     }
-    {
-    }
 }
