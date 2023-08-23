@@ -18,7 +18,7 @@ namespace BLL.Services
         public static List<DoctorDTO> GetAll()
         {
             var data = DataAccessFactory.DoctorData().Get();
-            var mapper = MapperService<Doctor, DoctorDTO>.GetMapper();
+            var mapper = DoctorMapperService<Doctor, DoctorDTO>.GetMapper();
             return mapper.Map<List<DoctorDTO>>(data);
         }
 
@@ -27,7 +27,7 @@ namespace BLL.Services
         {
             string password = Cryptography.EncryptPassword(obj.Password);
             obj.Password= password;
-            var mapper = MapperService<DoctorDTO, Doctor>.GetMapper();
+            var mapper = DoctorMapperService<DoctorDTO, Doctor>.GetMapper();
             var mapped = mapper.Map<Doctor>(obj);
             return DataAccessFactory.DoctorData().Create(mapped);
         }
@@ -37,13 +37,13 @@ namespace BLL.Services
         public static DoctorDTO GetById(int id)
         {
             var data = DataAccessFactory.DoctorData().Get(id);
-            var mapper = MapperService<Doctor, DoctorDTO>.GetMapper();
+            var mapper = DoctorMapperService<Doctor, DoctorDTO>.GetMapper();
             return mapper.Map<DoctorDTO>(data);
         }
 
         public static bool Update(DoctorDTO post)
         {
-            var mapper = MapperService<DoctorDTO, Doctor>.GetMapper();
+            var mapper = DoctorMapperService<DoctorDTO, Doctor>.GetMapper();
             var mapped = mapper.Map<Doctor>(post);
             return DataAccessFactory.DoctorData().Update(mapped);
 
@@ -56,7 +56,7 @@ namespace BLL.Services
         public static List<DoctorDTO> GetByName(string name)
         {
             var data = DataAccessFactory.DoctorData().Get().Where(n => n.Name.ToLower().Contains(name.ToLower()));
-            var mapper = MapperService<Doctor, DoctorDTO>.GetMapper();
+            var mapper = DoctorMapperService<Doctor, DoctorDTO>.GetMapper();
             return mapper.Map<List<DoctorDTO>>(data);
         }
 

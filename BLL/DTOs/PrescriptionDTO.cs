@@ -11,7 +11,7 @@ namespace BLL.DTOs
 
         public int PrescriptionId { get; set; }
 
-        public DateTime PrescriptionDate { get; set; }
+        public DateTime? PrescriptionDate { get; set; }
 
         public int PatientId { get; set; }
 
@@ -25,7 +25,7 @@ namespace BLL.DTOs
 
         public string Diagnosis { get; set; }
 
-        public DateTime NextAppointment { get; set; }
+        public DateTime? NextAppointment { get; set; }
 
     }
 }

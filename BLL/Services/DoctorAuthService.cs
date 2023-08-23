@@ -12,13 +12,33 @@ namespace BLL.Services
 {
     public class DoctorAuthService
     {
-        public static DoctorTokenDTO DoctorLogin(string email, string password)
+        public static DoctorTokenDTO DoctorLogin(string email, string password, string ipAddress)
         {
             string encryptedPassword = Cryptography.EncryptPassword(password);
 
             var doctor = DataAccessFactory.DoctorAuthData().Authenticate(email, encryptedPassword);
+            if (doctor == null)
+            {
+                doctor = DataAccessFactory.DoctorData().Get().Where(d => d.Email == email).SingleOrDefault();
+                if (doctor != null)
+                {
+                    doctor.FailedLoginAttempts++;
+                    doctor.LockoutEnd= DateTime.Now.AddDays(30);
+                    DataAccessFactory.DoctorData().Update(doctor);
+                    
+                }
+                return null;
+            }
             if (doctor != null)
             {
+                if (doctor.FailedLoginAttempts >= 3 && doctor.LockoutEnd > DateTime.Now)
+                {
+                    return null;
+                }
+                doctor.FailedLoginAttempts = 0;
+                doctor.LockoutEnd = null;
+                DataAccessFactory.DoctorData().Update(doctor);
+
                 String originalTokenKey = Guid.NewGuid().ToString();
                 String encryptedTokenKey = Cryptography.EncryptToken(originalTokenKey);
                 var token = new DoctorTokenDTO()
@@ -30,7 +50,7 @@ namespace BLL.Services
                     ExpiredAt = DateTime.Now.AddMinutes(30),  // Set to 30 minutes from now
                                                               //DateTime.Now.AddDays(30),
                     LastUsedAt = DateTime.Now,
-                    IpAddress = null,
+                    IpAddress = ipAddress,
                     IsActive = true,
                     Purpose = "To Access Doctor Services"
                 };
@@ -40,6 +60,7 @@ namespace BLL.Services
                 token.TokenKey = originalTokenKey;
                 return token;
             }
+            
             return null;
         }
 
@@ -81,7 +102,6 @@ namespace BLL.Services
 
                 return true;
             }
-    
             return false;
         }
 

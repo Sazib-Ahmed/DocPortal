@@ -52,14 +52,22 @@ namespace DAL.Repo
             return false;
         }
 
+
+        //public Doctor Authenticate(string email, string password)
+        //{
+        //    var doctor = from d in db.Doctors
+        //                 where d.Email == email && d.Password == password
+        //                 select d;
+        //    if(doctor != null) return doctor.SingleOrDefault();
+        //    return null;
+        //}
+
         public Doctor Authenticate(string email, string password)
         {
-            var doctor = from d in db.Doctors
-                         where d.Email == email && d.Password == password
-                         select d;
-            if(doctor != null) return doctor.FirstOrDefault();//return doctor.SingleOrDefault();
-            return null;
+            var doctor = db.Doctors.FirstOrDefault(d => d.Email == email && d.Password == password);
+            return doctor;
         }
+
 
     }
 }

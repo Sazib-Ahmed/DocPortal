@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL.Repo
+namespace DAL.Repo.PatientHealthDetailRepo
 {
     internal class PrescriptionRepo : Repo, IRepo<Prescription, int, bool>
     {

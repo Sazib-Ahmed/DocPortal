@@ -50,6 +50,25 @@
     <Compile Include="DTOs\DoctorDTO.cs" />
     <Compile Include="DTOs\DoctorTokenDTO.cs" />
     <Compile Include="DTOs\PatientDTO.cs" />
+    <Compile Include="DTOs\PatientHealthDetailDTO\BloodPressureDetailDTO.cs" />
+    <Compile Include="DTOs\PatientHealthDetailDTO\CancerMarkersDetailDTO.cs" />
+    <Compile Include="DTOs\PatientHealthDetailDTO\CholesterolLevelDetailDTO.cs" />
+    <Compile Include="DTOs\PatientHealthDetailDTO\CompleteBloodCountDetailDTO.cs" />
+    <Compile Include="DTOs\PatientHealthDetailDTO\CTScanDetailDTO.cs" />
+    <Compile Include="DTOs\PatientHealthDetailDTO\ECGDetailDTO.cs" />
+    <Compile Include="DTOs\PatientHealthDetailDTO\GlucoseLevelDetailDTO.cs" />
+    <Compile Include="DTOs\PatientHealthDetailDTO\HemoglobinDetailDTO.cs" />
+    <Compile Include="DTOs\PatientHealthDetailDTO\ImmunizationHistoryDetailDTO.cs" />
+    <Compile Include="DTOs\PatientHealthDetailDTO\KidneyFunctionDetailDTO.cs" />
+    <Compile Include="DTOs\PatientHealthDetailDTO\LiverFunctionDetailDTO.cs" />
+    <Compile Include="DTOs\PatientHealthDetailDTO\MRIDetailDTO.cs" />
+    <Compile Include="DTOs\PatientHealthDetailDTO\OtherTestDetailDTO.cs" />
+    <Compile Include="DTOs\PatientHealthDetailDTO\PulmonaryFunctionDetailDTO.cs" />
+    <Compile Include="DTOs\PatientHealthDetailDTO\ThyroidDetailDTO.cs" />
+    <Compile Include="DTOs\PatientHealthDetailDTO\UrineAnalysisDetailDTO.cs" />
+    <Compile Include="DTOs\PatientHealthDetailDTO\VitaminLevelsDetailDTO.cs" />
+    <Compile Include="DTOs\PatientHealthDetailDTO\XrayDetailDTO.cs" />
+    <Compile Include="DTOs\PatientHealthDTO.cs" />
     <Compile Include="DTOs\PatientTokenDTO.cs" />
     <Compile Include="DTOs\PrescriptionDetailDTO.cs" />
     <Compile Include="DTOs\PrescriptionDTO.cs" />
@@ -62,6 +81,7 @@
     <Compile Include="Services\DoctorService.cs" />
     <Compile Include="Services\MapperService.cs" />
     <Compile Include="Services\PatientAuthService.cs" />
+    <Compile Include="Services\PatientHealthService.cs" />
     <Compile Include="Services\PatientService.cs" />
     <Compile Include="Services\PrescriptionService.cs" />
   </ItemGroup>
@@ -73,6 +93,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\PatientHealthDetailService\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
