@@ -13,7 +13,7 @@ using DAL.EF.Models;
 
 namespace BLL.Services.PatientHealthDetailService
 {
-    internal class BloodPressureDetailService
+    public class BloodPressureDetailService
     {
         public static List<BloodPressureDetailDTO> GetAll()
         {
@@ -46,13 +46,6 @@ namespace BLL.Services.PatientHealthDetailService
             var data = DataAccessFactory.BloodPressureDetailData().Get(id);
             var mapper = MapperService<BloodPressureDetail, BloodPressureDetailDTO>.GetMapper();
             return mapper.Map<BloodPressureDetailDTO>(data);
-        }
-
-        public static List<BloodPressureDetailDTO> GetByPatientHealthId(int id)
-        {
-            var data = DataAccessFactory.BloodPressureDetailData().GetByPatientHealthId(id);
-            var mapper = MapperService<BloodPressureDetail, BloodPressureDetailDTO>.GetMapper();
-            return mapper.Map<List<BloodPressureDetailDTO>>(data);
         }
     }
 }

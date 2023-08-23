@@ -8,6 +8,8 @@ using DAL.Repo;
 using DAL.EF.Models;
 using DAL;
 using AutoMapper;
+using DAL.EF.Models.PatientHealthDetail;
+using BLL.DTOs.PatientHealthDetailDTO;
 
 namespace BLL.Services
 {
@@ -48,6 +50,83 @@ namespace BLL.Services
             return mapper.Map<PatientHealthDTO>(data);
         }
 
+        public static List<PatientHealthDTO> GetByPatientId(int patientId)
+        {
+            var data = (from h in DataAccessFactory.PatientHealthData().Get()
+                        where h.PatientId == patientId
+                        select h).ToList();
+            var mapper = MapperService<PatientHealth, PatientHealthDTO>.GetMapper();
+            return mapper.Map<List<PatientHealthDTO>>(data);
+        }
+
+        public static PatientHealthPatientHealthDetailDTO GetPatientHealthDetailByPatientId(int patientId)
+        {
+            var data = (from h in DataAccessFactory.PatientHealthData().Get()
+                        where h.PatientId == patientId
+                        select h).ToList();
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<PatientHealth, PatientHealthPatientHealthDetailDTO>();
+                cfg.CreateMap<BloodPressureDetail, BloodPressureDetailDTO>();
+                cfg.CreateMap<HemoglobinDetail, HemoglobinDetailDTO>();
+                cfg.CreateMap<XrayDetail, XrayDetailDTO>();
+                cfg.CreateMap<MRIDetail, MRIDetailDTO>();
+                cfg.CreateMap<CTScanDetail, CTScanDetailDTO>();
+                cfg.CreateMap<GlucoseLevelDetail, GlucoseLevelDetailDTO>();
+                cfg.CreateMap<CholesterolLevelDetail, CholesterolLevelDetailDTO>();
+                cfg.CreateMap<ThyroidDetail, ThyroidDetailDTO>();
+                cfg.CreateMap<LiverFunctionDetail, LiverFunctionDetailDTO>();
+                cfg.CreateMap<KidneyFunctionDetail, KidneyFunctionDetailDTO>();
+                cfg.CreateMap<CompleteBloodCountDetail, CompleteBloodCountDetailDTO>();
+                cfg.CreateMap<UrineAnalysisDetail, UrineAnalysisDetailDTO>();
+                cfg.CreateMap<ECGDetail, ECGDetailDTO>();
+                cfg.CreateMap<PulmonaryFunctionDetail, PulmonaryFunctionDetailDTO>();
+                cfg.CreateMap<VitaminLevelsDetail, VitaminLevelsDetailDTO>();
+                cfg.CreateMap<CancerMarkersDetail, CancerMarkersDetailDTO>();
+                cfg.CreateMap<ImmunizationHistoryDetail, ImmunizationHistoryDetailDTO>();
+                cfg.CreateMap<OtherTestDetail, OtherTestDetailDTO>();
+
+            });
+
+            var map = new Mapper(config);
+            var result = map.Map<PatientHealthPatientHealthDetailDTO>(data);
+
+            return result;
+        }
+
+        public static PatientHealthPatientHealthDetailDTO GetAllPatientHealthDetail(int patientHealthId)
+        {
+            var data = DataAccessFactory.PatientHealthData().Get(patientHealthId);
+
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<PatientHealth, PatientHealthPatientHealthDetailDTO>();
+                cfg.CreateMap<BloodPressureDetail, BloodPressureDetailDTO>();
+                cfg.CreateMap<HemoglobinDetail, HemoglobinDetailDTO>();
+                cfg.CreateMap<XrayDetail, XrayDetailDTO>();
+                cfg.CreateMap<MRIDetail, MRIDetailDTO>();
+                cfg.CreateMap<CTScanDetail, CTScanDetailDTO>();
+                cfg.CreateMap<GlucoseLevelDetail, GlucoseLevelDetailDTO>();
+                cfg.CreateMap<CholesterolLevelDetail, CholesterolLevelDetailDTO>();
+                cfg.CreateMap<ThyroidDetail, ThyroidDetailDTO>();
+                cfg.CreateMap<LiverFunctionDetail, LiverFunctionDetailDTO>();
+                cfg.CreateMap<KidneyFunctionDetail, KidneyFunctionDetailDTO>();
+                cfg.CreateMap<CompleteBloodCountDetail, CompleteBloodCountDetailDTO>();
+                cfg.CreateMap<UrineAnalysisDetail, UrineAnalysisDetailDTO>();
+                cfg.CreateMap<ECGDetail, ECGDetailDTO>();
+                cfg.CreateMap<PulmonaryFunctionDetail, PulmonaryFunctionDetailDTO>();
+                cfg.CreateMap<VitaminLevelsDetail, VitaminLevelsDetailDTO>();
+                cfg.CreateMap<CancerMarkersDetail, CancerMarkersDetailDTO>();
+                cfg.CreateMap<ImmunizationHistoryDetail, ImmunizationHistoryDetailDTO>();
+                cfg.CreateMap<OtherTestDetail, OtherTestDetailDTO>();
+
+            });
+
+            var map = new Mapper(config);
+            var result = map.Map<PatientHealthPatientHealthDetailDTO>(data);
+
+            return result;
+        }
 
     }
 }
