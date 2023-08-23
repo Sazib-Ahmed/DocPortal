@@ -24,7 +24,6 @@ namespace DAL.EF.Models.PatientHealthDetail
         public string TestData { get; set; } 
         public string PerformedBy { get; set; } 
         public string TestSummary { get; set; }
-        public string PerformedBy { get; set; }
 
         public string Note { get; set; }
 
