@@ -58,6 +58,7 @@
     <Compile Include="EF\Models\Doctor.cs" />
     <Compile Include="EF\Models\DoctorToken.cs" />
     <Compile Include="EF\Models\Patient.cs" />
+    <Compile Include="EF\Models\PatientToken.cs" />
     <Compile Include="EF\Models\Prescription.cs" />
     <Compile Include="EF\Models\PrescriptionDetail.cs" />
     <Compile Include="Interfaces\IAuth.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Repo\DoctorRepo.cs" />
     <Compile Include="Repo\DoctorTokenRepo.cs" />
     <Compile Include="Repo\PatientRepo.cs" />
+    <Compile Include="Repo\PatientTokenRepo.cs" />
     <Compile Include="Repo\PrescriptionDetailRepo.cs" />
     <Compile Include="Repo\PrescriptionRepo.cs" />
     <Compile Include="Repo\Repo.cs" />
