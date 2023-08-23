@@ -22,6 +22,10 @@ namespace DAL.EF.Models.PatientHealthDetail
 
         public string ScanData { get; set; }
         public string ScanResult { get; set; }
+        public string PerformedBy { get; set; }
+
+        public string Note { get; set; }
+
 
         public virtual PatientHealth PatientHealth { get; set; }
     }

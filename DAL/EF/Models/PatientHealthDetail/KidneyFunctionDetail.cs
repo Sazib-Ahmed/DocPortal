@@ -42,6 +42,10 @@ namespace DAL.EF.Models.PatientHealthDetail
         public double? UrineCreatinineClearance { get; set; } // Urine creatinine clearance value
 
         public double? UrineOsmolality { get; set; } // Urine osmolality value
+        public string PerformedBy { get; set; }
+
+        public string Note { get; set; }
+
 
 
 

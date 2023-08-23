@@ -23,7 +23,11 @@ namespace DAL.EF.Models.PatientHealthDetail
         public double? MeanCorpuscularVolume { get; set; }
         public double? MeanCorpuscularHemoglobin { get; set; }
         public double? MeanCorpuscularHemoglobinConcentration { get; set; }
-        
+        public string PerformedBy { get; set; }
+
+        public string Note { get; set; }
+
+
 
         // Navigation property
 

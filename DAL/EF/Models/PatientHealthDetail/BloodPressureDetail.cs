@@ -17,7 +17,8 @@ namespace DAL.EF.Models.PatientHealthDetail
         public DateTime? RecordedAt { get; set; }
         public int? SystolicPressure { get; set; }
         public int? DiastolicPressure { get; set; }
-        public string Notes { get; set; }
+        public string PerformedBy { get; set; }
+        public string Note { get; set; }
 
 
         

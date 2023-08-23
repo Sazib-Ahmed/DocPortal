@@ -15,10 +15,14 @@ namespace DAL.EF.Models.PatientHealthDetail
 
         [ForeignKey("PatientHealth")]
         public int PatientHealthId { get; set; }
+        public DateTime? RecordedAt { get; set; }
 
         public double? GlucoseLevel { get; set; }
+        public string PerformedBy { get; set; }
 
-        public DateTime? RecordedAt { get; set; }
+        public string Note { get; set; }
+
+        
 
         public virtual PatientHealth PatientHealth { get; set; }
     }

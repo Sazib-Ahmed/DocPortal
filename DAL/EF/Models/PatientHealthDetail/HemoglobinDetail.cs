@@ -26,6 +26,10 @@ namespace DAL.EF.Models.PatientHealthDetail
         public double? MeanCorpuscularHemoglobin { get; set; }  // in pg
         public double? MeanCorpuscularHemoglobinConcentration { get; set; }  // in g/dL
         public double? RedCellDistributionWidth { get; set; }  // in percentage
+        public string PerformedBy { get; set; }
+
+        public string Note { get; set; }
+
 
 
         public virtual PatientHealth PatientHealth { get; set; }

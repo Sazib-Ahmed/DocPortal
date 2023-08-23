@@ -26,6 +26,10 @@ namespace DAL.EF.Models.PatientHealthDetail
         public double Triglycerides { get; set; }
 
         public DateTime RecordedAt { get; set; }
+        public string PerformedBy { get; set; }
+
+        public string Note { get; set; }
+
 
 
 
