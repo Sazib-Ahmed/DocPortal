@@ -55,6 +55,8 @@ namespace BLL.Services
         public static PrescriptionPrescriptionDetailDTO GetWithDetail(int id)
         {
             var data = DataAccessFactory.PrescriptionData().Get(id);
+            
+            
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Prescription, PrescriptionPrescriptionDetailDTO>();

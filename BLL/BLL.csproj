@@ -69,10 +69,12 @@
     <Compile Include="DTOs\PatientHealthDetailDTO\VitaminLevelsDetailDTO.cs" />
     <Compile Include="DTOs\PatientHealthDetailDTO\XrayDetailDTO.cs" />
     <Compile Include="DTOs\PatientHealthDTO.cs" />
+    <Compile Include="DTOs\PatientHealthPatientHealthDetailDTO.cs" />
     <Compile Include="DTOs\PatientTokenDTO.cs" />
     <Compile Include="DTOs\PrescriptionDetailDTO.cs" />
     <Compile Include="DTOs\PrescriptionDTO.cs" />
     <Compile Include="DTOs\PrescriptionPrescriptionDetailDTO.cs" />
+    <Compile Include="Interfaces\IHealthDetail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Secrets\Cryptography.cs" />
     <Compile Include="Services\AppointmentService.cs" />
@@ -81,6 +83,24 @@
     <Compile Include="Services\DoctorService.cs" />
     <Compile Include="Services\MapperService.cs" />
     <Compile Include="Services\PatientAuthService.cs" />
+    <Compile Include="Services\PatientHealthDetailService\BloodPressureDetailService.cs" />
+    <Compile Include="Services\PatientHealthDetailService\CancerMarkersDetailService.cs" />
+    <Compile Include="Services\PatientHealthDetailService\CholesterolLevelDetailService.cs" />
+    <Compile Include="Services\PatientHealthDetailService\CompleteBloodCountDetailService.cs" />
+    <Compile Include="Services\PatientHealthDetailService\CTScanDetailService.cs" />
+    <Compile Include="Services\PatientHealthDetailService\ECGDetailService.cs" />
+    <Compile Include="Services\PatientHealthDetailService\GlucoseLevelDetailService.cs" />
+    <Compile Include="Services\PatientHealthDetailService\HemoglobinDetailService.cs" />
+    <Compile Include="Services\PatientHealthDetailService\ImmunizationHistoryDetailService.cs" />
+    <Compile Include="Services\PatientHealthDetailService\KidneyFunctionDetailService.cs" />
+    <Compile Include="Services\PatientHealthDetailService\LiverFunctionDetailService.cs" />
+    <Compile Include="Services\PatientHealthDetailService\MRIDetailService.cs" />
+    <Compile Include="Services\PatientHealthDetailService\OtherTestDetailService.cs" />
+    <Compile Include="Services\PatientHealthDetailService\PulmonaryFunctionDetailService.cs" />
+    <Compile Include="Services\PatientHealthDetailService\ThyroidDetailService.cs" />
+    <Compile Include="Services\PatientHealthDetailService\UrineAnalysisDetailService.cs" />
+    <Compile Include="Services\PatientHealthDetailService\VitaminLevelsDetailService.cs" />
+    <Compile Include="Services\PatientHealthDetailService\XrayDetailService.cs" />
     <Compile Include="Services\PatientHealthService.cs" />
     <Compile Include="Services\PatientService.cs" />
     <Compile Include="Services\PrescriptionService.cs" />
@@ -88,9 +108,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\PatientHealthDetailService\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{0f4485e4-f1e6-4620-b3e2-d7446e9787a2}</Project>
