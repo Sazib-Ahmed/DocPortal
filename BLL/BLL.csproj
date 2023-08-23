@@ -79,6 +79,7 @@
     <Compile Include="Services\DoctorAuthService.cs" />
     <Compile Include="Services\DoctorService.cs" />
     <Compile Include="Services\MapperService.cs" />
+    <Compile Include="Services\PatientHealthService.cs" />
     <Compile Include="Services\PatientService.cs" />
     <Compile Include="Services\PrescriptionService.cs" />
   </ItemGroup>
@@ -91,6 +92,8 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Services\PatientHealthDetailService\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

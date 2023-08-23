@@ -12,7 +12,6 @@ namespace BLL.Services
     public class PatientService
     {
 
-
         public static List<PatientDTO> GetAll()
         {
             var data = DataAccessFactory.PatientData().Get();
@@ -26,7 +25,6 @@ namespace BLL.Services
             return conv;
         }
 
-     
 
         public static bool Create(PatientDTO obj)
         {

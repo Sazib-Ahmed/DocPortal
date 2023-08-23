@@ -17,7 +17,7 @@ namespace BLL.DTOs
         public DateTime? ExpiredAt { get; set; }
         public DateTime? LastUsedAt { get; set; }
         public string IpAddress { get; set; }
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
         public string Purpose { get; set; }
     }
 }
