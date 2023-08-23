@@ -1,5 +1,4 @@
-﻿using DAL.EF;
-using DAL.EF.Models;
+﻿using DAL.EF.Models.PatientHealthDetail;
 using DAL.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -9,27 +8,27 @@ using System.Threading.Tasks;
 
 namespace DAL.Repo.PatientHealthDetailRepo
 {
-    internal class PrescriptionRepo : Repo, IRepo<Prescription, int, bool>
+    internal class HemoglobinDetailRepo : Repo, IRepo<HemoglobinDetail, int, bool>
     {
-        public List<Prescription> Get()
+        public List<HemoglobinDetail> Get()
         {
-            return db.Prescriptions.ToList();
+            return db.HemoglobinDetails.ToList();
         }
 
-        public Prescription Get(int id)
+        public HemoglobinDetail Get(int id)
         {
-            return db.Prescriptions.Find(id);
+            return db.HemoglobinDetails.Find(id);
         }
 
-        public bool Create(Prescription obj)
+        public bool Create(HemoglobinDetail obj)
         {
-            db.Prescriptions.Add(obj);
+            db.HemoglobinDetails.Add(obj);
             return db.SaveChanges() > 0;
         }
 
-        public bool Update(Prescription updatedObj)
+        public bool Update(HemoglobinDetail updatedObj)
         {
-            var exobj = Get(updatedObj.PrescriptionId);
+            var exobj = Get(updatedObj.HemoglobinDetailId);
             if (exobj != null)
             {
                 db.Entry(exobj).CurrentValues.SetValues(updatedObj);
@@ -43,7 +42,7 @@ namespace DAL.Repo.PatientHealthDetailRepo
             var obj = Get(id);
             if (obj != null)
             {
-                db.Prescriptions.Remove(obj);
+                db.HemoglobinDetails.Remove(obj);
                 return db.SaveChanges() > 0;
             }
             return false;

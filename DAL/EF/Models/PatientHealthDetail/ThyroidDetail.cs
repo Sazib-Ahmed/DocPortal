@@ -8,7 +8,7 @@ namespace DAL.EF.Models.PatientHealthDetail
     public class ThyroidDetail
     {
         [Key]
-        public int ThyroidTestDetailId { get; set; }
+        public int ThyroidDetailId { get; set; }
 
         [ForeignKey("PatientHealth")]
         public int PatientHealthId { get; set; }

@@ -1,5 +1,4 @@
-﻿using DAL.EF;
-using DAL.EF.Models;
+﻿using DAL.EF.Models.PatientHealthDetail;
 using DAL.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -9,27 +8,27 @@ using System.Threading.Tasks;
 
 namespace DAL.Repo.PatientHealthDetailRepo
 {
-    internal class PrescriptionRepo : Repo, IRepo<Prescription, int, bool>
+    internal class MRIDetailRepo : Repo, IRepo<MRIDetail, int, bool>
     {
-        public List<Prescription> Get()
+        public List<MRIDetail> Get()
         {
-            return db.Prescriptions.ToList();
+            return db.MRIDetails.ToList();
         }
 
-        public Prescription Get(int id)
+        public MRIDetail Get(int id)
         {
-            return db.Prescriptions.Find(id);
+            return db.MRIDetails.Find(id);
         }
 
-        public bool Create(Prescription obj)
+        public bool Create(MRIDetail obj)
         {
-            db.Prescriptions.Add(obj);
+            db.MRIDetails.Add(obj);
             return db.SaveChanges() > 0;
         }
 
-        public bool Update(Prescription updatedObj)
+        public bool Update(MRIDetail updatedObj)
         {
-            var exobj = Get(updatedObj.PrescriptionId);
+            var exobj = Get(updatedObj.MRIDetailId);
             if (exobj != null)
             {
                 db.Entry(exobj).CurrentValues.SetValues(updatedObj);
@@ -43,7 +42,7 @@ namespace DAL.Repo.PatientHealthDetailRepo
             var obj = Get(id);
             if (obj != null)
             {
-                db.Prescriptions.Remove(obj);
+                db.MRIDetails.Remove(obj);
                 return db.SaveChanges() > 0;
             }
             return false;
