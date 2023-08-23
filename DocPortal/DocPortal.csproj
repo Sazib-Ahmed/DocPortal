@@ -155,6 +155,7 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="AuthFilters\DoctorLogged.cs" />
+    <Compile Include="AuthFilters\PatientLogged.cs" />
     <Compile Include="Controllers\AppointmentController.cs" />
     <Compile Include="Controllers\AssistantController.cs" />
     <Compile Include="Controllers\DoctorAuthController.cs" />

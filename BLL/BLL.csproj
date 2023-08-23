@@ -50,6 +50,7 @@
     <Compile Include="DTOs\DoctorDTO.cs" />
     <Compile Include="DTOs\DoctorTokenDTO.cs" />
     <Compile Include="DTOs\PatientDTO.cs" />
+    <Compile Include="DTOs\PatientTokenDTO.cs" />
     <Compile Include="DTOs\PrescriptionDetailDTO.cs" />
     <Compile Include="DTOs\PrescriptionDTO.cs" />
     <Compile Include="DTOs\PrescriptionPrescriptionDetailDTO.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Services\DoctorAuthService.cs" />
     <Compile Include="Services\DoctorService.cs" />
     <Compile Include="Services\MapperService.cs" />
+    <Compile Include="Services\PatientAuthService.cs" />
     <Compile Include="Services\PatientService.cs" />
     <Compile Include="Services\PrescriptionService.cs" />
   </ItemGroup>

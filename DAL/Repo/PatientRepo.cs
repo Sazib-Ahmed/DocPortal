@@ -11,8 +11,8 @@ namespace DAL.Repo
    
     
 
-        internal class PatientRepo : Repo, IRepo<Patient, int, bool>
-        {
+        internal class PatientRepo : Repo, IRepo<Patient, int, bool>, IAuth<Patient>
+    {
             public List<Patient> Get()
             {
                 return db.Patients.ToList();
@@ -46,6 +46,15 @@ namespace DAL.Repo
                 db.Patients.Remove(exobj);
                 return db.SaveChanges() > 0;
             }
+
+        public Patient Authenticate(string email, string password)
+        {
+            var patient = from d in db.Patients
+                         where d.Email == email && d.Password == password
+                         select d;
+            if (patient != null) return patient.FirstOrDefault();//return PAtient.SingleOrDefault();
+            return null;
         }
+    }
     }
 

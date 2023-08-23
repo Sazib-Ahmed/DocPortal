@@ -36,6 +36,11 @@ namespace DAL
         public static IRepo<Patient, int, bool> PatientData()
         {
             return new PatientRepo();
+
+        }
+        public static IAuth<Patient> PatientAuthData()
+        {
+            return new PatientRepo();
         }
 
         public static IRepo<Appointment, int, bool> AppointmentData()
@@ -47,6 +52,13 @@ namespace DAL
         {
             return new AssistantRepo();
         }
+        public static IRepo<PatientToken, int, PatientToken> PatientTokenData()
+        {
+            return new PatientTokenRepo();
+        }
+       
+
+
     }
 
 }
