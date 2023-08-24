@@ -47,5 +47,6 @@ namespace BLL.Services.PatientHealthDetailService
             var mapper = MapperService<BloodPressureDetail, BloodPressureDetailDTO>.GetMapper();
             return mapper.Map<BloodPressureDetailDTO>(data);
         }
+
     }
 }
