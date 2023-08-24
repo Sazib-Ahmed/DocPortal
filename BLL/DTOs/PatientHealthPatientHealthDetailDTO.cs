@@ -1,5 +1,5 @@
-﻿using DAL.EF.Models.PatientHealthDetail;
-using DAL.EF.Models;
+﻿
+using BLL.DTOs.PatientHealthDetailDTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,45 +10,45 @@ namespace BLL.DTOs
 {
     public class PatientHealthPatientHealthDetailDTO : PatientHealthDTO
     {
-        public List<BloodPressureDetail> BloodPressureDetails { get; set; }
-        public List<HemoglobinDetail> HemoglobinDetails { get; set; }
-        public List<XrayDetail> XrayDetails { get; set; }
-        public List<MRIDetail> MRIDetails { get; set; }
-        public List<CTScanDetail> CTScanDetails { get; set; }
-        public List<GlucoseLevelDetail> GlucoseLevelDetails { get; set; }
-        public List<CholesterolLevelDetail> CholesterolLevelDetails { get; set; }
-        public List<ThyroidDetail> ThyroidDetails { get; set; }
-        public List<LiverFunctionDetail> LiverFunctionDetails { get; set; }
-        public List<KidneyFunctionDetail> KidneyFunctionDetails { get; set; }
-        public List<CompleteBloodCountDetail> CompleteBloodCountDetails { get; set; }
-        public List<UrineAnalysisDetail> UrineAnalysisDetails { get; set; }
-        public List<ECGDetail> ECGDetails { get; set; }
-        public List<PulmonaryFunctionDetail> PulmonaryFunctionDetails { get; set; }
-        public List<VitaminLevelsDetail> VitaminLevelsDetails { get; set; }
-        public List<CancerMarkersDetail> CancerMarkersDetails { get; set; }
-        public List<ImmunizationHistoryDetail> ImmunizationHistoryDetails { get; set; }
-        public List<OtherTestDetail> OtherTestDetails { get; set; }
+        public List<BloodPressureDetailDTO> BloodPressureDetails { get; set; }
+        public List<HemoglobinDetailDTO> HemoglobinDetails { get; set; }
+        public List<XrayDetailDTO> XrayDetails { get; set; }
+        public List<MRIDetailDTO> MRIDetails { get; set; }
+        public List<CTScanDetailDTO> CTScanDetails { get; set; }
+        public List<GlucoseLevelDetailDTO> GlucoseLevelDetails { get; set; }
+        public List<CholesterolLevelDetailDTO> CholesterolLevelDetails { get; set; }
+        public List<ThyroidDetailDTO> ThyroidDetails { get; set; }
+        public List<LiverFunctionDetailDTO> LiverFunctionDetails { get; set; }
+        public List<KidneyFunctionDetailDTO> KidneyFunctionDetails { get; set; }
+        public List<CompleteBloodCountDetailDTO> CompleteBloodCountDetails { get; set; }
+        public List<UrineAnalysisDetailDTO> UrineAnalysisDetails { get; set; }
+        public List<ECGDetailDTO> ECGDetails { get; set; }
+        public List<PulmonaryFunctionDetailDTO> PulmonaryFunctionDetails { get; set; }
+        public List<VitaminLevelsDetailDTO> VitaminLevelsDetails { get; set; }
+        public List<CancerMarkersDetailDTO> CancerMarkersDetails { get; set; }
+        public List<ImmunizationHistoryDetailDTO> ImmunizationHistoryDetails { get; set; }
+        public List<OtherTestDetailDTO> OtherTestDetails { get; set; }
 
         public PatientHealthPatientHealthDetailDTO()
         {
-            BloodPressureDetails = new List<BloodPressureDetail>();
-            HemoglobinDetails = new List<HemoglobinDetail>();
-            XrayDetails = new List<XrayDetail>();
-            MRIDetails = new List<MRIDetail>();
-            CTScanDetails = new List<CTScanDetail>();
-            GlucoseLevelDetails = new List<GlucoseLevelDetail>();
-            CholesterolLevelDetails = new List<CholesterolLevelDetail>();
-            ThyroidDetails = new List<ThyroidDetail>();
-            LiverFunctionDetails = new List<LiverFunctionDetail>();
-            KidneyFunctionDetails = new List<KidneyFunctionDetail>();
-            CompleteBloodCountDetails = new List<CompleteBloodCountDetail>();
-            UrineAnalysisDetails = new List<UrineAnalysisDetail>();
-            ECGDetails = new List<ECGDetail>();
-            PulmonaryFunctionDetails = new List<PulmonaryFunctionDetail>();
-            VitaminLevelsDetails = new List<VitaminLevelsDetail>();
-            CancerMarkersDetails = new List<CancerMarkersDetail>();
-            ImmunizationHistoryDetails = new List<ImmunizationHistoryDetail>();
-            OtherTestDetails = new List<OtherTestDetail>();
+            BloodPressureDetails = new List<BloodPressureDetailDTO>();
+            HemoglobinDetails = new List<HemoglobinDetailDTO>();
+            XrayDetails = new List<XrayDetailDTO>();
+            MRIDetails = new List<MRIDetailDTO>();
+            CTScanDetails = new List<CTScanDetailDTO>();
+            GlucoseLevelDetails = new List<GlucoseLevelDetailDTO>();
+            CholesterolLevelDetails = new List<CholesterolLevelDetailDTO>();
+            ThyroidDetails = new List<ThyroidDetailDTO>();
+            LiverFunctionDetails = new List<LiverFunctionDetailDTO>();
+            KidneyFunctionDetails = new List<KidneyFunctionDetailDTO>();
+            CompleteBloodCountDetails = new List<CompleteBloodCountDetailDTO>();
+            UrineAnalysisDetails = new List<UrineAnalysisDetailDTO>();
+            ECGDetails = new List<ECGDetailDTO>();
+            PulmonaryFunctionDetails = new List<PulmonaryFunctionDetailDTO>();
+            VitaminLevelsDetails = new List<VitaminLevelsDetailDTO>();
+            CancerMarkersDetails = new List<CancerMarkersDetailDTO>();
+            ImmunizationHistoryDetails = new List<ImmunizationHistoryDetailDTO>();
+            OtherTestDetails = new List<OtherTestDetailDTO>();
 
         }
     }
