@@ -77,6 +77,22 @@ namespace DocPortal.Controllers.HealthDetail
             }
         }
 
+        [EnableCors("*", "*", "post")]
+        [HttpPost]
+        [Route("cholesterollevel/create")]
+        public HttpResponseMessage CreateCholesterolLevelDetail(CholesterolLevelDetailDTO cholesterolLevelDetail)
+        {
+            try
+            {
+                var data = CholesterolLevelDetailService.Create(cholesterolLevelDetail);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
 
     }
 }

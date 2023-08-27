@@ -1,27 +1,26 @@
-﻿using System;
+﻿using BLL.DTOs.PatientHealthDetailDTO;
+using BLL.Services.PatientHealthDetailService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
-using BLL.DTOs.PatientHealthDetailDTO;
-using BLL.Services.PatientHealthDetailService;
 
 namespace DocPortal.Controllers.HealthDetail
 {
     [RoutePrefix("api/health/detail")]
-    public class CancerMarkersController : ApiController
+    public class MRIController : ApiController
     {
-
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("cancermarkers")]
-        public HttpResponseMessage GetAllCancerMarkersDetail()
+        [Route("mri")]
+        public HttpResponseMessage GetAllMRIDetail()
         {
             try
             {
-                var data = CancerMarkersDetailService.GetAll();
+                var data = MRIDetailService.GetAll();
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }
             catch (Exception ex)
@@ -32,45 +31,13 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("cancermarkers/{id}")]
-        public HttpResponseMessage GetCancerMarkersDetailById(int id)
+        [Route("mri/{id}")]
+        public HttpResponseMessage GetMRIDetail(int id)
         {
             try
             {
-                var data = CancerMarkersDetailService.GetById(id);
+                var data = MRIDetailService.GetById(id);
                 return Request.CreateResponse(HttpStatusCode.OK, data);
-            }
-            catch (Exception ex)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
-            }
-        }
-
-        [EnableCors("*", "*", "delete")]
-        [HttpDelete]
-        [Route("cancermarkers/{id}")]
-        public HttpResponseMessage DeleteCancerMarkersDetail(int id)
-        {
-            try
-            {
-                CancerMarkersDetailService.Delete(id);
-                return Request.CreateResponse(HttpStatusCode.OK, "Successfully deleted.");
-            }
-            catch (Exception ex)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
-            }
-        }
-
-        [EnableCors("*", "*", "put")]
-        [HttpPut]
-        [Route("cancermarkers/update")]
-        public HttpResponseMessage UpdateCancerMarkersDetail(CancerMarkersDetailDTO cancerMarkersDetail)
-        {
-            try
-            {
-                CancerMarkersDetailService.Update(cancerMarkersDetail);
-                return Request.CreateResponse(HttpStatusCode.OK, "Successfully updated.");
             }
             catch (Exception ex)
             {
@@ -80,13 +47,13 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "post")]
         [HttpPost]
-        [Route("cancermarkers/create")]
-        public HttpResponseMessage CreateCancerMarkersDetail(CancerMarkersDetailDTO cancerMarkersDetail)
+        [Route("mri/create")]
+        public HttpResponseMessage CreateMRIDetail(MRIDetailDTO mriDetail)
         {
             try
             {
-                CancerMarkersDetailService.Create(cancerMarkersDetail);
-                return Request.CreateResponse(HttpStatusCode.OK, "Successfully created.");
+                MRIDetailService.Create(mriDetail);
+                return Request.CreateResponse(HttpStatusCode.OK, "MRI details are added successfully.");
             }
             catch (Exception ex)
             {
@@ -94,7 +61,36 @@ namespace DocPortal.Controllers.HealthDetail
             }
         }
 
+        [EnableCors("*", "*", "put")]
+        [HttpPut]
+        [Route("mri/update")]
+        public HttpResponseMessage UpdateMRIDetail(MRIDetailDTO mriDetail)
+        {
+            try
+            {
+                MRIDetailService.Update(mriDetail);
+                return Request.CreateResponse(HttpStatusCode.OK, "MRI details are updated successfully.");
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
 
-
+        [EnableCors("*", "*", "delete")]
+        [HttpDelete]
+        [Route("mri/{id}")]
+        public HttpResponseMessage DeleteMRIDetail(int id)
+        {
+            try
+            {
+                MRIDetailService.Delete(id);
+                return Request.CreateResponse(HttpStatusCode.OK, "MRI details are deleted successfully.");
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
     }
 }

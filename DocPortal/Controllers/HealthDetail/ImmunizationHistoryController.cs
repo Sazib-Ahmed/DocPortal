@@ -1,27 +1,26 @@
-﻿using System;
+﻿using BLL.DTOs.PatientHealthDetailDTO;
+using BLL.Services.PatientHealthDetailService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
-using BLL.DTOs.PatientHealthDetailDTO;
-using BLL.Services.PatientHealthDetailService;
 
 namespace DocPortal.Controllers.HealthDetail
 {
     [RoutePrefix("api/health/detail")]
-    public class CancerMarkersController : ApiController
+    public class ImmunizationHistoryController : ApiController
     {
-
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("cancermarkers")]
-        public HttpResponseMessage GetAllCancerMarkersDetail()
+        [Route("immunizationhistory")]
+        public HttpResponseMessage GetAllImmunizationHistoryDetail()
         {
             try
             {
-                var data = CancerMarkersDetailService.GetAll();
+                var data = ImmunizationHistoryDetailService.GetAll();
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }
             catch (Exception ex)
@@ -32,12 +31,12 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("cancermarkers/{id}")]
-        public HttpResponseMessage GetCancerMarkersDetailById(int id)
+        [Route("immunizationhistory/{id}")]
+        public HttpResponseMessage GetImmunizationHistoryDetailById(int id)
         {
             try
             {
-                var data = CancerMarkersDetailService.GetById(id);
+                var data = ImmunizationHistoryDetailService.GetById(id);
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }
             catch (Exception ex)
@@ -48,13 +47,13 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "delete")]
         [HttpDelete]
-        [Route("cancermarkers/{id}")]
-        public HttpResponseMessage DeleteCancerMarkersDetail(int id)
+        [Route("immunizationhistory/{id}")]
+        public HttpResponseMessage DeleteImmunizationHistoryDetailById(int id)
         {
             try
             {
-                CancerMarkersDetailService.Delete(id);
-                return Request.CreateResponse(HttpStatusCode.OK, "Successfully deleted.");
+                ImmunizationHistoryDetailService.Delete(id);
+                return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception ex)
             {
@@ -64,13 +63,13 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "put")]
         [HttpPut]
-        [Route("cancermarkers/update")]
-        public HttpResponseMessage UpdateCancerMarkersDetail(CancerMarkersDetailDTO cancerMarkersDetail)
+        [Route("immunizationhistory/{id}")]
+        public HttpResponseMessage UpdateImmunizationHistoryDetailById(ImmunizationHistoryDetailDTO immunizationHistoryDetail)
         {
             try
             {
-                CancerMarkersDetailService.Update(cancerMarkersDetail);
-                return Request.CreateResponse(HttpStatusCode.OK, "Successfully updated.");
+                ImmunizationHistoryDetailService.Update(immunizationHistoryDetail);
+                return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception ex)
             {
@@ -80,21 +79,19 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "post")]
         [HttpPost]
-        [Route("cancermarkers/create")]
-        public HttpResponseMessage CreateCancerMarkersDetail(CancerMarkersDetailDTO cancerMarkersDetail)
+        [Route("immunizationhistory/create")]
+        public HttpResponseMessage CreateImmunizationHistoryDetail(ImmunizationHistoryDetailDTO immunizationHistoryDetail)
         {
             try
             {
-                CancerMarkersDetailService.Create(cancerMarkersDetail);
-                return Request.CreateResponse(HttpStatusCode.OK, "Successfully created.");
+                ImmunizationHistoryDetailService.Create(immunizationHistoryDetail);
+                return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception ex)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
-
-
 
     }
 }

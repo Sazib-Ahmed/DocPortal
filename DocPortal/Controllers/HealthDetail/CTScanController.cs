@@ -60,6 +60,8 @@ namespace DocPortal.Controllers.HealthDetail
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
+
+        [EnableCors("*", "*", "put")]
         [HttpPut]
         [Route("ctscan/{id}")]
         public HttpResponseMessage UpdateCTScanDetail(CTScanDetailDTO ctScanDetail)
@@ -69,6 +71,22 @@ namespace DocPortal.Controllers.HealthDetail
                 
                 CTScanDetailService.Update(ctScanDetail);
                 return Request.CreateResponse(HttpStatusCode.OK, "Successfully updated.");
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+        [EnableCors("*", "*", "post")]
+        [HttpPost]
+        [Route("ctscan/create")]
+        public HttpResponseMessage AddCTScanDetail(CTScanDetailDTO ctScanDetail)
+        {
+            try
+            {
+                CTScanDetailService.Create(ctScanDetail);
+                return Request.CreateResponse(HttpStatusCode.OK, "Successfully added.");
             }
             catch (Exception ex)
             {

@@ -1,27 +1,26 @@
-﻿using System;
+﻿using BLL.DTOs.PatientHealthDetailDTO;
+using BLL.Services.PatientHealthDetailService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
-using BLL.DTOs.PatientHealthDetailDTO;
-using BLL.Services.PatientHealthDetailService;
 
 namespace DocPortal.Controllers.HealthDetail
 {
     [RoutePrefix("api/health/detail")]
-    public class CancerMarkersController : ApiController
+    public class KidneyFunctionController : ApiController
     {
-
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("cancermarkers")]
-        public HttpResponseMessage GetAllCancerMarkersDetail()
+        [Route("kidneyfunction")]
+        public HttpResponseMessage GetAllKidneyFunctionDetail()
         {
             try
             {
-                var data = CancerMarkersDetailService.GetAll();
+                var data = KidneyFunctionDetailService.GetAll();
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }
             catch (Exception ex)
@@ -32,45 +31,13 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("cancermarkers/{id}")]
-        public HttpResponseMessage GetCancerMarkersDetailById(int id)
+        [Route("kidneyfunction/{id}")]
+        public HttpResponseMessage GetKidneyFunctionDetailById(int id)
         {
             try
             {
-                var data = CancerMarkersDetailService.GetById(id);
+                var data = KidneyFunctionDetailService.GetById(id);
                 return Request.CreateResponse(HttpStatusCode.OK, data);
-            }
-            catch (Exception ex)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
-            }
-        }
-
-        [EnableCors("*", "*", "delete")]
-        [HttpDelete]
-        [Route("cancermarkers/{id}")]
-        public HttpResponseMessage DeleteCancerMarkersDetail(int id)
-        {
-            try
-            {
-                CancerMarkersDetailService.Delete(id);
-                return Request.CreateResponse(HttpStatusCode.OK, "Successfully deleted.");
-            }
-            catch (Exception ex)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
-            }
-        }
-
-        [EnableCors("*", "*", "put")]
-        [HttpPut]
-        [Route("cancermarkers/update")]
-        public HttpResponseMessage UpdateCancerMarkersDetail(CancerMarkersDetailDTO cancerMarkersDetail)
-        {
-            try
-            {
-                CancerMarkersDetailService.Update(cancerMarkersDetail);
-                return Request.CreateResponse(HttpStatusCode.OK, "Successfully updated.");
             }
             catch (Exception ex)
             {
@@ -80,13 +47,29 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "post")]
         [HttpPost]
-        [Route("cancermarkers/create")]
-        public HttpResponseMessage CreateCancerMarkersDetail(CancerMarkersDetailDTO cancerMarkersDetail)
+        [Route("kidneyfunction")]
+        public HttpResponseMessage AddKidneyFunctionDetail()
         {
             try
             {
-                CancerMarkersDetailService.Create(cancerMarkersDetail);
-                return Request.CreateResponse(HttpStatusCode.OK, "Successfully created.");
+                // implement add logic here
+                return Request.CreateResponse(HttpStatusCode.OK, "Added successfully");
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+        [EnableCors("*", "*", "put")]
+        [HttpPut]
+        [Route("kidneyfunction/update")]
+        public HttpResponseMessage UpdateKidneyFunctionDetail(KidneyFunctionDetailDTO kidneyFunctionDetail)
+        {
+            try
+            {
+                KidneyFunctionDetailService.Update(kidneyFunctionDetail);
+                return Request.CreateResponse(HttpStatusCode.OK, "Updated successfully");
             }
             catch (Exception ex)
             {
@@ -95,6 +78,20 @@ namespace DocPortal.Controllers.HealthDetail
         }
 
 
-
+        [EnableCors("*", "*", "delete")]
+        [HttpDelete]
+        [Route("kidneyfunction/{id}")]
+        public HttpResponseMessage DeleteKidneyFunctionDetail(int id)
+        {
+            try
+            {
+                KidneyFunctionDetailService.Delete(id);
+                return Request.CreateResponse(HttpStatusCode.OK, "Deleted successfully");
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
     }
 }

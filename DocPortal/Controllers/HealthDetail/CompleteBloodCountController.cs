@@ -76,5 +76,21 @@ namespace DocPortal.Controllers.HealthDetail
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
+
+        [EnableCors("*", "*", "post")]
+        [HttpPost]
+        [Route("completebloodcount/create")]
+        public HttpResponseMessage AddCompleteBloodCountDetail(CompleteBloodCountDetailDTO completeBloodCountDetail)
+        {
+            try
+            {
+                CompleteBloodCountDetailService.Create(completeBloodCountDetail);
+                return Request.CreateResponse(HttpStatusCode.OK, "Successfully added.");
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
     }
 }

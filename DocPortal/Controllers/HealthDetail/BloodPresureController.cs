@@ -47,7 +47,8 @@ namespace DocPortal.Controllers
         }
 
 
-        [EnableCors("*", "*", "post")]
+
+        [EnableCors("*", "*", "delete")]
         [HttpDelete]
         [Route("bloodpressure/{id}")]
         public HttpResponseMessage DeleteBloodPressureDetail(int id)
@@ -72,6 +73,22 @@ namespace DocPortal.Controllers
             try
             {
                 var result = BloodPressureDetailService.Update(bloodPressureDetail);
+                return Request.CreateResponse(HttpStatusCode.OK, true);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+        [EnableCors("*", "*", "post")]
+        [HttpPost]
+        [Route("bloodpressure/create")]
+        public HttpResponseMessage CreateBloodPressureDetail(BloodPressureDetailDTO bloodPressureDetail)
+        {
+            try
+            {
+                var result = BloodPressureDetailService.Create(bloodPressureDetail);
                 return Request.CreateResponse(HttpStatusCode.OK, true);
             }
             catch (Exception ex)

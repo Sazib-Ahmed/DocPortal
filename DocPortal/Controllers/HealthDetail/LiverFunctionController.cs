@@ -1,27 +1,26 @@
-﻿using System;
+﻿using BLL.DTOs.PatientHealthDetailDTO;
+using BLL.Services.PatientHealthDetailService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
-using BLL.DTOs.PatientHealthDetailDTO;
-using BLL.Services.PatientHealthDetailService;
 
 namespace DocPortal.Controllers.HealthDetail
 {
     [RoutePrefix("api/health/detail")]
-    public class CancerMarkersController : ApiController
+    public class LiverFunctionController : ApiController
     {
-
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("cancermarkers")]
-        public HttpResponseMessage GetAllCancerMarkersDetail()
+        [Route("liverfunction")]
+        public HttpResponseMessage GetAllLiverFunctionDetail()
         {
             try
             {
-                var data = CancerMarkersDetailService.GetAll();
+                var data = LiverFunctionDetailService.GetAll();
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }
             catch (Exception ex)
@@ -32,12 +31,12 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("cancermarkers/{id}")]
-        public HttpResponseMessage GetCancerMarkersDetailById(int id)
+        [Route("liverfunction/{id}")]
+        public HttpResponseMessage GetLiverFunctionDetailById(int id)
         {
             try
             {
-                var data = CancerMarkersDetailService.GetById(id);
+                var data = LiverFunctionDetailService.GetById(id);
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }
             catch (Exception ex)
@@ -45,32 +44,17 @@ namespace DocPortal.Controllers.HealthDetail
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
+
 
         [EnableCors("*", "*", "delete")]
         [HttpDelete]
-        [Route("cancermarkers/{id}")]
-        public HttpResponseMessage DeleteCancerMarkersDetail(int id)
+        [Route("liverfunction/{id}")]
+        public HttpResponseMessage DeleteLiverFunctionDetail(int id)
         {
             try
             {
-                CancerMarkersDetailService.Delete(id);
+                LiverFunctionDetailService.Delete(id);
                 return Request.CreateResponse(HttpStatusCode.OK, "Successfully deleted.");
-            }
-            catch (Exception ex)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
-            }
-        }
-
-        [EnableCors("*", "*", "put")]
-        [HttpPut]
-        [Route("cancermarkers/update")]
-        public HttpResponseMessage UpdateCancerMarkersDetail(CancerMarkersDetailDTO cancerMarkersDetail)
-        {
-            try
-            {
-                CancerMarkersDetailService.Update(cancerMarkersDetail);
-                return Request.CreateResponse(HttpStatusCode.OK, "Successfully updated.");
             }
             catch (Exception ex)
             {
@@ -80,12 +64,12 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "post")]
         [HttpPost]
-        [Route("cancermarkers/create")]
-        public HttpResponseMessage CreateCancerMarkersDetail(CancerMarkersDetailDTO cancerMarkersDetail)
+        [Route("liverfunction/create")]
+        public HttpResponseMessage CreateLiverFunctionDetail(LiverFunctionDetailDTO liverFunctionDetail)
         {
             try
             {
-                CancerMarkersDetailService.Create(cancerMarkersDetail);
+                LiverFunctionDetailService.Create(liverFunctionDetail);
                 return Request.CreateResponse(HttpStatusCode.OK, "Successfully created.");
             }
             catch (Exception ex)
@@ -94,7 +78,20 @@ namespace DocPortal.Controllers.HealthDetail
             }
         }
 
-
-
+        [EnableCors("*", "*", "put")]
+        [HttpPut]
+        [Route("liverfunction/update")]
+        public HttpResponseMessage UpdateLiverFunctionDetail(LiverFunctionDetailDTO liverFunctionDetail)
+        {
+            try
+            {
+                LiverFunctionDetailService.Update(liverFunctionDetail);
+                return Request.CreateResponse(HttpStatusCode.OK, "Successfully updated.");
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
     }
 }

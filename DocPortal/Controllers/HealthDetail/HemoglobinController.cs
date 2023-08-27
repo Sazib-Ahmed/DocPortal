@@ -78,6 +78,22 @@ namespace DocPortal.Controllers.HealthDetail
             }
         }
 
+        [EnableCors("*", "*", "post")]
+        [HttpPost]
+        [Route("hemoglobin/create")]
+        public HttpResponseMessage CreateHemoglobinDetail(HemoglobinDetailDTO hemoglobinDetail)
+        {
+            try
+            {
+                HemoglobinDetailService.Create(hemoglobinDetail);
+                return Request.CreateResponse(HttpStatusCode.OK, "Successfully created.");
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
 
     }
 }

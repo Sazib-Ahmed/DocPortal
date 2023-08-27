@@ -168,6 +168,11 @@
     <Compile Include="Controllers\HealthDetail\ECGController.cs" />
     <Compile Include="Controllers\HealthDetail\GlucoseLevelController.cs" />
     <Compile Include="Controllers\HealthDetail\HemoglobinController.cs" />
+    <Compile Include="Controllers\HealthDetail\ImmunizationHistoryController.cs" />
+    <Compile Include="Controllers\HealthDetail\KidneyFunctionController.cs" />
+    <Compile Include="Controllers\HealthDetail\LiverFunctionController.cs" />
+    <Compile Include="Controllers\HealthDetail\MRIController.cs" />
+    <Compile Include="Controllers\HealthDetail\OtherTestController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
     <Compile Include="Controllers\HealthController.cs" />
     <Compile Include="Controllers\PrescriptionController.cs" />

@@ -78,5 +78,21 @@ namespace DocPortal.Controllers.HealthDetail
             }
         }
 
+        [EnableCors("*", "*", "post")]
+        [HttpPost]
+        [Route("glucoselevel/create")]
+        public HttpResponseMessage CreateGlucoseLevelDetail(GlucoseLevelDetailDTO glucoseLevelDetail)
+        {
+            try
+            {
+                GlucoseLevelDetailService.Create(glucoseLevelDetail);
+                return Request.CreateResponse(HttpStatusCode.OK, "Successfully created.");
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
     }
 }

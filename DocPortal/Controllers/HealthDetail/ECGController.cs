@@ -78,6 +78,22 @@ namespace DocPortal.Controllers.HealthDetail
             }
         }
 
+        [EnableCors("*", "*", "post")]
+        [HttpPost]
+        [Route("ecg/create")]
+        public HttpResponseMessage PostECGDetail(ECGDetailDTO ecgDetail)
+        {
+            try
+            {
+                ECGDetailService.Create(ecgDetail);
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
 
     }
 }
