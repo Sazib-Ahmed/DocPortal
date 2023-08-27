@@ -9,12 +9,57 @@ using System.Web.Http;
 using BLL.DTOs;
 using System.Net.Http.Headers;
 using System.Web.Http.Cors;
+using DocPortal.AuthFilters;
+using DocPortal.Models;
 
 namespace DocPortal.Controllers
+
+
+
+
 {
+    [RoutePrefix("api/patient")]
+
     public class PatientController: ApiController
     {
+        [EnableCors("*", "*", "post")]
+        [HttpPost]
+        [Route("login")]
+        public HttpResponseMessage Login(LoginModel data)
+        {
+            try
+            {
+                var token = PatientAuthService.PatientLogin(data.Email, data.Password);
+                if (token != null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, token);
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.Unauthorized, new { Msg = "Invalid Credentials" });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
 
+        [HttpGet]
+        [Route("logout/{id}")]
+        [PatientLogged]
+        public HttpResponseMessage Logout(int id)
+        {
+            try
+            {
+                PatientLogged.InvalidateToken(id);
+                return Request.CreateResponse(HttpStatusCode.OK, new { Msg = "Logged out successfully" });
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
 
         [HttpGet]
         [Route("api/patient/all")]
