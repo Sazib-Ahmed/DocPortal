@@ -154,37 +154,7 @@ namespace DocPortal.Controllers
 
 
 
-        [HttpGet]
-        [Route("detail/PatientId/{patientId}/bloodpressure")]
-        public HttpResponseMessage GetBloodPressureDetailByPatientId(int patientId)
-        {
-            try
-            {
-                var data = PatientHealthService.GetBloodPressureDetailByPatientId(patientId);
-                return Request.CreateResponse(HttpStatusCode.OK, data);
-            }
-            catch (Exception ex)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
-            }
-        }
-
-
-        [HttpGet]
-        [Route("detail/HealthId/{patientHealthId}/bloodpressure")]
-        public HttpResponseMessage GetBloodPressureDetailByPatientHealthId(int patientHealthId)
-        {
-            try
-            {
-                var data = PatientHealthService.GetBloodPressureDetailByPatientHealthId(patientHealthId);
-                return Request.CreateResponse(HttpStatusCode.OK, data);
-            }
-            catch (Exception ex)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
-            }
-        }
-
+        
 
         
 

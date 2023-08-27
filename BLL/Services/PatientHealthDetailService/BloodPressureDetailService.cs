@@ -48,5 +48,48 @@ namespace BLL.Services.PatientHealthDetailService
             return mapper.Map<BloodPressureDetailDTO>(data);
         }
 
+        // for blood pressure detail
+
+        public static BloodPressureDetailDTO GetBloodPressureDetailByPatientHealthId(int patientHealthId)
+        {
+
+            var bloodPressureDetailData = BloodPressureDetailService.GetAll();
+
+            var data = (from bp in bloodPressureDetailData
+                        where bp.PatientHealthId == patientHealthId
+                        select bp).ToList();
+
+            if (data != null)
+            {
+                var mapper = MapperService<BloodPressureDetail, BloodPressureDetailDTO>.GetMapper();
+                return mapper.Map<BloodPressureDetailDTO>(data);
+            }
+            else
+            {
+                throw new Exception("Patient health record not found.");
+            }
+        }
+
+
+
+        public static PatientHealthPatientHealthDetailDTO GetBloodPressureDetailByPatientId(int patientId)
+        {
+            var data = (from h in DataAccessFactory.PatientHealthData().Get()
+                        where h.PatientId == patientId
+                        select h).ToList();
+
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<PatientHealth, PatientHealthPatientHealthDetailDTO>();
+                cfg.CreateMap<BloodPressureDetail, BloodPressureDetailDTO>();
+
+            });
+
+            var map = new Mapper(config);
+            var result = map.Map<PatientHealthPatientHealthDetailDTO>(data);
+
+            return result;
+        }
+
     }
 }

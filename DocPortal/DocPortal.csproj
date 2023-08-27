@@ -160,6 +160,14 @@
     <Compile Include="Controllers\AssistantController.cs" />
     <Compile Include="Controllers\DoctorAuthController.cs" />
     <Compile Include="Controllers\DoctorController.cs" />
+    <Compile Include="Controllers\HealthDetail\BloodPresureController.cs" />
+    <Compile Include="Controllers\HealthDetail\CancerMarkersController.cs" />
+    <Compile Include="Controllers\HealthDetail\CholesterolLevelController.cs" />
+    <Compile Include="Controllers\HealthDetail\CompleteBloodCountController.cs" />
+    <Compile Include="Controllers\HealthDetail\CTScanController.cs" />
+    <Compile Include="Controllers\HealthDetail\ECGController.cs" />
+    <Compile Include="Controllers\HealthDetail\GlucoseLevelController.cs" />
+    <Compile Include="Controllers\HealthDetail\HemoglobinController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
     <Compile Include="Controllers\HealthController.cs" />
     <Compile Include="Controllers\PrescriptionController.cs" />
