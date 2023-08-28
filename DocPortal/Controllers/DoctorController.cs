@@ -132,8 +132,9 @@ namespace DocPortal.Controllers
         //}
 
 
-
+        [EnableCors("*", "*", "put")]
         [HttpPut]
+        [DoctorLogged]
         [Route("update")]
         public HttpResponseMessage Update(DoctorDTO obj)
         {
@@ -147,7 +148,10 @@ namespace DocPortal.Controllers
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Msg = ex.Message });
             }
         }
+
+        [EnableCors("*", "*", "delete")]
         [HttpDelete]
+        [DoctorLogged]
         [Route("delete/{id}")]
         public HttpResponseMessage Delete(int id)
         {
@@ -162,7 +166,7 @@ namespace DocPortal.Controllers
             }
         }
 
-
+        [EnableCors("*", "*", "get")]
         [HttpGet]
         [Route("name/{name}")]
         public HttpResponseMessage GetByName(string name)

@@ -31,7 +31,7 @@ namespace DocPortal.Controllers
             }
 
             [HttpGet]
-            [Route("api/appointment/id/{id}")]
+            [Route("api/appointment/{id}")]
             public HttpResponseMessage GetById(int id)
             {
                 try
@@ -108,5 +108,22 @@ namespace DocPortal.Controllers
                     return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
                 }
             }
+
+        [HttpGet]
+        [Route("api/appointment/patient/{patientId}")]
+        public HttpResponseMessage GetByPatient(int patientId)
+        {
+            try
+            {
+                var data = AppointmentService.GetByPatient(patientId);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+
         }
     }

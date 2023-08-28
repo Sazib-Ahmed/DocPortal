@@ -158,7 +158,6 @@
     <Compile Include="AuthFilters\PatientLogged.cs" />
     <Compile Include="Controllers\AppointmentController.cs" />
     <Compile Include="Controllers\AssistantController.cs" />
-    <Compile Include="Controllers\DoctorAuthController.cs" />
     <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\HealthDetail\BloodPresureController.cs" />
     <Compile Include="Controllers\HealthDetail\CancerMarkersController.cs" />

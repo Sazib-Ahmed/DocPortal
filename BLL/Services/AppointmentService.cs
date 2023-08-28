@@ -76,5 +76,20 @@ namespace BLL.Services
             var conv = mapper.Map<List<AppointmentDTO>>(data);
             return conv;
         }
+
+        public static List<AppointmentDTO> GetByPatient(int patientId)
+        {
+            var data = (from a in DataAccessFactory.AppointmentData().Get()
+                        where a.PatientId == patientId
+                        select a).ToList();
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<Appointment, AppointmentDTO>();
+            });
+
+            var mapper = new Mapper(config);
+            var conv = mapper.Map<List<AppointmentDTO>>(data);
+            return conv;
+        }
     }
 }
