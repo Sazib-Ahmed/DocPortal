@@ -22,7 +22,7 @@ namespace DocPortal.Controllers
             try
             {
                 var data = BloodPressureDetailService.GetAll();
-                return Request.CreateResponse(HttpStatusCode.OK, data);
+                return Request.CreateResponse(HttpStatusCode.OK, "Successfully retrieved all blood pressure details.");
             }
             catch (Exception ex)
             {
@@ -38,15 +38,13 @@ namespace DocPortal.Controllers
             try
             {
                 var data = BloodPressureDetailService.GetById(id);
-                return Request.CreateResponse(HttpStatusCode.OK, data);
+                return Request.CreateResponse(HttpStatusCode.OK, "Successfully retrieved blood pressure detail with id " + id + ".");
             }
             catch (Exception ex)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
-
-
 
         [EnableCors("*", "*", "delete")]
         [HttpDelete]
@@ -56,14 +54,13 @@ namespace DocPortal.Controllers
             try
             {
                 BloodPressureDetailService.Delete(id);
-                return Request.CreateResponse(HttpStatusCode.OK, "Successfully deleted.");
+                return Request.CreateResponse(HttpStatusCode.OK, "Successfully deleted blood pressure detail with id " + id + ".");
             }
             catch (Exception ex)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
-
 
         [EnableCors("*", "*", "put")]
         [HttpPut]
@@ -73,7 +70,7 @@ namespace DocPortal.Controllers
             try
             {
                 var result = BloodPressureDetailService.Update(bloodPressureDetail);
-                return Request.CreateResponse(HttpStatusCode.OK, true);
+                return Request.CreateResponse(HttpStatusCode.OK, "Successfully updated blood pressure detail.");
             }
             catch (Exception ex)
             {
@@ -89,14 +86,12 @@ namespace DocPortal.Controllers
             try
             {
                 var result = BloodPressureDetailService.Create(bloodPressureDetail);
-                return Request.CreateResponse(HttpStatusCode.OK, true);
+                return Request.CreateResponse(HttpStatusCode.OK, "Successfully created a new blood pressure detail.");
             }
             catch (Exception ex)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
-
-
     }
 }

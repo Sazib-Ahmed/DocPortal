@@ -173,6 +173,11 @@
     <Compile Include="Controllers\HealthDetail\LiverFunctionController.cs" />
     <Compile Include="Controllers\HealthDetail\MRIController.cs" />
     <Compile Include="Controllers\HealthDetail\OtherTestController.cs" />
+    <Compile Include="Controllers\HealthDetail\PulmonaryFunctionController.cs" />
+    <Compile Include="Controllers\HealthDetail\ThyroidController.cs" />
+    <Compile Include="Controllers\HealthDetail\UrineAnalysisController.cs" />
+    <Compile Include="Controllers\HealthDetail\VitaminLevelsController.cs" />
+    <Compile Include="Controllers\HealthDetail\XrayController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
     <Compile Include="Controllers\HealthController.cs" />
     <Compile Include="Controllers\PrescriptionController.cs" />

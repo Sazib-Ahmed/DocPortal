@@ -11,16 +11,16 @@ using System.Web.Http.Cors;
 namespace DocPortal.Controllers.HealthDetail
 {
     [RoutePrefix("api/health/detail")]
-    public class OtherTestController : ApiController
+    public class PulmonaryFunctionController : ApiController
     {
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("othertest")]
-        public HttpResponseMessage GetAllOtherTestDetail()
+        [Route("pulmonaryfunction")]
+        public HttpResponseMessage GetAllPulmonaryFunctionDetail()
         {
             try
             {
-                var data = OtherTestDetailService.GetAll();
+                var data = PulmonaryFunctionDetailService.GetAll();
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }
             catch (Exception ex)
@@ -31,12 +31,12 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("othertest/{id}")]
-        public HttpResponseMessage GetOtherTestDetailById(int id)
+        [Route("pulmonaryfunction/{id}")]
+        public HttpResponseMessage GetPulmonaryFunctionDetailById(int id)
         {
             try
             {
-                var data = OtherTestDetailService.GetById(id);
+                var data = PulmonaryFunctionDetailService.GetById(id);
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }
             catch (Exception ex)
@@ -48,12 +48,12 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "Post")]
         [HttpPost]
-        [Route("othertest/create")]
-        public HttpResponseMessage CreateOtherTestDetail(OtherTestDetailDTO obj)
+        [Route("pulmonaryfunction/create")]
+        public HttpResponseMessage CreatePulmonaryFunctionDetail(PulmonaryFunctionDetailDTO obj)
         {
             try
             {
-                OtherTestDetailService.Create(obj);
+                PulmonaryFunctionDetailService.Create(obj);
                 return Request.CreateResponse(HttpStatusCode.Created);
             }
             catch (Exception ex)
@@ -62,14 +62,15 @@ namespace DocPortal.Controllers.HealthDetail
             }
         }
 
+
         [EnableCors("*", "*", "Put")]
         [HttpPut]
-        [Route("othertest/update")]
-        public HttpResponseMessage UpdateOtherTestDetail(OtherTestDetailDTO obj)
+        [Route("pulmonaryfunction/update")]
+        public HttpResponseMessage UpdatePulmonaryFunctionDetail(PulmonaryFunctionDetailDTO obj)
         {
             try
             {
-                OtherTestDetailService.Update(obj);
+                PulmonaryFunctionDetailService.Update(obj);
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception ex)
@@ -78,14 +79,15 @@ namespace DocPortal.Controllers.HealthDetail
             }
         }
 
+
         [EnableCors("*", "*", "Delete")]
         [HttpDelete]
-        [Route("othertest/{id}")]
-        public HttpResponseMessage DeleteOtherTestDetail(int id)
+        [Route("pulmonaryfunction/delete")]
+        public HttpResponseMessage DeletePulmonaryFunctionDetail(int id)
         {
             try
             {
-                OtherTestDetailService.Delete(id);
+                PulmonaryFunctionDetailService.Delete(id);
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception ex)
@@ -93,5 +95,6 @@ namespace DocPortal.Controllers.HealthDetail
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
+
     }
 }

@@ -6,21 +6,19 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using System.Web.Http.Cors;
 
 namespace DocPortal.Controllers.HealthDetail
 {
     [RoutePrefix("api/health/detail")]
-    public class OtherTestController : ApiController
+    public class ThyroidController : ApiController
     {
-        [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("othertest")]
-        public HttpResponseMessage GetAllOtherTestDetail()
+        [Route("thyroid")]
+        public HttpResponseMessage GetAllThyroidDetail()
         {
             try
             {
-                var data = OtherTestDetailService.GetAll();
+                var data = ThyroidDetailService.GetAll();
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }
             catch (Exception ex)
@@ -29,14 +27,13 @@ namespace DocPortal.Controllers.HealthDetail
             }
         }
 
-        [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("othertest/{id}")]
-        public HttpResponseMessage GetOtherTestDetailById(int id)
+        [Route("thyroid/{id}")]
+        public HttpResponseMessage GetThyroidDetailById(int id)
         {
             try
             {
-                var data = OtherTestDetailService.GetById(id);
+                var data = ThyroidDetailService.GetById(id);
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }
             catch (Exception ex)
@@ -45,31 +42,13 @@ namespace DocPortal.Controllers.HealthDetail
             }
         }
 
-
-        [EnableCors("*", "*", "Post")]
-        [HttpPost]
-        [Route("othertest/create")]
-        public HttpResponseMessage CreateOtherTestDetail(OtherTestDetailDTO obj)
-        {
-            try
-            {
-                OtherTestDetailService.Create(obj);
-                return Request.CreateResponse(HttpStatusCode.Created);
-            }
-            catch (Exception ex)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
-            }
-        }
-
-        [EnableCors("*", "*", "Put")]
         [HttpPut]
-        [Route("othertest/update")]
-        public HttpResponseMessage UpdateOtherTestDetail(OtherTestDetailDTO obj)
+        [Route("thyroid/update")]
+        public HttpResponseMessage UpdateThyroidDetail(ThyroidDetailDTO obj)
         {
             try
             {
-                OtherTestDetailService.Update(obj);
+                ThyroidDetailService.Update(obj);
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception ex)
@@ -78,15 +57,29 @@ namespace DocPortal.Controllers.HealthDetail
             }
         }
 
-        [EnableCors("*", "*", "Delete")]
         [HttpDelete]
-        [Route("othertest/{id}")]
-        public HttpResponseMessage DeleteOtherTestDetail(int id)
+        [Route("thyroid/delete/{id}")]
+        public HttpResponseMessage DeleteThyroidDetail(int id)
         {
             try
             {
-                OtherTestDetailService.Delete(id);
+                ThyroidDetailService.Delete(id);
                 return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpPost]
+        [Route("thyroid/create")]
+        public HttpResponseMessage CreateThyroidDetail(ThyroidDetailDTO obj)
+        {
+            try
+            {
+                ThyroidDetailService.Create(obj);
+                return Request.CreateResponse(HttpStatusCode.Created);
             }
             catch (Exception ex)
             {

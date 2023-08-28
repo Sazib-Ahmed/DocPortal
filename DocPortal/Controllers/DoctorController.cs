@@ -114,6 +114,25 @@ namespace DocPortal.Controllers
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Msg = ex.Message });
             }
         }
+
+
+        //[HttpPost]
+        //[Route("create")]
+        //public HttpResponseMessage Create(DoctorDTO obj)
+        //{
+        //    try
+        //    {
+        //        var data = DoctorService.Create(obj);
+        //        return Request.CreateResponse(HttpStatusCode.OK, data);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Msg = ex.Message });
+        //    }
+        //}
+
+
+
         [HttpPut]
         [Route("update")]
         public HttpResponseMessage Update(DoctorDTO obj)

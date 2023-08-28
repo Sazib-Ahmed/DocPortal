@@ -11,16 +11,16 @@ using System.Web.Http.Cors;
 namespace DocPortal.Controllers.HealthDetail
 {
     [RoutePrefix("api/health/detail")]
-    public class OtherTestController : ApiController
+    public class XrayController : ApiController
     {
-        [EnableCors("*", "*", "get")]
+        [EnableCors("*","*","get")]
         [HttpGet]
-        [Route("othertest")]
-        public HttpResponseMessage GetAllOtherTestDetail()
+        [Route("xray")]
+        public HttpResponseMessage GetAllXrayDetail()
         {
             try
             {
-                var data = OtherTestDetailService.GetAll();
+                var data = XrayDetailService.GetAll();
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }
             catch (Exception ex)
@@ -31,12 +31,12 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("othertest/{id}")]
-        public HttpResponseMessage GetOtherTestDetailById(int id)
+        [Route("xray/{id}")]
+        public HttpResponseMessage GetXrayDetailById(int id)
         {
             try
             {
-                var data = OtherTestDetailService.GetById(id);
+                var data = XrayDetailService.GetById(id);
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }
             catch (Exception ex)
@@ -44,16 +44,15 @@ namespace DocPortal.Controllers.HealthDetail
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
-
 
         [EnableCors("*", "*", "Post")]
         [HttpPost]
-        [Route("othertest/create")]
-        public HttpResponseMessage CreateOtherTestDetail(OtherTestDetailDTO obj)
+        [Route("xray/create")]
+        public HttpResponseMessage CreateXrayDetail(XrayDetailDTO obj)
         {
             try
             {
-                OtherTestDetailService.Create(obj);
+                XrayDetailService.Create(obj);
                 return Request.CreateResponse(HttpStatusCode.Created);
             }
             catch (Exception ex)
@@ -64,12 +63,12 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "Put")]
         [HttpPut]
-        [Route("othertest/update")]
-        public HttpResponseMessage UpdateOtherTestDetail(OtherTestDetailDTO obj)
+        [Route("xray/update")]
+        public HttpResponseMessage UpdateXrayDetail(XrayDetailDTO obj)
         {
             try
             {
-                OtherTestDetailService.Update(obj);
+                XrayDetailService.Update(obj);
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception ex)
@@ -80,12 +79,12 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "Delete")]
         [HttpDelete]
-        [Route("othertest/{id}")]
-        public HttpResponseMessage DeleteOtherTestDetail(int id)
+        [Route("xray/delete/{id}")]
+        public HttpResponseMessage DeleteXrayDetail(int id)
         {
             try
             {
-                OtherTestDetailService.Delete(id);
+                XrayDetailService.Delete(id);
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception ex)
@@ -93,5 +92,7 @@ namespace DocPortal.Controllers.HealthDetail
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
+
+
     }
 }

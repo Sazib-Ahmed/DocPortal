@@ -11,16 +11,16 @@ using System.Web.Http.Cors;
 namespace DocPortal.Controllers.HealthDetail
 {
     [RoutePrefix("api/health/detail")]
-    public class OtherTestController : ApiController
+    public class VitaminLevelsController : ApiController
     {
-        [EnableCors("*", "*", "get")]
+        [EnableCors("*","*","get")]
         [HttpGet]
-        [Route("othertest")]
-        public HttpResponseMessage GetAllOtherTestDetail()
+        [Route("vitaminlevels")]
+        public HttpResponseMessage GetAllVitaminLevelsDetail()
         {
             try
             {
-                var data = OtherTestDetailService.GetAll();
+                var data = VitaminLevelsDetailService.GetAll();
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }
             catch (Exception ex)
@@ -31,12 +31,12 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("othertest/{id}")]
-        public HttpResponseMessage GetOtherTestDetailById(int id)
+        [Route("vitaminlevels/{id}")]
+        public HttpResponseMessage GetVitaminLevelsDetailById(int id)
         {
             try
             {
-                var data = OtherTestDetailService.GetById(id);
+                var data = VitaminLevelsDetailService.GetById(id);
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }
             catch (Exception ex)
@@ -44,16 +44,15 @@ namespace DocPortal.Controllers.HealthDetail
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
-
 
         [EnableCors("*", "*", "Post")]
         [HttpPost]
-        [Route("othertest/create")]
-        public HttpResponseMessage CreateOtherTestDetail(OtherTestDetailDTO obj)
+        [Route("vitaminlevels/create")]
+        public HttpResponseMessage CreateVitaminLevelsDetail(VitaminLevelsDetailDTO obj)
         {
             try
             {
-                OtherTestDetailService.Create(obj);
+                VitaminLevelsDetailService.Create(obj);
                 return Request.CreateResponse(HttpStatusCode.Created);
             }
             catch (Exception ex)
@@ -62,14 +61,14 @@ namespace DocPortal.Controllers.HealthDetail
             }
         }
 
-        [EnableCors("*", "*", "Put")]
+        [EnableCors("*", "*", "put")]
         [HttpPut]
-        [Route("othertest/update")]
-        public HttpResponseMessage UpdateOtherTestDetail(OtherTestDetailDTO obj)
+        [Route("vitaminlevels/update")]
+        public HttpResponseMessage UpdateVitaminLevelsDetail(VitaminLevelsDetailDTO obj)
         {
             try
             {
-                OtherTestDetailService.Update(obj);
+                VitaminLevelsDetailService.Update(obj);
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception ex)
@@ -78,14 +77,14 @@ namespace DocPortal.Controllers.HealthDetail
             }
         }
 
-        [EnableCors("*", "*", "Delete")]
+        [EnableCors("*", "*", "delete")]
         [HttpDelete]
-        [Route("othertest/{id}")]
-        public HttpResponseMessage DeleteOtherTestDetail(int id)
+        [Route("vitaminlevels/delete/{id}")]
+        public HttpResponseMessage DeleteVitaminLevelsDetail(int id)
         {
             try
             {
-                OtherTestDetailService.Delete(id);
+                VitaminLevelsDetailService.Delete(id);
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception ex)
