@@ -77,6 +77,8 @@
     <Compile Include="DTOs\PrescriptionDetailDTO.cs" />
     <Compile Include="DTOs\PrescriptionDTO.cs" />
     <Compile Include="DTOs\PrescriptionPrescriptionDetailDTO.cs" />
+    <Compile Include="DTOs\RequestScheduleDTO.cs" />
+    <Compile Include="DTOs\ViewAppointmentRequestDTO.cs" />
     <Compile Include="Interfaces\IHealthDetail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Secrets\Cryptography.cs" />
@@ -107,6 +109,8 @@
     <Compile Include="Services\PatientHealthService.cs" />
     <Compile Include="Services\PatientService.cs" />
     <Compile Include="Services\PrescriptionService.cs" />
+    <Compile Include="Services\RequestScheduleService.cs" />
+    <Compile Include="Services\ViewAppointmentRequestService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
