@@ -11,18 +11,18 @@ using System.Web.Http.Cors;
 
 namespace DocPortal.Controllers
 {
-    [RoutePrefix("api/health/detail")]
+    [RoutePrefix("api/patient/bloodpressure")]
     public class BloodPresureController : ApiController
     {
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("bloodpressure")]
+        [Route("all")]
         public HttpResponseMessage GetAllBloodPressureDetail()
         {
             try
             {
                 var data = BloodPressureDetailService.GetAll();
-                return Request.CreateResponse(HttpStatusCode.OK, "Successfully retrieved all blood pressure details.");
+                return Request.CreateResponse(HttpStatusCode.OK,data);
             }
             catch (Exception ex)
             {
@@ -32,13 +32,13 @@ namespace DocPortal.Controllers
 
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("bloodpressure/{id}")]
+        [Route("{id}")]
         public HttpResponseMessage GetBloodPressureDetailById(int id)
         {
             try
             {
                 var data = BloodPressureDetailService.GetById(id);
-                return Request.CreateResponse(HttpStatusCode.OK, "Successfully retrieved blood pressure detail with id " + id + ".");
+                return Request.CreateResponse(HttpStatusCode.OK, data);
             }
             catch (Exception ex)
             {
@@ -48,7 +48,7 @@ namespace DocPortal.Controllers
 
         [EnableCors("*", "*", "delete")]
         [HttpDelete]
-        [Route("bloodpressure/{id}")]
+        [Route("{id}")]
         public HttpResponseMessage DeleteBloodPressureDetail(int id)
         {
             try
@@ -64,13 +64,13 @@ namespace DocPortal.Controllers
 
         [EnableCors("*", "*", "put")]
         [HttpPut]
-        [Route("bloodpressure/update")]
+        [Route("update")]
         public HttpResponseMessage UpdateBloodPressureDetail(BloodPressureDetailDTO bloodPressureDetail)
         {
             try
             {
                 var result = BloodPressureDetailService.Update(bloodPressureDetail);
-                return Request.CreateResponse(HttpStatusCode.OK, "Successfully updated blood pressure detail.");
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
             {
@@ -80,18 +80,58 @@ namespace DocPortal.Controllers
 
         [EnableCors("*", "*", "post")]
         [HttpPost]
-        [Route("bloodpressure/create")]
+        [Route("create")]
         public HttpResponseMessage CreateBloodPressureDetail(BloodPressureDetailDTO bloodPressureDetail)
         {
             try
             {
                 var result = BloodPressureDetailService.Create(bloodPressureDetail);
-                return Request.CreateResponse(HttpStatusCode.OK, "Successfully created a new blood pressure detail.");
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
+
+
+        [EnableCors("*", "*", "get")]
+        [HttpGet]
+        [Route("bloodpressure/patient/{id}")]
+        public HttpResponseMessage GetBloodPressureDetailByPatientId(int id)
+        {
+            try
+            {
+                var data = BloodPressureDetailService.GetBloodPressureDetailByPatientId(id);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+
+        //[EnableCors("*", "*", "get")]
+        //[HttpGet]
+        //[Route("bloodpressure/patient/{id}/last")]
+        //public HttpResponseMessage GetLastBloodPressureDetailByPatientId(int id)
+        //{
+        //    try
+        //    {
+        //        var data = BloodPressureDetailService.GetLastBloodPressureDetailByPatientId(id);
+        //        return Request.CreateResponse(HttpStatusCode.OK, data);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+        //    }   
+        //}
+
+
+        //[EnableCors("*", "*", "get")]
+        //[HttpGet]
+        //[Route("bloodpressure/patient/{id}/detail")]
+
     }
 }

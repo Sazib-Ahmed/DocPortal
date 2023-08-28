@@ -9,7 +9,7 @@ namespace BLL.DTOs.PatientHealthDetailDTO
     public class CompleteBloodCountDetailDTO
     {
         public int CompleteBloodCountDetailId { get; set; }
-        public int PatientHealthId { get; set; }
+        public int PatientId { get; set; }
         public DateTime? RecordedAt { get; set; }
         public double? Hemoglobin { get; set; }
         public double? Hematocrit { get; set; }

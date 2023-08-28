@@ -9,7 +9,7 @@ namespace BLL.DTOs.PatientHealthDetailDTO
     public class ThyroidDetailDTO
     {
         public int ThyroidDetailId { get; set; }
-        public int PatientHealthId { get; set; }
+        public int PatientId { get; set; }
 
         public DateTime? RecordedAt { get; set; } // Date and time when the thyroid test was recorded
 

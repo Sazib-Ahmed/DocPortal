@@ -10,12 +10,12 @@ using System.Web.Http.Cors;
 
 namespace DocPortal.Controllers.HealthDetail
 {
-    [RoutePrefix("api/health/detail")]
+    [RoutePrefix("api/patient/kidneyfunction")]
     public class KidneyFunctionController : ApiController
     {
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("kidneyfunction")]
+        [Route("all")]
         public HttpResponseMessage GetAllKidneyFunctionDetail()
         {
             try
@@ -31,7 +31,7 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("kidneyfunction/{id}")]
+        [Route("{id}")]
         public HttpResponseMessage GetKidneyFunctionDetailById(int id)
         {
             try
@@ -47,13 +47,13 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "post")]
         [HttpPost]
-        [Route("kidneyfunction")]
-        public HttpResponseMessage AddKidneyFunctionDetail()
+        [Route("create")]
+        public HttpResponseMessage AddKidneyFunctionDetail(KidneyFunctionDetailDTO kidneyFunctionDetail)
         {
             try
             {
-                // implement add logic here
-                return Request.CreateResponse(HttpStatusCode.OK, "Added successfully");
+                var result = KidneyFunctionDetailService.Create(kidneyFunctionDetail);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
             {
@@ -63,13 +63,13 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "put")]
         [HttpPut]
-        [Route("kidneyfunction/update")]
+        [Route("update")]
         public HttpResponseMessage UpdateKidneyFunctionDetail(KidneyFunctionDetailDTO kidneyFunctionDetail)
         {
             try
             {
-                KidneyFunctionDetailService.Update(kidneyFunctionDetail);
-                return Request.CreateResponse(HttpStatusCode.OK, "Updated successfully");
+                var result = KidneyFunctionDetailService.Update(kidneyFunctionDetail);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
             {
@@ -80,7 +80,7 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "delete")]
         [HttpDelete]
-        [Route("kidneyfunction/{id}")]
+        [Route("{id}")]
         public HttpResponseMessage DeleteKidneyFunctionDetail(int id)
         {
             try

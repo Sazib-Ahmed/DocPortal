@@ -10,12 +10,12 @@ using System.Web.Http.Cors;
 
 namespace DocPortal.Controllers.HealthDetail
 {
-    [RoutePrefix("api/health/detail")]
+    [RoutePrefix("api/patient/vitaminlevels")]
     public class VitaminLevelsController : ApiController
     {
         [EnableCors("*","*","get")]
         [HttpGet]
-        [Route("vitaminlevels")]
+        [Route("all")]
         public HttpResponseMessage GetAllVitaminLevelsDetail()
         {
             try
@@ -31,7 +31,7 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("vitaminlevels/{id}")]
+        [Route("{id}")]
         public HttpResponseMessage GetVitaminLevelsDetailById(int id)
         {
             try
@@ -47,13 +47,13 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "Post")]
         [HttpPost]
-        [Route("vitaminlevels/create")]
+        [Route("create")]
         public HttpResponseMessage CreateVitaminLevelsDetail(VitaminLevelsDetailDTO obj)
         {
             try
             {
-                VitaminLevelsDetailService.Create(obj);
-                return Request.CreateResponse(HttpStatusCode.Created);
+                var result = VitaminLevelsDetailService.Create(obj);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
             {
@@ -63,13 +63,13 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "put")]
         [HttpPut]
-        [Route("vitaminlevels/update")]
+        [Route("update")]
         public HttpResponseMessage UpdateVitaminLevelsDetail(VitaminLevelsDetailDTO obj)
         {
             try
             {
-                VitaminLevelsDetailService.Update(obj);
-                return Request.CreateResponse(HttpStatusCode.OK);
+                var result = VitaminLevelsDetailService.Update(obj);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
             {
@@ -79,13 +79,13 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "delete")]
         [HttpDelete]
-        [Route("vitaminlevels/delete/{id}")]
+        [Route("{id}")]
         public HttpResponseMessage DeleteVitaminLevelsDetail(int id)
         {
             try
             {
                 VitaminLevelsDetailService.Delete(id);
-                return Request.CreateResponse(HttpStatusCode.OK);
+                return Request.CreateResponse(HttpStatusCode.OK, "Vitamin Levels details deleted successfully.");
             }
             catch (Exception ex)
             {

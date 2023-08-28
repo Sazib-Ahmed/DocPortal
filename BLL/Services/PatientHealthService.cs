@@ -135,24 +135,6 @@ namespace BLL.Services
         //}
 
 
-        public static PatientHealthPatientHealthDetailDTO GetPatientHealthDetailByPatientHealthId(int patientHealthId)
-        {
-            var data = DataAccessFactory.PatientHealthData().Get(patientHealthId);
-
-            // custom mapper for patient health detail
-            var map = PatientHealthDetailMapperService.GetDetailMapper();
-            var result = map.Map<PatientHealthPatientHealthDetailDTO>(data);
-
-            return result;
-        }
-
-
-
-
-
-        
-
-
 
     }
 }

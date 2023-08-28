@@ -10,12 +10,12 @@ using System.Web.Http.Cors;
 
 namespace DocPortal.Controllers.HealthDetail
 {
-    [RoutePrefix("api/health/detail")]
+    [RoutePrefix("api/patient/immunizationhistory")]
     public class ImmunizationHistoryController : ApiController
     {
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("immunizationhistory")]
+        [Route("all")]
         public HttpResponseMessage GetAllImmunizationHistoryDetail()
         {
             try
@@ -31,7 +31,7 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("immunizationhistory/{id}")]
+        [Route("{id}")]
         public HttpResponseMessage GetImmunizationHistoryDetailById(int id)
         {
             try
@@ -47,7 +47,7 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "delete")]
         [HttpDelete]
-        [Route("immunizationhistory/{id}")]
+        [Route("{id}")]
         public HttpResponseMessage DeleteImmunizationHistoryDetailById(int id)
         {
             try
@@ -63,13 +63,13 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "put")]
         [HttpPut]
-        [Route("immunizationhistory/{id}")]
+        [Route("update")]
         public HttpResponseMessage UpdateImmunizationHistoryDetailById(ImmunizationHistoryDetailDTO immunizationHistoryDetail)
         {
             try
             {
-                ImmunizationHistoryDetailService.Update(immunizationHistoryDetail);
-                return Request.CreateResponse(HttpStatusCode.OK);
+                var result = ImmunizationHistoryDetailService.Update(immunizationHistoryDetail);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
             {
@@ -79,13 +79,13 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "post")]
         [HttpPost]
-        [Route("immunizationhistory/create")]
+        [Route("create")]
         public HttpResponseMessage CreateImmunizationHistoryDetail(ImmunizationHistoryDetailDTO immunizationHistoryDetail)
         {
             try
             {
-                ImmunizationHistoryDetailService.Create(immunizationHistoryDetail);
-                return Request.CreateResponse(HttpStatusCode.OK);
+                var result = ImmunizationHistoryDetailService.Create(immunizationHistoryDetail);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
             {

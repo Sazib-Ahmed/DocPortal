@@ -14,8 +14,8 @@ namespace DAL.EF.Models.PatientHealthDetail
         public int OtherTestDetailId { get; set; }
 
 
-        [ForeignKey("PatientHealth")]
-        public int PatientHealthId { get; set; }
+        [ForeignKey("Patient")]
+        public int PatientId { get; set; }
 
         public string TestName { get; set; }
         public DateTime? RecordedAt { get; set; } 
@@ -30,6 +30,6 @@ namespace DAL.EF.Models.PatientHealthDetail
 
 
         // Navigation property
-        public virtual PatientHealth PatientHealth { get; set; }
+        public virtual Patient Patient { get; set; }
     }
 }

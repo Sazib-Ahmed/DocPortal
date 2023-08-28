@@ -6,14 +6,17 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
+using System.Web.Http.Results;
 
 namespace DocPortal.Controllers.HealthDetail
 {
-    [RoutePrefix("api/health/detail")]
+    [RoutePrefix("api/patient/urineanalysis")]
     public class UrineAnalysisController : ApiController
     {
+        [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("urineanalysis")]
+        [Route("all")]
         public HttpResponseMessage GetAllUrineAnalysisDetail()
         {
             try
@@ -27,8 +30,9 @@ namespace DocPortal.Controllers.HealthDetail
             }
         }
 
+        [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("urineanalysis/{id}")]
+        [Route("{id}")]
         public HttpResponseMessage GetUrineAnalysisDetailById(int id)
         {
             try
@@ -42,14 +46,16 @@ namespace DocPortal.Controllers.HealthDetail
             }
         }
 
+
+        [EnableCors("*", "*", "post")]
         [HttpPost]
-        [Route("urineanalysis/create")]
+        [Route("create")]
         public HttpResponseMessage CreateUrineAnalysisDetail(UrineAnalysisDetailDTO obj)
         {
             try
             {
-                UrineAnalysisDetailService.Create(obj);
-                return Request.CreateResponse(HttpStatusCode.Created);
+                var result = UrineAnalysisDetailService.Create(obj);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
             {
@@ -57,14 +63,15 @@ namespace DocPortal.Controllers.HealthDetail
             }
         }
 
+        [EnableCors("*", "*", "put")]
         [HttpPut]
-        [Route("urineanalysis/update")]
+        [Route("update")]
         public HttpResponseMessage UpdateUrineAnalysisDetail(UrineAnalysisDetailDTO obj)
         {
             try
             {
-                UrineAnalysisDetailService.Update(obj);
-                return Request.CreateResponse(HttpStatusCode.OK);
+                var result = UrineAnalysisDetailService.Update(obj);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
             {
@@ -72,14 +79,15 @@ namespace DocPortal.Controllers.HealthDetail
             }
         }
 
+        [EnableCors("*", "*", "delete")]
         [HttpDelete]
-        [Route("urineanalysis/delete/{id}")]
+        [Route("{id}")]
         public HttpResponseMessage DeleteUrineAnalysisDetail(int id)
         {
             try
             {
                 UrineAnalysisDetailService.Delete(id);
-                return Request.CreateResponse(HttpStatusCode.OK);
+                return Request.CreateResponse(HttpStatusCode.OK, "Urine Analysis detail deleted successfully.");
             }
             catch (Exception ex)
             {

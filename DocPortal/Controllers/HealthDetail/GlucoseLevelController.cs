@@ -7,15 +7,16 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using System.Web.Http.Results;
 
 namespace DocPortal.Controllers.HealthDetail
 {
-    [RoutePrefix("api/health/detail")]
+    [RoutePrefix("api/patient/glucoselevel")]
     public class GlucoseLevelController : ApiController
     {
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("glucoselevel")]
+        [Route("all")]
         public HttpResponseMessage GetAllGlucoseLevelDetail()
         {
             try
@@ -32,7 +33,7 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("glucoselevel/{id}")]
+        [Route("{id}")]
         public HttpResponseMessage GetGlucoseLevelDetailById(int id)
         {
             try
@@ -48,7 +49,7 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "delete")]
         [HttpDelete]
-        [Route("glucoselevel/{id}")]
+        [Route("{id}")]
         public HttpResponseMessage DeleteGlucoseLevelDetail(int id)
         {
             try
@@ -64,13 +65,13 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "put")]
         [HttpPut]
-        [Route("glucoselevel/{id}")]
+        [Route("update")]
         public HttpResponseMessage UpdateGlucoseLevelDetail(GlucoseLevelDetailDTO clucoseLevelDetail)
         {
             try
             {
-                GlucoseLevelDetailService.Update(clucoseLevelDetail);
-                return Request.CreateResponse(HttpStatusCode.OK, "Successfully updated.");
+                var result = GlucoseLevelDetailService.Update(clucoseLevelDetail);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
             {
@@ -80,13 +81,13 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "post")]
         [HttpPost]
-        [Route("glucoselevel/create")]
+        [Route("create")]
         public HttpResponseMessage CreateGlucoseLevelDetail(GlucoseLevelDetailDTO glucoseLevelDetail)
         {
             try
             {
-                GlucoseLevelDetailService.Create(glucoseLevelDetail);
-                return Request.CreateResponse(HttpStatusCode.OK, "Successfully created.");
+                var result = GlucoseLevelDetailService.Create(glucoseLevelDetail);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
             {

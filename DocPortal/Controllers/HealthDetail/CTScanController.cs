@@ -10,12 +10,12 @@ using System.Web.Http.Cors;
 
 namespace DocPortal.Controllers.HealthDetail
 {
-    [RoutePrefix("api/health/detail")]
+    [RoutePrefix("api/patient/ctscan")]
     public class CTScanController : ApiController
     {
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("ctscan")]
+        [Route("all")]
         public HttpResponseMessage GetAllCTScanDetail()
         {
             try
@@ -31,7 +31,7 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("ctscan/{id}")]
+        [Route("{id}")]
         public HttpResponseMessage GetCTScanDetailById(int id)
         {
             try
@@ -47,7 +47,7 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "delete")]
         [HttpDelete]
-        [Route("ctscan/{id}")]
+        [Route("{id}")]
         public HttpResponseMessage DeleteCTScanDetail(int id)
         {
             try
@@ -63,14 +63,14 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "put")]
         [HttpPut]
-        [Route("ctscan/{id}")]
+        [Route("update")]
         public HttpResponseMessage UpdateCTScanDetail(CTScanDetailDTO ctScanDetail)
         {
             try
             {
-                
-                CTScanDetailService.Update(ctScanDetail);
-                return Request.CreateResponse(HttpStatusCode.OK, "Successfully updated.");
+
+                var result = CTScanDetailService.Update(ctScanDetail);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
             {
@@ -80,13 +80,13 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "post")]
         [HttpPost]
-        [Route("ctscan/create")]
+        [Route("create")]
         public HttpResponseMessage AddCTScanDetail(CTScanDetailDTO ctScanDetail)
         {
             try
             {
-                CTScanDetailService.Create(ctScanDetail);
-                return Request.CreateResponse(HttpStatusCode.OK, "Successfully added.");
+                var result = CTScanDetailService.Create(ctScanDetail);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
             {

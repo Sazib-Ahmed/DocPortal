@@ -10,12 +10,12 @@ using System.Web.Http.Cors;
 
 namespace DocPortal.Controllers.HealthDetail
 {
-    [RoutePrefix("api/health/detail")]
+    [RoutePrefix("api/patient/pulmonaryfunction")]
     public class PulmonaryFunctionController : ApiController
     {
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("pulmonaryfunction")]
+        [Route("all")]
         public HttpResponseMessage GetAllPulmonaryFunctionDetail()
         {
             try
@@ -31,7 +31,7 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("pulmonaryfunction/{id}")]
+        [Route("{id}")]
         public HttpResponseMessage GetPulmonaryFunctionDetailById(int id)
         {
             try
@@ -48,13 +48,13 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "Post")]
         [HttpPost]
-        [Route("pulmonaryfunction/create")]
+        [Route("create")]
         public HttpResponseMessage CreatePulmonaryFunctionDetail(PulmonaryFunctionDetailDTO obj)
         {
             try
             {
-                PulmonaryFunctionDetailService.Create(obj);
-                return Request.CreateResponse(HttpStatusCode.Created);
+                var result = PulmonaryFunctionDetailService.Create(obj);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
             {
@@ -65,13 +65,13 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "Put")]
         [HttpPut]
-        [Route("pulmonaryfunction/update")]
+        [Route("update")]
         public HttpResponseMessage UpdatePulmonaryFunctionDetail(PulmonaryFunctionDetailDTO obj)
         {
             try
             {
-                PulmonaryFunctionDetailService.Update(obj);
-                return Request.CreateResponse(HttpStatusCode.OK);
+                var result = PulmonaryFunctionDetailService.Update(obj);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
             {
@@ -82,13 +82,13 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "Delete")]
         [HttpDelete]
-        [Route("pulmonaryfunction/delete")]
+        [Route("{id}")]
         public HttpResponseMessage DeletePulmonaryFunctionDetail(int id)
         {
             try
             {
                 PulmonaryFunctionDetailService.Delete(id);
-                return Request.CreateResponse(HttpStatusCode.OK);
+                return Request.CreateResponse(HttpStatusCode.OK, "Pulmonary Function details deleted successfully.");
             }
             catch (Exception ex)
             {

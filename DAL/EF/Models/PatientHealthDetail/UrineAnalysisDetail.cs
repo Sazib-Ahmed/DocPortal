@@ -14,8 +14,8 @@ namespace DAL.EF.Models.PatientHealthDetail
         public int UrineAnalysisDetailId { get; set; }
 
 
-        [ForeignKey("PatientHealth")]
-        public int PatientHealthId { get; set; }
+        [ForeignKey("Patient")]
+        public int PatientId { get; set; }
 
         public DateTime? RecordedAt { get; set; }  // DateTime when the test was performed
 
@@ -37,6 +37,6 @@ namespace DAL.EF.Models.PatientHealthDetail
 
         // Navigation property
 
-        public virtual PatientHealth PatientHealth { get; set; }
+        public virtual Patient Patient { get; set; }
     }
 }

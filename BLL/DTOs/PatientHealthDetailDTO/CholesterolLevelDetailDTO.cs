@@ -9,8 +9,7 @@ namespace BLL.DTOs.PatientHealthDetailDTO
     public class CholesterolLevelDetailDTO
     {
         public int CholesterolLevelDetailId { get; set; }
-        public int PatientHealthId { get; set; }
-
+        public int PatientId { get; set; }
         public double TotalCholesterol { get; set; }
 
         public double LDLCholesterol { get; set; }

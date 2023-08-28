@@ -9,11 +9,11 @@ using System.Web.Http;
 
 namespace DocPortal.Controllers.HealthDetail
 {
-    [RoutePrefix("api/health/detail")]
+    [RoutePrefix("api/patient/thyroid")]
     public class ThyroidController : ApiController
     {
         [HttpGet]
-        [Route("thyroid")]
+        [Route("all")]
         public HttpResponseMessage GetAllThyroidDetail()
         {
             try
@@ -28,7 +28,7 @@ namespace DocPortal.Controllers.HealthDetail
         }
 
         [HttpGet]
-        [Route("thyroid/{id}")]
+        [Route("{id}")]
         public HttpResponseMessage GetThyroidDetailById(int id)
         {
             try
@@ -43,13 +43,13 @@ namespace DocPortal.Controllers.HealthDetail
         }
 
         [HttpPut]
-        [Route("thyroid/update")]
+        [Route("update")]
         public HttpResponseMessage UpdateThyroidDetail(ThyroidDetailDTO obj)
         {
             try
             {
-                ThyroidDetailService.Update(obj);
-                return Request.CreateResponse(HttpStatusCode.OK);
+                var result = ThyroidDetailService.Update(obj);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
             {
@@ -58,13 +58,13 @@ namespace DocPortal.Controllers.HealthDetail
         }
 
         [HttpDelete]
-        [Route("thyroid/delete/{id}")]
+        [Route("{id}")]
         public HttpResponseMessage DeleteThyroidDetail(int id)
         {
             try
             {
                 ThyroidDetailService.Delete(id);
-                return Request.CreateResponse(HttpStatusCode.OK);
+                return Request.CreateResponse(HttpStatusCode.OK, "Thyroid details deleted successfully.");
             }
             catch (Exception ex)
             {
@@ -73,13 +73,13 @@ namespace DocPortal.Controllers.HealthDetail
         }
 
         [HttpPost]
-        [Route("thyroid/create")]
+        [Route("create")]
         public HttpResponseMessage CreateThyroidDetail(ThyroidDetailDTO obj)
         {
             try
             {
-                ThyroidDetailService.Create(obj);
-                return Request.CreateResponse(HttpStatusCode.Created);
+                var result = ThyroidDetailService.Create(obj);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
             {

@@ -13,8 +13,8 @@ namespace DAL.EF.Models.PatientHealthDetail
         [Key]
         public int VitaminLevelsDetailId { get; set; }
 
-        [ForeignKey("PatientHealth")]
-        public int PatientHealthId { get; set; }
+        [ForeignKey("Patient")]
+        public int PatientId { get; set; }
 
         // Properties for individual vitamin levels
         public double? VitaminA { get; set; } // Concentration of Vitamin A
@@ -40,6 +40,6 @@ namespace DAL.EF.Models.PatientHealthDetail
 
         // Navigation property
 
-        public virtual PatientHealth PatientHealth { get; set; }
+        public virtual Patient Patient { get; set; }
     }
 }

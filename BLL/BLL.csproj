@@ -70,6 +70,7 @@
     <Compile Include="DTOs\PatientHealthDetailDTO\XrayDetailDTO.cs" />
     <Compile Include="DTOs\PatientHealthDTO.cs" />
     <Compile Include="DTOs\PatientHealthPatientHealthDetailDTO.cs" />
+    <Compile Include="DTOs\PatientPatientHealthPatientHealthDetailDTO\PatientPatientHealthBloodPressureDetailDTO.cs" />
     <Compile Include="DTOs\PatientTokenDTO.cs" />
     <Compile Include="DTOs\PrescriptionDetailDTO.cs" />
     <Compile Include="DTOs\PrescriptionDTO.cs" />

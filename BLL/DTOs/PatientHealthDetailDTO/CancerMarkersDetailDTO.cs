@@ -9,8 +9,7 @@ namespace BLL.DTOs.PatientHealthDetailDTO
     public class CancerMarkersDetailDTO
     {
         public int CancerMarkersDetailId { get; set; }
-        public int PatientHealthId { get; set; }
-
+        public int PatientId { get; set; }
         public DateTime? RecordedAt { get; set; } 
 
         public string CancerMarkersTestData { get; set; }

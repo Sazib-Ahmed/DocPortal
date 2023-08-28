@@ -10,7 +10,7 @@ namespace BLL.DTOs.PatientHealthDetailDTO
     public class BloodPressureDetailDTO
     {
         public int BloodPressureDetailId { get; set; }
-        public int PatientHealthId { get; set; }
+        public int PatientId { get; set; }
         public DateTime? RecordedAt { get; set; }
         public int? SystolicPressure { get; set; }
         public int? DiastolicPressure { get; set; }

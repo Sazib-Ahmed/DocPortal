@@ -7,15 +7,16 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using System.Web.Http.Results;
 
 namespace DocPortal.Controllers.HealthDetail
 {
-    [RoutePrefix("api/health/detail")]
+    [RoutePrefix("api/patient/hemoglobin")]
     public class HemoglobinController : ApiController
     {
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("hemoglobin")]
+        [Route("all")]
         public HttpResponseMessage GetAllHemoglobinDetail()
         {
             try
@@ -31,7 +32,7 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("hemoglobin/{id}")]
+        [Route("{id}")]
         public HttpResponseMessage GetHemoglobinDetailById(int id)
         {
             try
@@ -47,7 +48,7 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "delete")]
         [HttpDelete]
-        [Route("hemoglobin/{id}")]
+        [Route("{id}")]
         public HttpResponseMessage DeleteHemoglobinDetail(int id)
         {
             try
@@ -63,14 +64,14 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "put")]
         [HttpPut]
-        [Route("hemoglobin/{id}")]
+        [Route("update")]
         public HttpResponseMessage UpdateHemoglobinDetail(HemoglobinDetailDTO hemoglobinDetail)
         {
             try
             {
-              
-                HemoglobinDetailService.Update(hemoglobinDetail);
-                return Request.CreateResponse(HttpStatusCode.OK, "Successfully updated.");
+
+                var result = HemoglobinDetailService.Update(hemoglobinDetail);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
             {
@@ -80,13 +81,13 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "post")]
         [HttpPost]
-        [Route("hemoglobin/create")]
+        [Route("create")]
         public HttpResponseMessage CreateHemoglobinDetail(HemoglobinDetailDTO hemoglobinDetail)
         {
             try
             {
-                HemoglobinDetailService.Create(hemoglobinDetail);
-                return Request.CreateResponse(HttpStatusCode.OK, "Successfully created.");
+                var result = HemoglobinDetailService.Create(hemoglobinDetail);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
             {

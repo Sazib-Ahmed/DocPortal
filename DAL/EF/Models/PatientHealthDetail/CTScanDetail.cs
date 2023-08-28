@@ -13,8 +13,8 @@ namespace DAL.EF.Models.PatientHealthDetail
         [Key]
         public int CTScanDetailId { get; set; }
 
-        [ForeignKey("PatientHealth")]
-        public int PatientHealthId { get; set; }
+        [ForeignKey("Patient")]
+        public int PatientId { get; set; }
 
         public DateTime? RecordedAt { get; set; }
 
@@ -27,6 +27,6 @@ namespace DAL.EF.Models.PatientHealthDetail
         public string Note { get; set; }
 
 
-        public virtual PatientHealth PatientHealth { get; set; }
+        public virtual Patient Patient { get; set; }
     }
 }

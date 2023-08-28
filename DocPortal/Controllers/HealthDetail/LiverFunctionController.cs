@@ -10,12 +10,12 @@ using System.Web.Http.Cors;
 
 namespace DocPortal.Controllers.HealthDetail
 {
-    [RoutePrefix("api/health/detail")]
+    [RoutePrefix("api/patient/liverfunction")]
     public class LiverFunctionController : ApiController
     {
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("liverfunction")]
+        [Route("all")]
         public HttpResponseMessage GetAllLiverFunctionDetail()
         {
             try
@@ -31,7 +31,7 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("liverfunction/{id}")]
+        [Route("{id}")]
         public HttpResponseMessage GetLiverFunctionDetailById(int id)
         {
             try
@@ -48,7 +48,7 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "delete")]
         [HttpDelete]
-        [Route("liverfunction/{id}")]
+        [Route("{id}")]
         public HttpResponseMessage DeleteLiverFunctionDetail(int id)
         {
             try
@@ -64,13 +64,13 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "post")]
         [HttpPost]
-        [Route("liverfunction/create")]
+        [Route("create")]
         public HttpResponseMessage CreateLiverFunctionDetail(LiverFunctionDetailDTO liverFunctionDetail)
         {
             try
             {
-                LiverFunctionDetailService.Create(liverFunctionDetail);
-                return Request.CreateResponse(HttpStatusCode.OK, "Successfully created.");
+                var result = LiverFunctionDetailService.Create(liverFunctionDetail);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
             {
@@ -80,13 +80,13 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "put")]
         [HttpPut]
-        [Route("liverfunction/update")]
+        [Route("update")]
         public HttpResponseMessage UpdateLiverFunctionDetail(LiverFunctionDetailDTO liverFunctionDetail)
         {
             try
             {
-                LiverFunctionDetailService.Update(liverFunctionDetail);
-                return Request.CreateResponse(HttpStatusCode.OK, "Successfully updated.");
+                var result = LiverFunctionDetailService.Update(liverFunctionDetail);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
             {

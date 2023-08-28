@@ -10,12 +10,12 @@ using System.Web.Http.Cors;
 
 namespace DocPortal.Controllers.HealthDetail
 {
-    [RoutePrefix("api/health/detail")]
+    [RoutePrefix("api/patient/completebloodcount")]
     public class CompleteBloodCountController : ApiController
     {
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("completebloodcount")]
+        [Route("all")]
         public HttpResponseMessage GetAllCompleteBloodCountDetail()
         {
             try
@@ -31,7 +31,7 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("completebloodcount/{id}")]
+        [Route("{id}")]
         public HttpResponseMessage GetCompleteBloodCountDetailById(int id)
         {
             try
@@ -47,7 +47,7 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "delete")]
         [HttpDelete]
-        [Route("completebloodcount/{id}")]
+        [Route("{id}")]
         public HttpResponseMessage DeleteCompleteBloodCountDetail(int id)
         {
             try
@@ -63,13 +63,13 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "put")]
         [HttpPut]
-        [Route("completebloodcount/{id}")]
+        [Route("update")]
         public HttpResponseMessage UpdateCompleteBloodCountDetail(CompleteBloodCountDetailDTO completeBloodCountDetail)
         {
             try
             {
-                CompleteBloodCountDetailService.Update(completeBloodCountDetail);
-                return Request.CreateResponse(HttpStatusCode.OK, "Successfully updated.");
+                var result = CompleteBloodCountDetailService.Update(completeBloodCountDetail);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
             {
@@ -79,13 +79,13 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "post")]
         [HttpPost]
-        [Route("completebloodcount/create")]
+        [Route("create")]
         public HttpResponseMessage AddCompleteBloodCountDetail(CompleteBloodCountDetailDTO completeBloodCountDetail)
         {
             try
             {
-                CompleteBloodCountDetailService.Create(completeBloodCountDetail);
-                return Request.CreateResponse(HttpStatusCode.OK, "Successfully added.");
+                var result = CompleteBloodCountDetailService.Create(completeBloodCountDetail);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
             {

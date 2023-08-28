@@ -10,7 +10,7 @@ namespace BLL.DTOs.PatientHealthDetailDTO
     {
         public int CTScanDetailId { get; set; }
 
-        public int PatientHealthId { get; set; }
+        public int PatientId { get; set; }
 
         public DateTime? RecordedAt { get; set; }
 

@@ -13,8 +13,8 @@ namespace DAL.EF.Models.PatientHealthDetail
         [Key]
         public int HemoglobinDetailId { get; set; }
 
-        [ForeignKey("PatientHealth")]
-        public int PatientHealthId { get; set; }
+        [ForeignKey("Patient")]
+        public int PatientId { get; set; }
 
         public DateTime RecordedAt { get; set; }  // Date and time when the test was recorded
 
@@ -32,6 +32,6 @@ namespace DAL.EF.Models.PatientHealthDetail
 
 
 
-        public virtual PatientHealth PatientHealth { get; set; }
+        public virtual Patient Patient { get; set; }
     }
 }

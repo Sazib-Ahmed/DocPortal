@@ -10,12 +10,12 @@ using BLL.Services.PatientHealthDetailService;
 
 namespace DocPortal.Controllers.HealthDetail
 {
-    [RoutePrefix("api/health/detail")]
+    [RoutePrefix("api/patient/cholesterollevel")]
     public class CholesterolLevelController : ApiController
     {
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("cholesterollevel")]
+        [Route("all")]
         public HttpResponseMessage GetAllCholesterolLevelDetail()
         {
             try
@@ -31,7 +31,7 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("cholesterollevel/{id}")]
+        [Route("{id}")]
         public HttpResponseMessage GetCholesterolLevelDetailById(int id)
         {
             try
@@ -47,7 +47,7 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "delete")]
         [HttpDelete]
-        [Route("cholesterollevel/{id}")]
+        [Route("{id}")]
         public HttpResponseMessage DeleteCholesterolLevelDetail(int id)
         {
             try
@@ -63,7 +63,7 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "put")]
         [HttpPut]
-        [Route("cholesterollevel/update")]
+        [Route("update")]
         public HttpResponseMessage UpdateCholesterolLevelDetail(CholesterolLevelDetailDTO cholesterolLevelDetail)
         {
             try
@@ -79,7 +79,7 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "post")]
         [HttpPost]
-        [Route("cholesterollevel/create")]
+        [Route("create")]
         public HttpResponseMessage CreateCholesterolLevelDetail(CholesterolLevelDetailDTO cholesterolLevelDetail)
         {
             try

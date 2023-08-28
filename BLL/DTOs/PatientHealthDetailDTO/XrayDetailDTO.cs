@@ -9,7 +9,7 @@ namespace BLL.DTOs.PatientHealthDetailDTO
     public class XrayDetailDTO
     {
         public int XrayDetailId { get; set; }
-        public int PatientHealthId { get; set; }
+        public int PatientId { get; set; }
         public DateTime? RecordedAt { get; set; }
         public string XrayLocation { get; set; }
         public string XrayType { get; set; }

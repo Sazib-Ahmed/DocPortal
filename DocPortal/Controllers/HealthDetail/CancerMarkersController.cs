@@ -10,13 +10,13 @@ using BLL.Services.PatientHealthDetailService;
 
 namespace DocPortal.Controllers.HealthDetail
 {
-    [RoutePrefix("api/health/detail")]
+    [RoutePrefix("api/patient/cancermarkers")]
     public class CancerMarkersController : ApiController
     {
 
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("cancermarkers")]
+        [Route("all")]
         public HttpResponseMessage GetAllCancerMarkersDetail()
         {
             try
@@ -32,7 +32,7 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("cancermarkers/{id}")]
+        [Route("{id}")]
         public HttpResponseMessage GetCancerMarkersDetailById(int id)
         {
             try
@@ -48,7 +48,7 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "delete")]
         [HttpDelete]
-        [Route("cancermarkers/{id}")]
+        [Route("{id}")]
         public HttpResponseMessage DeleteCancerMarkersDetail(int id)
         {
             try
@@ -64,13 +64,13 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "put")]
         [HttpPut]
-        [Route("cancermarkers/update")]
+        [Route("update")]
         public HttpResponseMessage UpdateCancerMarkersDetail(CancerMarkersDetailDTO cancerMarkersDetail)
         {
             try
             {
-                CancerMarkersDetailService.Update(cancerMarkersDetail);
-                return Request.CreateResponse(HttpStatusCode.OK, "Successfully updated.");
+                var result = CancerMarkersDetailService.Update(cancerMarkersDetail);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
             {
@@ -80,13 +80,13 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "post")]
         [HttpPost]
-        [Route("cancermarkers/create")]
+        [Route("create")]
         public HttpResponseMessage CreateCancerMarkersDetail(CancerMarkersDetailDTO cancerMarkersDetail)
         {
             try
             {
-                CancerMarkersDetailService.Create(cancerMarkersDetail);
-                return Request.CreateResponse(HttpStatusCode.OK, "Successfully created.");
+                var result = CancerMarkersDetailService.Create(cancerMarkersDetail);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
             {

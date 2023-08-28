@@ -9,7 +9,7 @@ namespace BLL.DTOs.PatientHealthDetailDTO
     public class OtherTestDetailDTO
     {
         public int OtherTestDetailId { get; set; }
-        public int PatientHealthId { get; set; }
+        public int PatientId { get; set; }
 
         public string TestName { get; set; }
         public DateTime? RecordedAt { get; set; }

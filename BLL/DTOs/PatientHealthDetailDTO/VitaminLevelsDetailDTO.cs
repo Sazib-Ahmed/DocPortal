@@ -9,7 +9,7 @@ namespace BLL.DTOs.PatientHealthDetailDTO
     public class VitaminLevelsDetailDTO
     {
         public int VitaminLevelsDetailId { get; set; }
-        public int PatientHealthId { get; set; }
+        public int PatientId { get; set; }
 
         // Properties for individual vitamin levels
         public double? VitaminA { get; set; } // Concentration of Vitamin A

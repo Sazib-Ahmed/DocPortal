@@ -9,7 +9,7 @@ namespace BLL.DTOs.PatientHealthDetailDTO
     public class PulmonaryFunctionDetailDTO
     {
         public int PulmonaryFunctionDetailId { get; set; }
-        public int PatientHealthId { get; set; }
+        public int PatientId { get; set; }
 
         public DateTime? RecordedAt { get; set; } // Date and time when the test was recorded
 

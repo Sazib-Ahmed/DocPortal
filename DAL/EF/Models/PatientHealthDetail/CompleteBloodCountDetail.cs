@@ -12,8 +12,8 @@ namespace DAL.EF.Models.PatientHealthDetail
     {
         [Key]
         public int CompleteBloodCountDetailId { get; set; }
-        [ForeignKey("PatientHealth")]
-        public int PatientHealthId { get; set; }
+        [ForeignKey("Patient")]
+        public int PatientId { get; set; }
         public DateTime? RecordedAt { get; set; }
         public double? Hemoglobin { get; set; }
         public double? Hematocrit { get; set; }

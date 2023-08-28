@@ -9,7 +9,7 @@ namespace BLL.DTOs.PatientHealthDetailDTO
     public class ImmunizationHistoryDetailDTO
     {
         public int ImmunizationHistoryDetailId { get; set; }
-        public int PatientHealthId { get; set; }
+        public int PatientId { get; set; }
 
         public DateTime? RecordedAt { get; set; }  // Date and time when the immunization test was conducted
 

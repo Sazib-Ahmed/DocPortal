@@ -10,12 +10,12 @@ using System.Web.Http.Cors;
 
 namespace DocPortal.Controllers.HealthDetail
 {
-    [RoutePrefix("api/health/detail")]
+    [RoutePrefix("api/patient/othertest")]
     public class OtherTestController : ApiController
     {
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("othertest")]
+        [Route("all")]
         public HttpResponseMessage GetAllOtherTestDetail()
         {
             try
@@ -31,7 +31,7 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("othertest/{id}")]
+        [Route("{id}")]
         public HttpResponseMessage GetOtherTestDetailById(int id)
         {
             try
@@ -48,13 +48,13 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "Post")]
         [HttpPost]
-        [Route("othertest/create")]
+        [Route("create")]
         public HttpResponseMessage CreateOtherTestDetail(OtherTestDetailDTO obj)
         {
             try
             {
-                OtherTestDetailService.Create(obj);
-                return Request.CreateResponse(HttpStatusCode.Created);
+                var result = OtherTestDetailService.Create(obj);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
             {
@@ -64,13 +64,13 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "Put")]
         [HttpPut]
-        [Route("othertest/update")]
+        [Route("update")]
         public HttpResponseMessage UpdateOtherTestDetail(OtherTestDetailDTO obj)
         {
             try
             {
-                OtherTestDetailService.Update(obj);
-                return Request.CreateResponse(HttpStatusCode.OK);
+                var result = OtherTestDetailService.Update(obj);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
             {
@@ -80,13 +80,13 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "Delete")]
         [HttpDelete]
-        [Route("othertest/{id}")]
+        [Route("{id}")]
         public HttpResponseMessage DeleteOtherTestDetail(int id)
         {
             try
             {
                 OtherTestDetailService.Delete(id);
-                return Request.CreateResponse(HttpStatusCode.OK);
+                return Request.CreateResponse(HttpStatusCode.OK, "Test Detail deleted successfully.");
             }
             catch (Exception ex)
             {

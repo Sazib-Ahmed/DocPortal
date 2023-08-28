@@ -13,8 +13,8 @@ namespace DAL.EF.Models.PatientHealthDetail
         [Key]
         public int MRIDetailId { get; set; }
 
-        [ForeignKey("PatientHealth")]
-        public int PatientHealthId { get; set; }
+        [ForeignKey("Patient")]
+        public int PatientId { get; set; }
         public DateTime? RecordedAt { get; set; } // Date and time when the MRI was performed
         public string MRILocation { get; set; }
         public string MRIType { get; set; } // Type of MRI scan
@@ -27,6 +27,6 @@ namespace DAL.EF.Models.PatientHealthDetail
 
 
         // Navigation property
-        public virtual PatientHealth PatientHealth { get; set; }
+        public virtual Patient Patient { get; set; }
     }
 }

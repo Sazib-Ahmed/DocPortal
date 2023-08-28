@@ -9,7 +9,7 @@ using BLL.DTOs;
 
 namespace DocPortal.Controllers
 {
-    [RoutePrefix("api/health")]
+    [RoutePrefix("api/patient/health")]
     public class HealthController : ApiController
     {
         [HttpGet]
@@ -87,7 +87,7 @@ namespace DocPortal.Controllers
         }
 
         [HttpGet]
-        [Route("PatientId/{patientId}")]
+        [Route("Patient/{patientId}")]
         public HttpResponseMessage GetByPatientId(int patientId)
         {
             try
@@ -100,26 +100,6 @@ namespace DocPortal.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
-
-        [HttpGet]
-        [Route("{patientHealthId}/detail")]
-        public HttpResponseMessage GetPatientHealthDetailByPatientHealthId(int patientHealthId)
-        {
-            try
-            {
-                var data = PatientHealthService.GetPatientHealthDetailByPatientHealthId(patientHealthId);
-                return Request.CreateResponse(HttpStatusCode.OK, data);
-            }
-            catch (Exception ex)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
-            }
-        }
-
-
-
-
-        /// =========================================================================== Not working
 
 
         [HttpGet]
@@ -136,26 +116,6 @@ namespace DocPortal.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
-
-        //[HttpGet]
-        //[Route("detail/HealthId/{patientHealthId}")]
-        //public HttpResponseMessage GetPatientHealthDetailByPatientHealthId(int patientHealthId)
-        //{
-        //    try
-        //    {
-        //        var data = PatientHealthService.GetPatientHealthDetailByPatientHealthId(patientHealthId);
-        //        return Request.CreateResponse(HttpStatusCode.OK, data);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
-        //    }
-        //}
-
-
-
-        
-
         
 
     }

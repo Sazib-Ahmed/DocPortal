@@ -10,12 +10,12 @@ using System.Web.Http.Cors;
 
 namespace DocPortal.Controllers.HealthDetail
 {
-    [RoutePrefix("api/health/detail")]
+    [RoutePrefix("api/patient/ecg")]
     public class ECGController : ApiController
     {
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("ecg")]
+        [Route("all")]
         public HttpResponseMessage GetAllECGDetail()
         {
             try
@@ -31,7 +31,7 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("ecg/{id}")]
+        [Route("{id}")]
         public HttpResponseMessage GetECGDetailById(int id)
         {
             try
@@ -48,7 +48,7 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "delete")]
         [HttpDelete]
-        [Route("ecg/{id}")]
+        [Route("{id}")]
         public HttpResponseMessage DeleteECGDetail(int id)
         {
             try
@@ -64,13 +64,13 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "put")]
         [HttpPut]
-        [Route("ecg/{id}")]
+        [Route("update")]
         public HttpResponseMessage PutECGDetail(ECGDetailDTO ecgDetail)
         {
             try
             {
-                ECGDetailService.Update(ecgDetail);
-                return Request.CreateResponse(HttpStatusCode.OK);
+                var result = ECGDetailService.Update(ecgDetail);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
             {
@@ -80,13 +80,13 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "post")]
         [HttpPost]
-        [Route("ecg/create")]
+        [Route("create")]
         public HttpResponseMessage PostECGDetail(ECGDetailDTO ecgDetail)
         {
             try
             {
-                ECGDetailService.Create(ecgDetail);
-                return Request.CreateResponse(HttpStatusCode.OK);
+                var result = ECGDetailService.Create(ecgDetail);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
             {

@@ -10,12 +10,12 @@ using System.Web.Http.Cors;
 
 namespace DocPortal.Controllers.HealthDetail
 {
-    [RoutePrefix("api/health/detail")]
+    [RoutePrefix("api/patient/xray")]
     public class XrayController : ApiController
     {
         [EnableCors("*","*","get")]
         [HttpGet]
-        [Route("xray")]
+        [Route("all")]
         public HttpResponseMessage GetAllXrayDetail()
         {
             try
@@ -31,7 +31,7 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("xray/{id}")]
+        [Route("{id}")]
         public HttpResponseMessage GetXrayDetailById(int id)
         {
             try
@@ -47,13 +47,13 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "Post")]
         [HttpPost]
-        [Route("xray/create")]
+        [Route("create")]
         public HttpResponseMessage CreateXrayDetail(XrayDetailDTO obj)
         {
             try
             {
-                XrayDetailService.Create(obj);
-                return Request.CreateResponse(HttpStatusCode.Created);
+                var result = XrayDetailService.Create(obj);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
             {
@@ -63,13 +63,13 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "Put")]
         [HttpPut]
-        [Route("xray/update")]
+        [Route("update")]
         public HttpResponseMessage UpdateXrayDetail(XrayDetailDTO obj)
         {
             try
             {
-                XrayDetailService.Update(obj);
-                return Request.CreateResponse(HttpStatusCode.OK);
+                var result = XrayDetailService.Update(obj);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
             {
@@ -79,13 +79,13 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "Delete")]
         [HttpDelete]
-        [Route("xray/delete/{id}")]
+        [Route("{id}")]
         public HttpResponseMessage DeleteXrayDetail(int id)
         {
             try
             {
                 XrayDetailService.Delete(id);
-                return Request.CreateResponse(HttpStatusCode.OK);
+                return Request.CreateResponse(HttpStatusCode.OK, "Xray details deleted successfully.");
             }
             catch (Exception ex)
             {

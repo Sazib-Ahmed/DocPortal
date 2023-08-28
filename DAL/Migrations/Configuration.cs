@@ -163,7 +163,7 @@
             {
                 context.BloodPressureDetails.Add(new BloodPressureDetail
                 {
-                    PatientHealthId = i,
+                    PatientId = i,
                     RecordedAt = DateTime.Now.AddDays(-i),
                     SystolicPressure = i + 80,
                     DiastolicPressure = i + 50,
@@ -179,7 +179,7 @@
             {
                 context.CancerMarkersDetails.Add(new CancerMarkersDetail
                 {
-                    PatientHealthId = i,
+                    PatientId = i,
                     RecordedAt = DateTime.Now.AddDays(-i),
                     CancerMarkersTestData = "Alpha-Fetoprotein and Beta-HCG",
                     Marker1NameAndValue = "Alpha-Fetoprotein " + random.Next(1, 120) + " ng/mL",
@@ -198,7 +198,7 @@
             {
                 context.CholesterolLevelDetails.Add(new CholesterolLevelDetail
                 {
-                    PatientHealthId = i,
+                    PatientId = i,
                     TotalCholesterol = random.Next(150, 300),
                     LDLCholesterol = random.Next(100, 200),
                     HDLCholesterol = random.Next(40, 70),
@@ -216,7 +216,7 @@
             {
                 context.CompleteBloodCountDetails.Add(new CompleteBloodCountDetail
                 {
-                    PatientHealthId = i,
+                    PatientId = i,
                     RecordedAt = DateTime.Now.AddDays(-i),
                     Hemoglobin = random.Next(11, 17),
                     Hematocrit = random.Next(35, 54),
@@ -238,7 +238,7 @@
             {
                 context.CTScanDetails.Add(new CTScanDetail
                 {
-                    PatientHealthId = i,
+                    PatientId = i,
                     RecordedAt = DateTime.Now.AddDays(-i),
                     ScanLocation = "Location " + i,
                     ScanData = "Data " + i,
@@ -255,7 +255,7 @@
             {
                 context.ECGDetails.Add(new ECGDetail
                 {
-                    PatientHealthId = i,
+                    PatientId = i,
                     RecordedAt = DateTime.Now.AddDays(-i),
                     TestLocation = "Location " + i,
                     TestResult = "Result " + i,
@@ -272,7 +272,7 @@
             {
                 context.GlucoseLevelDetails.Add(new GlucoseLevelDetail
                 {
-                    PatientHealthId = i,
+                    PatientId = i,
                     RecordedAt = DateTime.Now.AddDays(-i),
                     GlucoseLevel = i + 70,
                     PerformedBy = "Doctor",
@@ -287,7 +287,7 @@
             {
                 context.HemoglobinDetails.Add(new HemoglobinDetail
                 {
-                    PatientHealthId = i,
+                    PatientId = i,
                     RecordedAt = DateTime.Now.AddDays(-i),
                     HemoglobinLevel = random.Next(11, 17),
                     Hematocrit = random.Next(35, 54),
@@ -308,7 +308,7 @@
             {
                 context.ImmunizationHistoryDetails.Add(new ImmunizationHistoryDetail
                 {
-                    PatientHealthId = i,
+                    PatientId = i,
                     RecordedAt = DateTime.Now.AddDays(-i),
                     VaccineName = "Vaccine " + i,
                     Manufacturer = "Manufacturer " + i,
@@ -332,7 +332,7 @@
             {
                 context.KidneyFunctionDetails.Add(new KidneyFunctionDetail
                 {
-                    PatientHealthId = i,
+                    PatientId = i,
                     RecordedAt = DateTime.Now.AddDays(-i),
                     SerumCreatinine = i + 1,
                     BloodUreaNitrogen = i + 2,
@@ -360,7 +360,7 @@
             {
                 context.LiverFunctionDetails.Add(new LiverFunctionDetail
                 {
-                    PatientHealthId = i,
+                    PatientId = i,
                     RecordedAt = DateTime.Now.AddDays(-i),
                     ALT = i + 14,
                     AST = i + 15,
@@ -385,7 +385,7 @@
             {
                 context.MRIDetails.Add(new MRIDetail
                 {
-                    PatientHealthId = i,
+                    PatientId = i,
                     RecordedAt = DateTime.Now.AddDays(-i),
                     MRILocation = "Location " + i,
                     MRIType = "Type " + i,
@@ -405,7 +405,7 @@
             {
                 context.OtherTestDetails.Add(new OtherTestDetail
                 {
-                    PatientHealthId = i,
+                    PatientId = i,
                     TestName = "Test " + i,
                     RecordedAt = DateTime.Now.AddDays(-i),
                     TestLocation = "Location " + i,
@@ -425,7 +425,7 @@
             {
                 context.PulmonaryFunctionDetails.Add(new PulmonaryFunctionDetail
                 {
-                    PatientHealthId = i,
+                    PatientId = i,
                     RecordedAt = DateTime.Now.AddDays(-i),
                     FVC = i + 24,
                     FEV1 = i + 25,
@@ -446,7 +446,7 @@
             {
                 context.ThyroidDetails.Add(new ThyroidDetail
                 {
-                    PatientHealthId = i,
+                    PatientId = i,
                     RecordedAt = DateTime.Now.AddDays(-i),
                     TSH = i + 31,
                     FT4 = i + 32,
@@ -466,7 +466,7 @@
             {
                 context.UrineAnalysisDetails.Add(new UrineAnalysisDetail
                 {
-                    PatientHealthId = i,
+                    PatientId = i,
                     RecordedAt = DateTime.Now.AddDays(-i),
                     AlanineAminotransferase = i + 37,
                     AspartateAminotransferase = i + 38,
@@ -491,7 +491,7 @@
             {
                 context.VitaminLevelsDetails.Add(new VitaminLevelsDetail
                 {
-                    PatientHealthId = i,
+                    PatientId = i,
                     VitaminA = i + 51,
                     VitaminD = i + 52,
                     VitaminE = i + 53,
@@ -515,7 +515,7 @@
             {
                 context.XrayDetails.Add(new XrayDetail
                 {
-                    PatientHealthId = i,
+                    PatientId = i,
                     RecordedAt = DateTime.Now.AddDays(-i),
                     XrayLocation = "Location " + i,
                     XrayType = "Type " + i,

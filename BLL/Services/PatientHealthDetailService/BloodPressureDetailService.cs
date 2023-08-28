@@ -10,6 +10,7 @@ using DAL;
 using AutoMapper;
 using BLL.DTOs;
 using DAL.EF.Models;
+using BLL.DTOs.PatientPatientHealthPatientHealthDetailDTO;
 
 namespace BLL.Services.PatientHealthDetailService
 {
@@ -50,13 +51,13 @@ namespace BLL.Services.PatientHealthDetailService
 
         // for blood pressure detail
 
-        public static BloodPressureDetailDTO GetBloodPressureDetailByPatientHealthId(int patientHealthId)
+        public static BloodPressureDetailDTO GetBloodPressureDetailByPatientId(int patientHealthId)
         {
 
-            var bloodPressureDetailData = BloodPressureDetailService.GetAll();
+            var bloodPressureDetailData = GetAll();
 
             var data = (from bp in bloodPressureDetailData
-                        where bp.PatientHealthId == patientHealthId
+                        where bp.PatientId == patientHealthId
                         select bp).ToList();
 
             if (data != null)
@@ -71,25 +72,27 @@ namespace BLL.Services.PatientHealthDetailService
         }
 
 
-
-        public static PatientHealthPatientHealthDetailDTO GetBloodPressureDetailByPatientId(int patientId)
+        public static PatientPatientHealthBloodPressureDetailDTO GetBloodPressureDetailPatientHealthPatientByPatientId(int patientId)
         {
-            var data = (from h in DataAccessFactory.PatientHealthData().Get()
-                        where h.PatientId == patientId
-                        select h).ToList();
+            var data = DataAccessFactory.PatientData().Get(patientId); //GetPatientHealthDetailByPatientId(patientId);
 
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<PatientHealth, PatientHealthPatientHealthDetailDTO>();
+                cfg.CreateMap<Patient, PatientPatientHealthBloodPressureDetailDTO>();
+                cfg.CreateMap<PatientHealth, PatientHealthDTO>();
                 cfg.CreateMap<BloodPressureDetail, BloodPressureDetailDTO>();
 
             });
 
             var map = new Mapper(config);
-            var result = map.Map<PatientHealthPatientHealthDetailDTO>(data);
+            var result = map.Map<PatientPatientHealthBloodPressureDetailDTO>(data);
 
             return result;
         }
+
+        
+
+
 
     }
 }

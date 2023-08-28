@@ -9,7 +9,7 @@ namespace BLL.DTOs.PatientHealthDetailDTO
     public class UrineAnalysisDetailDTO
     {
         public int UrineAnalysisDetailId { get; set; }
-        public int PatientHealthId { get; set; }
+        public int PatientId { get; set; }
         public DateTime? RecordedAt { get; set; }  // DateTime when the test was performed
         public double? AlanineAminotransferase { get; set; }  // ALT level
         public double? AspartateAminotransferase { get; set; }  // AST level

@@ -9,7 +9,7 @@ namespace BLL.DTOs.PatientHealthDetailDTO
     public class HemoglobinDetailDTO
     {
         public int HemoglobinDetailId { get; set; }
-        public int PatientHealthId { get; set; }
+        public int PatientId { get; set; }
 
         public DateTime RecordedAt { get; set; }  
         public double? HemoglobinLevel { get; set; }  // in g/dL

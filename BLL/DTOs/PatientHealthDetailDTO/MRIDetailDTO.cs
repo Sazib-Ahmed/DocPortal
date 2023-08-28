@@ -9,7 +9,7 @@ namespace BLL.DTOs.PatientHealthDetailDTO
     public class MRIDetailDTO
     {
         public int MRIDetailId { get; set; }
-        public int PatientHealthId { get; set; }
+        public int PatientId { get; set; }
         public DateTime? RecordedAt { get; set; } // Date and time when the MRI was performed
         public string MRILocation { get; set; }
         public string MRIType { get; set; } // Type of MRI scan

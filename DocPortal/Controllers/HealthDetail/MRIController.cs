@@ -10,12 +10,12 @@ using System.Web.Http.Cors;
 
 namespace DocPortal.Controllers.HealthDetail
 {
-    [RoutePrefix("api/health/detail")]
+    [RoutePrefix("api/patient/mri")]
     public class MRIController : ApiController
     {
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("mri")]
+        [Route("all")]
         public HttpResponseMessage GetAllMRIDetail()
         {
             try
@@ -31,7 +31,7 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("mri/{id}")]
+        [Route("{id}")]
         public HttpResponseMessage GetMRIDetail(int id)
         {
             try
@@ -47,13 +47,13 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "post")]
         [HttpPost]
-        [Route("mri/create")]
+        [Route("create")]
         public HttpResponseMessage CreateMRIDetail(MRIDetailDTO mriDetail)
         {
             try
             {
-                MRIDetailService.Create(mriDetail);
-                return Request.CreateResponse(HttpStatusCode.OK, "MRI details are added successfully.");
+                var result = MRIDetailService.Create(mriDetail);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
             {
@@ -63,13 +63,13 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "put")]
         [HttpPut]
-        [Route("mri/update")]
+        [Route("update")]
         public HttpResponseMessage UpdateMRIDetail(MRIDetailDTO mriDetail)
         {
             try
             {
-                MRIDetailService.Update(mriDetail);
-                return Request.CreateResponse(HttpStatusCode.OK, "MRI details are updated successfully.");
+                var result = MRIDetailService.Update(mriDetail);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
             {
@@ -79,7 +79,7 @@ namespace DocPortal.Controllers.HealthDetail
 
         [EnableCors("*", "*", "delete")]
         [HttpDelete]
-        [Route("mri/{id}")]
+        [Route("{id}")]
         public HttpResponseMessage DeleteMRIDetail(int id)
         {
             try
