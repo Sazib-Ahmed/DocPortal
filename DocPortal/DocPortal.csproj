@@ -142,13 +142,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Frontend\Doctor\PatientWithId.html" />
-    <Content Include="Frontend\Examples\angular.html" />
-    <Content Include="Frontend\Examples\Detailed-System-Report.html" />
-    <Content Include="Frontend\Examples\Git for Windows.html" />
-    <Content Include="Frontend\Examples\index.html" />
-    <Content Include="Frontend\Examples\Intel® Driver &amp; Support Assistant.html" />
-    <Content Include="Frontend\Examples\Prescription.html" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -198,8 +191,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Frontend\Assistant\" />
-    <Folder Include="Frontend\Patient\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">
