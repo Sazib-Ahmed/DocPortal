@@ -31,6 +31,6 @@ namespace DAL.EF.Models.PatientHealthDetail
 
         // Navigation property
 
-        public virtual PatientHealth PatientHealth { get; set; }
+        public virtual Patient Patient { get; set; }
     }
 }

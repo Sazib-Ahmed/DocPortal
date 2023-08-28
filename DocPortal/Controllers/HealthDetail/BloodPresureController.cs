@@ -97,7 +97,7 @@ namespace DocPortal.Controllers
 
         [EnableCors("*", "*", "get")]
         [HttpGet]
-        [Route("bloodpressure/patient/{id}")]
+        [Route("patientid/{id}")]
         public HttpResponseMessage GetBloodPressureDetailByPatientId(int id)
         {
             try

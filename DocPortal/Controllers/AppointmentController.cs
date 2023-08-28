@@ -60,6 +60,8 @@ namespace DocPortal.Controllers
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Msg = ex.Message });
             }
         }
+
+
         [HttpPost]
         [Route("api/appointment/update")]
         public HttpResponseMessage Update(AppointmentDTO obj)
@@ -74,6 +76,8 @@ namespace DocPortal.Controllers
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Msg = ex.Message });
             }
         }
+
+
         [HttpGet]
         [Route("api/appointment/delete/{id}")]
         public HttpResponseMessage Delete(int id)
@@ -90,7 +94,7 @@ namespace DocPortal.Controllers
         }
 
 
-        [HttpGet]
+            [HttpGet]
             [Route("api/appointment/doctor/{doctorId}")]
             public HttpResponseMessage GetByDoctor(int doctorId)
             {
