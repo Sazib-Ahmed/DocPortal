@@ -99,7 +99,7 @@ namespace DocPortal.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
-
+        [EnableCors("*", "*", "post")]
         [HttpPost]
         [Route("create")]
         public HttpResponseMessage Create(DoctorDTO obj)
