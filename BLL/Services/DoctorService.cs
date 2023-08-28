@@ -23,16 +23,42 @@ namespace BLL.Services
         }
 
 
-        public static bool Create(DoctorDTO obj)
+        public static async Task<bool> CreateWithImage(DoctorDTO objWithImage)
         {
-            string password = Cryptography.EncryptPassword(obj.Password);
-            obj.Password= password;
+            string password = Cryptography.EncryptPassword(objWithImage.Password);
+            objWithImage.Password = password;
+
+            var objWithoutImage = new DoctorDTO
+            {
+                DoctorId = objWithImage.DoctorId,
+                Name = objWithImage.Name,
+                Speciality = objWithImage.Speciality,
+                Phone = objWithImage.Phone,
+                Password = objWithImage.Password,
+                Email = objWithImage.Email,
+                Address = objWithImage.Address,
+
+            };
+
             var mapper = DoctorMapperService<DoctorDTO, Doctor>.GetMapper();
-            var mapped = mapper.Map<Doctor>(obj);
-            return DataAccessFactory.DoctorData().Create(mapped);
+            var mapped = mapper.Map<Doctor>(objWithoutImage);
+
+            bool success = DataAccessFactory.DoctorData().Create(mapped);
+
+            return success;
         }
 
-        
+
+        //public static bool Create(DoctorDTO obj)
+        //{
+        //    string password = Cryptography.EncryptPassword(obj.Password);
+        //    obj.Password= password;
+        //    var mapper = DoctorMapperService<DoctorDTO, Doctor>.GetMapper();
+        //    var mapped = mapper.Map<Doctor>(obj);
+        //    return DataAccessFactory.DoctorData().Create(mapped);
+        //}
+
+
 
         public static DoctorDTO GetById(int id)
         {

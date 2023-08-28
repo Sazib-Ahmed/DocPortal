@@ -3,11 +3,14 @@ using BLL.Services;
 using DocPortal.AuthFilters;
 using DocPortal.Models;
 using DocPortal.Others;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
@@ -99,22 +102,28 @@ namespace DocPortal.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
-
         [HttpPost]
         [Route("create")]
-        public HttpResponseMessage Create(DoctorDTO obj)
+        public async Task<IActionResult> Create(DoctorDTO objWithImage)
         {
             try
             {
-                var data = DoctorService.Create(obj);
-                return Request.CreateResponse(HttpStatusCode.OK, data);
+                bool success = await DoctorService.CreateWithImage(objWithImage);
+
+                if (success)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, "Successfully Created.");
+                }
+                else
+                {
+                    
+                }
             }
             catch (Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Msg = ex.Message });
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
-
 
         //[HttpPost]
         //[Route("create")]

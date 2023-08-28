@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 namespace DAL.Repo
 {
     internal class DoctorRepo : Repo, IRepo<Doctor, int, bool>, IAuth<Doctor>
-
     {
         public List<Doctor> Get()
         {
