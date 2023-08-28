@@ -45,6 +45,8 @@ namespace DAL.EF
 
 
         public DbSet<Assistant> Assistants { get; set; }
+        public DbSet<ViewAppointmentRequest> ViewAppointmentRequests { get; set; }
+        public DbSet<RequestSchedule> RequestSchedules { get; set; }
         public DbSet<PatientToken> PatientTokens { get; set; }
     }
 }
