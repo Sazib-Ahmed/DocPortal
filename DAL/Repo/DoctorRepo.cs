@@ -4,15 +4,59 @@ using DAL.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DAL.Repo
 {
-    internal class DoctorRepo : Repo, IRepo<Doctor, int, bool>, IAuth<Doctor>
-
+    internal class DoctorRepo : Repo, IRepo<Doctor, int, bool>, IAuth<Doctor>, IImageHandler<byte[], string, bool> //, IImageService<byte[], string>
     {
+        public bool UploadImage(byte[] image, string imageName)
+        {
+            try
+            {
+                string rootFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "./DAL");
+                string imagesFolder = Path.Combine(rootFolder, "AppData", "DoctorImages");
+
+                if (!Directory.Exists(imagesFolder))
+                {
+                    Directory.CreateDirectory(imagesFolder);
+                }
+                string imagePath = Path.Combine(imagesFolder, imageName + ".png");
+
+
+                using (FileStream fileStream = new FileStream(imagePath, FileMode.OpenOrCreate, FileAccess.Write))
+                {
+                    fileStream.Write(image, 0, image.Length);
+                }
+                return true; // Image upload successful
+            }
+            catch (Exception)
+            {
+                // Log the exception
+                return false; // Image upload failed
+            }
+        }
+        public byte[] GetImage(string imageName)
+        {
+            string rootFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "./DAL");
+            string imagesFolder = Path.Combine(rootFolder, "AppData", "DoctorImages");
+
+            if (Directory.Exists(imagesFolder))
+            {
+                string imagePath = Path.Combine(imagesFolder, imageName);
+
+                if (File.Exists(imagePath))
+                {
+                    var imageData = File.ReadAllBytes(imagePath);
+                    return imageData;
+                }
+            }
+
+            return null;
+        }
         public List<Doctor> Get()
         {
             return db.Doctors.ToList();
@@ -22,7 +66,7 @@ namespace DAL.Repo
         {
 
             db.Doctors.Add(obj);
-            return db.SaveChanges() > 0; 
+            return db.SaveChanges() > 0;
         }
 
         public Doctor Get(int id)
@@ -30,7 +74,7 @@ namespace DAL.Repo
             return db.Doctors.Find(id);
         }
 
-        public bool Update(Doctor updatedObj) 
+        public bool Update(Doctor updatedObj)
         {
             var exobj = Get(updatedObj.DoctorId);
             if (exobj != null)

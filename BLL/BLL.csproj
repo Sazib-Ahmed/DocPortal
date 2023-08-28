@@ -51,6 +51,7 @@
     <Compile Include="DTOs\AssistantDTO.cs" />
     <Compile Include="DTOs\DoctorDTO.cs" />
     <Compile Include="DTOs\DoctorTokenDTO.cs" />
+    <Compile Include="DTOs\DoctorWithImageDTO.cs" />
     <Compile Include="DTOs\PatientDTO.cs" />
     <Compile Include="DTOs\PatientHealthDetailDTO\BloodPressureDetailDTO.cs" />
     <Compile Include="DTOs\PatientHealthDetailDTO\CancerMarkersDetailDTO.cs" />

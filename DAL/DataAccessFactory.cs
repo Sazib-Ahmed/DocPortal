@@ -22,6 +22,17 @@ namespace DAL
         {
             return new DoctorRepo();
         }
+
+        public static IImageHandler<byte[], string, bool> PutDoctorImageData()
+        {
+            return new DoctorRepo();
+        }
+
+        public static IImageHandler<byte[], string, bool> GetDoctorImageData()
+        {
+            return new DoctorRepo();
+        }
+
         public static IRepo<DoctorToken, int, DoctorToken> DoctorTokenData()
         {
             return new DoctorTokenRepo();

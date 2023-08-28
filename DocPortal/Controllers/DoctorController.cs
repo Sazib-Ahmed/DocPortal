@@ -3,11 +3,16 @@ using BLL.Services;
 using DocPortal.AuthFilters;
 using DocPortal.Models;
 using DocPortal.Others;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Security.Cryptography;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
@@ -99,21 +104,79 @@ namespace DocPortal.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
+
+
         [EnableCors("*", "*", "post")]
         [HttpPost]
         [Route("create")]
-        public HttpResponseMessage Create(DoctorDTO obj)
+        public async Task<HttpResponseMessage> Create()
         {
             try
             {
-                var data = DoctorService.Create(obj);
+                var form = await Request.Content.ReadAsMultipartAsync();
+                var doctorDTOJson = form.Contents.FirstOrDefault(c => c.Headers.ContentDisposition.Name.Trim('"') == "DoctorDTO");
+                var imageDataContent = form.Contents.FirstOrDefault(c => c.Headers.ContentDisposition.Name.Trim('"') == "ImageData");
+
+                if (doctorDTOJson == null || imageDataContent == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, new { Msg = "Invalid input data" });
+                }
+
+                string doctorDTOJsonString = await doctorDTOJson.ReadAsStringAsync();
+                DoctorDTO doctorDTO = JsonConvert.DeserializeObject<DoctorDTO>(doctorDTOJsonString);
+
+                byte[] imageData = await imageDataContent.ReadAsByteArrayAsync();
+
+                var regNumber = doctorDTO.RegistrationNumber;
+                
+
+                bool imageUploadResult = DoctorService.UploadImage(imageData, regNumber);
+
+                if (!imageUploadResult)
+                {
+                    return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Msg = "Failed to upload image" });
+                }
+                doctorDTO.Image = DoctorService.SetImageName(regNumber);
+
+                var data = DoctorService.Create(doctorDTO);
+
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Msg = ex.Message });
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Msg = "Error" });
             }
         }
+
+        [EnableCors("*", "*", "get")]
+        [HttpGet]
+        [Route("image/{id}")]
+        public HttpResponseMessage GetImage(int id)
+        {
+            try
+            {
+                byte[] imageData = DoctorService.GetDoctorImage(id); 
+
+                if (imageData != null)
+                {
+                    var response = Request.CreateResponse(HttpStatusCode.OK);
+                    response.Content = new ByteArrayContent(imageData);
+                    response.Content.Headers.ContentType = new MediaTypeHeaderValue("image/png"); 
+                    return response;
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Image not found");
+                }
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError);
+            }
+        }
+
+
+
 
 
         //[HttpPost]
