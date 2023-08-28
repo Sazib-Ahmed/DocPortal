@@ -80,6 +80,8 @@
     <Compile Include="EF\Models\PatientToken.cs" />
     <Compile Include="EF\Models\Prescription.cs" />
     <Compile Include="EF\Models\PrescriptionDetail.cs" />
+    <Compile Include="EF\Models\RequestSchedule.cs" />
+    <Compile Include="EF\Models\ViewAppointmentRequest.cs" />
     <Compile Include="Interfaces\IAuth.cs" />
     <Compile Include="Interfaces\IRepo.cs" />
     <Compile Include="Migrations\202308202052099_Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail_Assistant_with_dummy_data.cs" />
@@ -132,6 +134,8 @@
     <Compile Include="Repo\PrescriptionDetailRepo.cs" />
     <Compile Include="Repo\PrescriptionRepo.cs" />
     <Compile Include="Repo\Repo.cs" />
+    <Compile Include="Repo\RequestScheduleRepo.cs" />
+    <Compile Include="Repo\ViewAppointmentRequestRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

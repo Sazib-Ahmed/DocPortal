@@ -146,14 +146,23 @@ namespace DAL
         {
             return new AppointmentRepo();
         }
+        public static IRepo<PatientToken, int, PatientToken> PatientTokenData()
+        {
+            return new PatientTokenRepo();
+        }
+
 
         public static IRepo<Assistant, int, Assistant> AssistantData()
         {
             return new AssistantRepo();
         }
-        public static IRepo<PatientToken, int, PatientToken> PatientTokenData()
+        public static IRepo<ViewAppointmentRequest, int, ViewAppointmentRequest> ViewAppointmentRequestData()
         {
-            return new PatientTokenRepo();
+            return new ViewAppointmentRequestRepo();
+        }
+        public static IRepo<RequestSchedule, int, RequestSchedule> RequestScheduleData()
+        {
+            return new RequestScheduleRepo();
         }
 
     }
