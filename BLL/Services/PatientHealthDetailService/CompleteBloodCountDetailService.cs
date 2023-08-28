@@ -47,5 +47,18 @@ namespace BLL.Services.PatientHealthDetailService
             var mapper = MapperService<CompleteBloodCountDetail, CompleteBloodCountDetailDTO>.GetMapper();
             return mapper.Map<CompleteBloodCountDetailDTO>(data);
         }
+
+        public static List<CompleteBloodCountDetailDTO> GetCompleteBloodCountDetailByPatientId(int patientId)
+        {
+
+            var completeBloodCountDetailData = DataAccessFactory.CompleteBloodCountDetailData().Get();
+
+            var data = (from cbc in completeBloodCountDetailData
+                                               where cbc.PatientId == patientId
+                                                                      select cbc).ToList();
+
+            var mapper = MapperService<CompleteBloodCountDetail, CompleteBloodCountDetailDTO>.GetMapper();
+            return mapper.Map<List<CompleteBloodCountDetailDTO>>(data);
+        }
     }
 }

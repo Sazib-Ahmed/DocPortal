@@ -82,25 +82,9 @@
     <Compile Include="EF\Models\PrescriptionDetail.cs" />
     <Compile Include="Interfaces\IAuth.cs" />
     <Compile Include="Interfaces\IRepo.cs" />
-    <Compile Include="Migrations\202308202052099_Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail_Assistant_with_dummy_data.cs" />
-    <Compile Include="Migrations\202308202052099_Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail_Assistant_with_dummy_data.designer.cs">
-      <DependentUpon>202308202052099_Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail_Assistant_with_dummy_data.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202308210102371_Init_DoctorToken.cs" />
-    <Compile Include="Migrations\202308210102371_Init_DoctorToken.designer.cs">
-      <DependentUpon>202308210102371_Init_DoctorToken.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202308220027137_updated_DoctorToken_property.cs" />
-    <Compile Include="Migrations\202308220027137_updated_DoctorToken_property.designer.cs">
-      <DependentUpon>202308220027137_updated_DoctorToken_property.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202308220220030_Added_encrypted_password_to_doctor.cs" />
-    <Compile Include="Migrations\202308220220030_Added_encrypted_password_to_doctor.designer.cs">
-      <DependentUpon>202308220220030_Added_encrypted_password_to_doctor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202308240016255_Init_Health_Detail.cs" />
-    <Compile Include="Migrations\202308240016255_Init_Health_Detail.designer.cs">
-      <DependentUpon>202308240016255_Init_Health_Detail.cs</DependentUpon>
+    <Compile Include="Migrations\202308281004479_Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail_Assistant_with_dummy_data.cs" />
+    <Compile Include="Migrations\202308281004479_Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail_Assistant_with_dummy_data.designer.cs">
+      <DependentUpon>202308281004479_Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail_Assistant_with_dummy_data.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -138,23 +122,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202308202052099_Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail_Assistant_with_dummy_data.resx">
-      <DependentUpon>202308202052099_Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail_Assistant_with_dummy_data.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202308210102371_Init_DoctorToken.resx">
-      <DependentUpon>202308210102371_Init_DoctorToken.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202308220027137_updated_DoctorToken_property.resx">
-      <DependentUpon>202308220027137_updated_DoctorToken_property.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202308220220030_Added_encrypted_password_to_doctor.resx">
-      <DependentUpon>202308220220030_Added_encrypted_password_to_doctor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202308240016255_Init_Health_Detail.resx">
-      <DependentUpon>202308240016255_Init_Health_Detail.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202308281004479_Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail_Assistant_with_dummy_data.resx">
+      <DependentUpon>202308281004479_Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail_Assistant_with_dummy_data.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

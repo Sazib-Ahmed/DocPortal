@@ -47,5 +47,18 @@ namespace BLL.Services.PatientHealthDetailService
             var mapper = MapperService<VitaminLevelsDetail, VitaminLevelsDetailDTO>.GetMapper();
             return mapper.Map<VitaminLevelsDetailDTO>(data);
         }
+
+        public static List<VitaminLevelsDetailDTO> GetVitaminLevelsDetailByPatientId(int patientId)
+        {
+
+            var vitaminLevelsDetailData = DataAccessFactory.VitaminLevelsDetailData().Get();
+
+            var data = (from vl in vitaminLevelsDetailData
+                                               where vl.PatientId == patientId
+                                                                      select vl).ToList();
+
+            var mapper = MapperService<VitaminLevelsDetail, VitaminLevelsDetailDTO>.GetMapper();
+            return mapper.Map<List<VitaminLevelsDetailDTO>>(data);
+        }
     }
 }

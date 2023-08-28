@@ -42,5 +42,14 @@ namespace BLL.Services.PatientHealthDetailService
             var mapper = MapperService<PulmonaryFunctionDetail, PulmonaryFunctionDetailDTO>.GetMapper();
             return mapper.Map<PulmonaryFunctionDetailDTO>(data);
         }
+        public static List<PulmonaryFunctionDetailDTO> GetPulmonaryFunctionDetailByPatientId(int patientId)
+        {
+            var pulmonaryFunctionDetailData = DataAccessFactory.PulmonaryFunctionDetailData().Get();
+            var data = (from pf in pulmonaryFunctionDetailData
+                                               where pf.PatientId == patientId
+                                                                      select pf).ToList();
+            var mapper = MapperService<PulmonaryFunctionDetail, PulmonaryFunctionDetailDTO>.GetMapper();
+            return mapper.Map<List<PulmonaryFunctionDetailDTO>>(data);
+        }
     }
 }

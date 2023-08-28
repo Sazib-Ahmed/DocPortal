@@ -47,5 +47,18 @@ namespace BLL.Services.PatientHealthDetailService
             var mapper = MapperService<ImmunizationHistoryDetail, ImmunizationHistoryDetailDTO>.GetMapper();
             return mapper.Map<ImmunizationHistoryDetailDTO>(data);
         }
+
+        public static List<ImmunizationHistoryDetailDTO> GetImmunizationHistoryDetailByPatientId(int patientId)
+        {
+
+            var immunizationHistoryDetailData = DataAccessFactory.ImmunizationHistoryDetailData().Get();
+
+            var data = (from ih in immunizationHistoryDetailData
+                                               where ih.PatientId == patientId
+                                                                      select ih).ToList();
+
+            var mapper = MapperService<ImmunizationHistoryDetail, ImmunizationHistoryDetailDTO>.GetMapper();
+            return mapper.Map<List<ImmunizationHistoryDetailDTO>>(data);
+        }
     }
 }

@@ -6,12 +6,14 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace DocPortal.Controllers.HealthDetail
 {
     [RoutePrefix("api/patient/thyroid")]
     public class ThyroidController : ApiController
     {
+        [EnableCors("*", "*", "get")]
         [HttpGet]
         [Route("all")]
         public HttpResponseMessage GetAllThyroidDetail()
@@ -27,6 +29,7 @@ namespace DocPortal.Controllers.HealthDetail
             }
         }
 
+        [EnableCors("*", "*", "get")]
         [HttpGet]
         [Route("{id}")]
         public HttpResponseMessage GetThyroidDetailById(int id)
@@ -42,6 +45,7 @@ namespace DocPortal.Controllers.HealthDetail
             }
         }
 
+        [EnableCors("*", "*", "put")]
         [HttpPut]
         [Route("update")]
         public HttpResponseMessage UpdateThyroidDetail(ThyroidDetailDTO obj)
@@ -57,6 +61,7 @@ namespace DocPortal.Controllers.HealthDetail
             }
         }
 
+        [EnableCors("*", "*", "delete")]
         [HttpDelete]
         [Route("{id}")]
         public HttpResponseMessage DeleteThyroidDetail(int id)
@@ -72,6 +77,7 @@ namespace DocPortal.Controllers.HealthDetail
             }
         }
 
+        [EnableCors("*", "*", "post")]
         [HttpPost]
         [Route("create")]
         public HttpResponseMessage CreateThyroidDetail(ThyroidDetailDTO obj)
@@ -80,6 +86,22 @@ namespace DocPortal.Controllers.HealthDetail
             {
                 var result = ThyroidDetailService.Create(obj);
                 return Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+        [EnableCors("*", "*", "get")]
+        [HttpGet]
+        [Route("patient/{id}")]
+        public HttpResponseMessage GetThyroidDetailByPatientId(int id)
+        {
+            try
+            {
+                var data = ThyroidDetailService.GetThyroidDetailByPatientId(id);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
             }
             catch (Exception ex)
             {

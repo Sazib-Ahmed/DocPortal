@@ -47,5 +47,18 @@ namespace BLL.Services.PatientHealthDetailService
             var mapper = MapperService<CholesterolLevelDetail, CholesterolLevelDetailDTO>.GetMapper();
             return mapper.Map<CholesterolLevelDetailDTO>(data);
         }
+
+        public static List<CholesterolLevelDetailDTO> GetCholesterolLevelDetailByPatientId(int patientId)
+        {
+
+            var cholesterolLevelDetailData = DataAccessFactory.CholesterolLevelDetailData().Get();
+
+            var data = (from cl in cholesterolLevelDetailData
+                                               where cl.PatientId == patientId
+                                                                      select cl).ToList();
+
+            var mapper = MapperService<CholesterolLevelDetail, CholesterolLevelDetailDTO>.GetMapper();
+            return mapper.Map<List<CholesterolLevelDetailDTO>>(data);
+        }
     }
 }

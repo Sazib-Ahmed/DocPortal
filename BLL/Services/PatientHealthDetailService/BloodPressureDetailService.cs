@@ -49,50 +49,26 @@ namespace BLL.Services.PatientHealthDetailService
             return mapper.Map<BloodPressureDetailDTO>(data);
         }
 
-        // for blood pressure detail
 
-        public static BloodPressureDetailDTO GetBloodPressureDetailByPatientId(int patientHealthId)
+        public static List<BloodPressureDetailDTO> GetBloodPressureDetailByPatientId(int patientId)
         {
 
-            var bloodPressureDetailData = GetAll();
+            var bloodPressureDetailData = DataAccessFactory.BloodPressureDetailData().Get();
 
             var data = (from bp in bloodPressureDetailData
-                        where bp.PatientId == patientHealthId
+                        where bp.PatientId == patientId
                         select bp).ToList();
 
             if (data != null)
             {
                 var mapper = MapperService<BloodPressureDetail, BloodPressureDetailDTO>.GetMapper();
-                return mapper.Map<BloodPressureDetailDTO>(data);
+                return mapper.Map<List<BloodPressureDetailDTO>>(data);
             }
             else
             {
                 throw new Exception("Patient health record not found.");
             }
         }
-
-
-        public static PatientPatientHealthBloodPressureDetailDTO GetBloodPressureDetailPatientHealthPatientByPatientId(int patientId)
-        {
-            var data = DataAccessFactory.PatientData().Get(patientId); //GetPatientHealthDetailByPatientId(patientId);
-
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<Patient, PatientPatientHealthBloodPressureDetailDTO>();
-                cfg.CreateMap<PatientHealth, PatientHealthDTO>();
-                cfg.CreateMap<BloodPressureDetail, BloodPressureDetailDTO>();
-
-            });
-
-            var map = new Mapper(config);
-            var result = map.Map<PatientPatientHealthBloodPressureDetailDTO>(data);
-
-            return result;
-        }
-
-        
-
-
-
+   
     }
 }

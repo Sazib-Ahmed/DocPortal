@@ -93,6 +93,22 @@ namespace DocPortal.Controllers.HealthDetail
             }
         }
 
+        [EnableCors("*", "*", "get")]
+        [HttpGet]
+        [Route("patient/{id}")]
+        public HttpResponseMessage GetXrayDetailByPatientId(int id)
+        {
+            try
+            {
+                var data = XrayDetailService.GetXrayDetailByPatientId(id);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
 
     }
 }

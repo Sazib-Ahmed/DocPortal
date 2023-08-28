@@ -47,5 +47,18 @@ namespace BLL.Services.PatientHealthDetailService
             var mapper = MapperService<OtherTestDetail, OtherTestDetailDTO>.GetMapper();
             return mapper.Map<OtherTestDetailDTO>(data);
         }
+
+        public static List<OtherTestDetailDTO> GetOtherTestDetailByPatientId(int patientId)
+        {
+
+            var otherTestDetailData = DataAccessFactory.OtherTestDetailData().Get();
+
+            var data = (from ot in otherTestDetailData
+                                               where ot.PatientId == patientId
+                                                                      select ot).ToList();
+
+            var mapper = MapperService<OtherTestDetail, OtherTestDetailDTO>.GetMapper();
+            return mapper.Map<List<OtherTestDetailDTO>>(data);
+        }
     }
 }

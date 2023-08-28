@@ -95,6 +95,23 @@ namespace DocPortal.Controllers.HealthDetail
             }
         }
 
+        [EnableCors("*", "*", "get")]
+        [HttpGet]
+        [Route("patient/{patientId}")]
+        public HttpResponseMessage GetUrineAnalysisDetailByPatientId(int patientId)
+        {
+            try
+            {
+                var data = UrineAnalysisDetailService.GetUrineAnalysisDetailByPatientId(patientId);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+
+        }
+
 
     }
 }

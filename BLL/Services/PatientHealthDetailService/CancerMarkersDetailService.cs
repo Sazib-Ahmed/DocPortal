@@ -48,6 +48,20 @@ namespace BLL.Services.PatientHealthDetailService
             return mapper.Map<CancerMarkersDetailDTO>(data);
         }
 
+
+        public static List<CancerMarkersDetailDTO> GetCancerMarkersDetailByPatientId(int patientId)
+        {
+
+            var cancerMarkersDetailData = DataAccessFactory.CancerMarkersDetailData().Get();
+
+            var data = (from cm in cancerMarkersDetailData
+                       where cm.PatientId == patientId
+                       select cm).ToList();
+
+            var mapper = MapperService<CancerMarkersDetail, CancerMarkersDetailDTO>.GetMapper();
+            return mapper.Map<List<CancerMarkersDetailDTO>>(data);
+        }
+
         
     }
 }

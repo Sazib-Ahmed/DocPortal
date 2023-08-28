@@ -47,5 +47,15 @@ namespace BLL.Services.PatientHealthDetailService
             var mapper = MapperService<CTScanDetail, CTScanDetailDTO>.GetMapper();
             return mapper.Map<CTScanDetailDTO>(data);
         }
+
+        public static List<CTScanDetailDTO> GetCTScanDetailByPatientId(int patientId)
+        {
+            var data = DataAccessFactory.CTScanDetailData().Get().Where(d => d.PatientId == patientId).ToList();
+            var mapper = MapperService<CTScanDetail, CTScanDetailDTO>.GetMapper();
+            return mapper.Map<List<CTScanDetailDTO>>(data);
+        }
+
+
+
     }
 }

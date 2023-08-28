@@ -47,5 +47,17 @@ namespace BLL.Services.PatientHealthDetailService
             var mapper = MapperService<UrineAnalysisDetail, UrineAnalysisDetailDTO>.GetMapper();
             return mapper.Map<UrineAnalysisDetailDTO>(data);
         }
+        public static List<UrineAnalysisDetailDTO> GetUrineAnalysisDetailByPatientId(int patientId)
+        {
+
+            var urineAnalysisDetailData = DataAccessFactory.UrineAnalysisDetailData().Get();
+
+            var data = (from ua in urineAnalysisDetailData
+                                               where ua.PatientId == patientId
+                                                                      select ua).ToList();
+
+            var mapper = MapperService<UrineAnalysisDetail, UrineAnalysisDetailDTO>.GetMapper();
+            return mapper.Map<List<UrineAnalysisDetailDTO>>(data);
+        }
     }
 }

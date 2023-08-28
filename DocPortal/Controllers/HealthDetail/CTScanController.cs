@@ -94,5 +94,21 @@ namespace DocPortal.Controllers.HealthDetail
             }
         }
 
+        [EnableCors("*", "*", "get")]
+        [HttpGet]
+        [Route("patient/{patientId}")]
+        public HttpResponseMessage GetCTScanDetailByPatientId(int patientId)
+        {
+            try
+            {
+                var data = CTScanDetailService.GetCTScanDetailByPatientId(patientId);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
     }
 }

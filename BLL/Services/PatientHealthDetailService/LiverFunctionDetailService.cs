@@ -47,5 +47,12 @@ namespace BLL.Services.PatientHealthDetailService
             var mapper = MapperService<LiverFunctionDetail, LiverFunctionDetailDTO>.GetMapper();
             return mapper.Map<LiverFunctionDetailDTO>(data);
         }
+        public static LiverFunctionDetailDTO GetLiverFunctionDetailByPatientId(int patientId)
+        {
+            var data = DataAccessFactory.LiverFunctionDetailData().Get().Where(x => x.PatientId == patientId).FirstOrDefault();
+            var mapper = MapperService<LiverFunctionDetail, LiverFunctionDetailDTO>.GetMapper();
+            return mapper.Map<LiverFunctionDetailDTO>(data);
+        }
+
     }
 }

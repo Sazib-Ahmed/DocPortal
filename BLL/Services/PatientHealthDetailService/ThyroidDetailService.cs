@@ -47,5 +47,17 @@ namespace BLL.Services.PatientHealthDetailService
             var mapper = MapperService<ThyroidDetail, ThyroidDetailDTO>.GetMapper();
             return mapper.Map<ThyroidDetailDTO>(data);
         }
+        public static List<ThyroidDetailDTO> GetThyroidDetailByPatientId(int patientId)
+        {
+
+            var thyroidDetailData = DataAccessFactory.ThyroidDetailData().Get();
+
+            var data = (from t in thyroidDetailData
+                                               where t.PatientId == patientId
+                                                                      select t).ToList();
+
+            var mapper = MapperService<ThyroidDetail, ThyroidDetailDTO>.GetMapper();
+            return mapper.Map<List<ThyroidDetailDTO>>(data);
+        }
     }
 }

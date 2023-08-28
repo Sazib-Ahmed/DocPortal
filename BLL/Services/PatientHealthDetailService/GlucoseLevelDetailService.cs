@@ -47,5 +47,17 @@ namespace BLL.Services.PatientHealthDetailService
             var mapper = MapperService<GlucoseLevelDetail, GlucoseLevelDetailDTO>.GetMapper();
             return mapper.Map<GlucoseLevelDetailDTO>(data);
         }
+        public static List<GlucoseLevelDetailDTO> GetGlucoseLevelDetailByPatientId(int patientId)
+        {
+
+            var glucoseLevelDetailData = DataAccessFactory.GlucoseLevelDetailData().Get();
+
+            var data = (from gl in glucoseLevelDetailData
+                                               where gl.PatientId == patientId
+                                                                      select gl).ToList();
+
+            var mapper = MapperService<GlucoseLevelDetail, GlucoseLevelDetailDTO>.GetMapper();
+            return mapper.Map<List<GlucoseLevelDetailDTO>>(data);
+        }
     }
 }

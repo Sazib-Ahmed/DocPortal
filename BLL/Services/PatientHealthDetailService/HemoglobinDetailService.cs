@@ -42,5 +42,14 @@ namespace BLL.Services.PatientHealthDetailService
             var mapper = MapperService<HemoglobinDetail, HemoglobinDetailDTO>.GetMapper();
             return mapper.Map<HemoglobinDetailDTO>(data);
         }
+        public static List<HemoglobinDetailDTO> GetHemoglobinDetailByPatientId(int patientId)
+        {
+            var hemoglobinDetailData = DataAccessFactory.HemoglobinDetailData().Get();
+            var data = (from h in hemoglobinDetailData
+                                               where h.PatientId == patientId
+                                                                      select h).ToList();
+            var mapper = MapperService<HemoglobinDetail, HemoglobinDetailDTO>.GetMapper();
+            return mapper.Map<List<HemoglobinDetailDTO>>(data);
+        }
     }
 }

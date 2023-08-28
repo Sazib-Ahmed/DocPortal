@@ -93,5 +93,21 @@ namespace DocPortal.Controllers.HealthDetail
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
+
+        [EnableCors("*", "*", "get")]
+        [HttpGet]
+        [Route("patient/{patientId}")]
+        public HttpResponseMessage GetKidneyFunctionDetailByPatientId(int patientId)
+        {
+            try
+            {
+                var data = KidneyFunctionDetailService.GetKidneyFunctionDetailByPatientId(patientId);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
     }
 }

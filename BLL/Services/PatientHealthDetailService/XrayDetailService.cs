@@ -47,5 +47,18 @@ namespace BLL.Services.PatientHealthDetailService
             var mapper = MapperService<XrayDetail, XrayDetailDTO>.GetMapper();
             return mapper.Map<XrayDetailDTO>(data);
         }
+
+        public static List<XrayDetailDTO> GetXrayDetailByPatientId(int patientId)
+        {
+
+            var xrayDetailData = DataAccessFactory.XrayDetailData().Get();
+
+            var data = (from xray in xrayDetailData
+                                               where xray.PatientId == patientId
+                                                                      select xray).ToList();
+
+            var mapper = MapperService<XrayDetail, XrayDetailDTO>.GetMapper();
+            return mapper.Map<List<XrayDetailDTO>>(data);
+        }
     }
 }

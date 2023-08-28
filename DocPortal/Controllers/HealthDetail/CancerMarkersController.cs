@@ -94,6 +94,27 @@ namespace DocPortal.Controllers.HealthDetail
             }
         }
 
+        [EnableCors("*", "*", "get")]
+        [HttpGet]
+        [Route("patient/{patientId}")]
+        public HttpResponseMessage GetCancerMarkersDetailByPatientId(int patientId)
+        {
+            try
+            {
+                var data = CancerMarkersDetailService.GetCancerMarkersDetailByPatientId(patientId);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+
+
+
+
+
 
 
     }

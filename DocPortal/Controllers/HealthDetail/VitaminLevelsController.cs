@@ -92,5 +92,21 @@ namespace DocPortal.Controllers.HealthDetail
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
+
+        [EnableCors("*", "*", "get")]
+        [HttpGet]
+        [Route("patient/{patientId}")]
+        public HttpResponseMessage GetVitaminLevelsDetailByPatientId(int patientId)
+        {
+            try
+            {
+                var data = VitaminLevelsDetailService.GetVitaminLevelsDetailByPatientId(patientId);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
     }
 }

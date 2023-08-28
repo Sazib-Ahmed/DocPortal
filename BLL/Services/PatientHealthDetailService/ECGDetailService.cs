@@ -47,5 +47,18 @@ namespace BLL.Services.PatientHealthDetailService
             var mapper = MapperService<ECGDetail, ECGDetailDTO>.GetMapper();
             return mapper.Map<ECGDetailDTO>(data);
         }
+
+        public static List<ECGDetailDTO> GetECGDetailByPatientId(int patientId)
+        {
+
+            var ecgDetailData = DataAccessFactory.ECGDetailData().Get();
+
+            var data = (from ecg in ecgDetailData
+                                               where ecg.PatientId == patientId
+                                                                      select ecg).ToList();
+
+            var mapper = MapperService<ECGDetail, ECGDetailDTO>.GetMapper();
+            return mapper.Map<List<ECGDetailDTO>>(data);
+        }
     }
 }

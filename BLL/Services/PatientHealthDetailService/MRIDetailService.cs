@@ -47,5 +47,17 @@ namespace BLL.Services.PatientHealthDetailService
             var mapper = MapperService<MRIDetail, MRIDetailDTO>.GetMapper();
             return mapper.Map<MRIDetailDTO>(data);
         }
+        public static List<MRIDetailDTO> GetMRIDetailByPatientId(int patientId)
+        {
+
+            var mriDetailData = DataAccessFactory.MRIDetailData().Get();
+
+            var data = (from mri in mriDetailData
+                                               where mri.PatientId == patientId
+                                                                      select mri).ToList();
+
+            var mapper = MapperService<MRIDetail, MRIDetailDTO>.GetMapper();
+            return mapper.Map<List<MRIDetailDTO>>(data);
+        }
     }
 }
