@@ -489,6 +489,31 @@
                 .Index(t => t.PrescriptionId);
             
             CreateTable(
+                "dbo.RequestSchedules",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        PatientId = c.Int(nullable: false),
+                        VisitTime = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Appointments", t => t.PatientId, cascadeDelete: true)
+                .Index(t => t.PatientId);
+            
+            CreateTable(
+                "dbo.ViewAppointmentRequests",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        PId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Appointments", t => t.PId, cascadeDelete: true)
+                .Index(t => t.PId);
+            
+            CreateTable(
                 "dbo.Assistants",
                 c => new
                     {
@@ -544,6 +569,8 @@
         {
             DropForeignKey("dbo.PatientTokens", "PatientId", "dbo.Patients");
             DropForeignKey("dbo.DoctorTokens", "DoctorId", "dbo.Doctors");
+            DropForeignKey("dbo.ViewAppointmentRequests", "PId", "dbo.Appointments");
+            DropForeignKey("dbo.RequestSchedules", "PatientId", "dbo.Appointments");
             DropForeignKey("dbo.Appointments", "PatientId", "dbo.Patients");
             DropForeignKey("dbo.Appointments", "DoctorId", "dbo.Doctors");
             DropForeignKey("dbo.PrescriptionDetails", "PrescriptionId", "dbo.Prescriptions");
@@ -570,6 +597,8 @@
             DropForeignKey("dbo.Prescriptions", "DoctorId", "dbo.Doctors");
             DropIndex("dbo.PatientTokens", new[] { "PatientId" });
             DropIndex("dbo.DoctorTokens", new[] { "DoctorId" });
+            DropIndex("dbo.ViewAppointmentRequests", new[] { "PId" });
+            DropIndex("dbo.RequestSchedules", new[] { "PatientId" });
             DropIndex("dbo.PrescriptionDetails", new[] { "PrescriptionId" });
             DropIndex("dbo.XrayDetails", new[] { "PatientId" });
             DropIndex("dbo.VitaminLevelsDetails", new[] { "PatientId" });
@@ -597,6 +626,8 @@
             DropTable("dbo.PatientTokens");
             DropTable("dbo.DoctorTokens");
             DropTable("dbo.Assistants");
+            DropTable("dbo.ViewAppointmentRequests");
+            DropTable("dbo.RequestSchedules");
             DropTable("dbo.PrescriptionDetails");
             DropTable("dbo.XrayDetails");
             DropTable("dbo.VitaminLevelsDetails");

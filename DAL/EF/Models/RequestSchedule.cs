@@ -15,8 +15,10 @@ namespace DAL.EF.Models
 
         [ForeignKey("Appointment")]
         [Required]
-        public int Pid { get; set; }
+        public int PatientId { get; set; }
         public DateTime VisitTime { get; set; }
+
+        public virtual Appointment Appointment { get; set; }
 
     }
 }

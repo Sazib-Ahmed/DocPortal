@@ -13,7 +13,7 @@ namespace DAL.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202308281004479_Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail_Assistant_with_dummy_data"; }
+            get { return "202308290627464_Init_Doctor_Patient_Appoinment_Prescription_PrescriptionDetail_Assistant_with_dummy_data"; }
         }
         
         string IMigrationMetadata.Source
