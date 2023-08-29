@@ -1,4 +1,5 @@
 ﻿using BLL.DTOs;
+using BLL.APIs;
 using DAL.EF.Models;
 using DAL;
 using System;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BLL.Secrets;
+using Google.Apis.Gmail.v1.Data;
 
 namespace BLL.Services
 {
@@ -58,6 +60,23 @@ namespace BLL.Services
                 var mapped = mapper.Map<DoctorToken>(token);
                 DataAccessFactory.DoctorTokenData().Create(mapped);
                 token.TokenKey = originalTokenKey;
+
+                // Send email to the doctor
+                string subject = "Token Created Successfully";
+                string message = $"Dear {doctor.Name},\n\n" +
+                                 $"We are pleased to inform you that a token has been successfully created for accessing Doctor Services. Below are the details of the token:\n\n" +
+                                 $"- Token Key: {token.TokenKey}\n" +
+                                 $"- Creation Time: {token.CreatedAt}\n" +
+                                 $"- Doctor Name: {doctor.Name}\n" +
+                                 $"- Doctor ID: {doctor.DoctorId}\n" +
+                                 $"- Purpose: To Access Doctor Services\n\n" +
+                                 $"Please make sure to keep this token key secure, as it will grant you access to the designated services. If you have any concerns or questions, please don't hesitate to reach out to us.\n\n" +
+                                 $"Thank you for using our services.\n\n" +
+                                 $"Best regards,\n" +
+                                 $"DocPortal";
+
+                string emailTo = doctor.Email;
+                APIUsed.SendEmail(emailTo, subject, message);
                 return token;
             }
             

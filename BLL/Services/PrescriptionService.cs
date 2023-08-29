@@ -6,8 +6,11 @@ using DAL.Repo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
+
 
 namespace BLL.Services
 {
@@ -55,14 +58,15 @@ namespace BLL.Services
         public static PrescriptionPrescriptionDetailDTO GetWithDetail(int id)
         {
             var data = DataAccessFactory.PrescriptionData().Get(id);
-            
-            
+
+
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Prescription, PrescriptionPrescriptionDetailDTO>();
                 cfg.CreateMap<PrescriptionDetail, PrescriptionDetailDTO>();
             });
 
+            
             var mapper = new Mapper(config);
             var conv = mapper.Map<PrescriptionPrescriptionDetailDTO>(data);
             return conv;
@@ -114,6 +118,10 @@ namespace BLL.Services
             var conv = mapper.Map<List<PrescriptionDTO>>(data);
             return conv;
         }
+
+
+        
+
 
 
         //public static List<PrescriptionDTO> GetAll()
