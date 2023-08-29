@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace DAL.EF.Models
 {
@@ -44,5 +47,14 @@ namespace DAL.EF.Models
         public virtual Patient Patient { get; set; }
 
         public virtual Doctor Doctor { get; set; }
+
+        public virtual ICollection<ViewAppointmentRequest> ViewAppointmentRequests { get; set; }
+        public virtual ICollection<RequestSchedule> RequestSchedules { get; set; }
+
+        public Appointment()
+        {
+            ViewAppointmentRequests = new List<ViewAppointmentRequest>();
+            RequestSchedules = new List<RequestSchedule>();
+        }
     }
 }

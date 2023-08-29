@@ -80,6 +80,8 @@
     <Compile Include="EF\Models\PatientToken.cs" />
     <Compile Include="EF\Models\Prescription.cs" />
     <Compile Include="EF\Models\PrescriptionDetail.cs" />
+    <Compile Include="EF\Models\RequestSchedule.cs" />
+    <Compile Include="EF\Models\ViewAppointmentRequest.cs" />
     <Compile Include="Interfaces\IAuth.cs" />
     <Compile Include="Interfaces\IImageHandler.cs" />
     <Compile Include="Interfaces\IImageService.cs" />
@@ -118,6 +120,8 @@
     <Compile Include="Repo\PrescriptionDetailRepo.cs" />
     <Compile Include="Repo\PrescriptionRepo.cs" />
     <Compile Include="Repo\Repo.cs" />
+    <Compile Include="Repo\RequestScheduleRepo.cs" />
+    <Compile Include="Repo\ViewAppointmentRequestRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
