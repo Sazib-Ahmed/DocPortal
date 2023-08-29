@@ -5,8 +5,14 @@ using DAL.EF.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Http;
+using System.Threading.Tasks;
+
+
+
 namespace BLL.Services
 {
     public class PatientService
@@ -80,6 +86,43 @@ namespace BLL.Services
             var mapper = new Mapper(config);
             var conv = mapper.Map<List<PatientDTO>>(data);
             return conv;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public class WeatherService
+        {
+            private const string WeatherApiBaseUrl = "https://api.openweathermap.org/data/2.5/weather";
+            private const string ApiKey = "YOUR_API_KEY"; // Replace with your actual API key
+
+            public static async Task<string> GetWeatherAsync(string location)
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    string apiUrl = $"{WeatherApiBaseUrl}?q={location}&appid={ApiKey}";
+                    HttpResponseMessage response = await client.GetAsync(apiUrl);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return await response.Content.ReadAsStringAsync();
+                    }
+
+                    return null;
+                }
+            }
         }
 
 

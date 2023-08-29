@@ -11,6 +11,8 @@ using System.Net.Http.Headers;
 using System.Web.Http.Cors;
 using DocPortal.AuthFilters;
 using DocPortal.Models;
+using System.Threading.Tasks;
+using static BLL.Services.PatientService;
 
 namespace DocPortal.Controllers
 
@@ -151,6 +153,34 @@ namespace DocPortal.Controllers
         }
 
 
+
+
+
+
+        [HttpGet]
+        [Route("weather/{location}")]
+        [PatientLogged]
+        // Here Task is used for Asyncronous Ability / Programming
+        public async Task<IHttpActionResult> Get_weather_Data(string location)
+        {
+            if (!string.IsNullOrEmpty(location))
+            {
+                string weatherData = await WeatherService.GetWeatherAsync(location);
+
+                if (weatherData != null)
+                {
+                    return Ok(weatherData); // Return plain string weather data
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            else
+            {
+                return BadRequest("Please provide your Location");
+            }
+        }
 
     }
 }
