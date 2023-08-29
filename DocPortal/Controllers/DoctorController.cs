@@ -70,7 +70,7 @@ namespace DocPortal.Controllers
         [EnableCors("*", "*", "get")]
         [HttpGet]
         [Route("all")]
-        //[DoctorLogged]
+        [DoctorLogged]
         public HttpResponseMessage GetAll()
         {
             try
@@ -83,11 +83,7 @@ namespace DocPortal.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
-        //public IHttpActionResult GetAll()
-        //{
-        // var data = BLL.Services.DoctorService.GetAll();
-        // return Ok(data);
-        //}
+
 
         [EnableCors("*", "*", "get")]
         [HttpGet]
@@ -175,24 +171,6 @@ namespace DocPortal.Controllers
             }
         }
 
-
-
-
-
-        //[HttpPost]
-        //[Route("create")]
-        //public HttpResponseMessage Create(DoctorDTO obj)
-        //{
-        //    try
-        //    {
-        //        var data = DoctorService.Create(obj);
-        //        return Request.CreateResponse(HttpStatusCode.OK, data);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Msg = ex.Message });
-        //    }
-        //}
 
 
         [EnableCors("*", "*", "put")]
