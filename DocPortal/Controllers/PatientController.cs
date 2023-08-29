@@ -9,6 +9,7 @@ using System.Web.Http;
 using BLL.DTOs;
 using System.Net.Http.Headers;
 using System.Web.Http.Cors;
+using DocPortal.AuthFilters;
 
 namespace DocPortal.Controllers
 {
@@ -33,6 +34,7 @@ namespace DocPortal.Controllers
         [EnableCors("*", "*", "get")] // Enable CORS for all origins, all headers, get methods
         [HttpGet]
         [Route("api/patient/id/{id}")]
+        [DoctorLogged]
         public HttpResponseMessage GetById(int id)
         {
             try
